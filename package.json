@@ -1,0 +1,13 @@
+{
+  "name": "nudge-ai-root",
+  "version": "1.0.0",
+  "description": "NudgeAI: Python ML + Agentic Commerce Checkout Agent - Razorpay AI Buildathon",
+  "scripts": {
+    "install:backend": "pip install -r backend/requirements.txt",
+    "install:frontend": "npm install --prefix frontend",
+    "install-all": "npm run install:frontend && pip install -r backend/requirements.txt",
+    "dev:backend": "python backend/run.py",
+    "dev:frontend": "npm run dev --prefix frontend",
+    "build:frontend": "npm run build --prefix frontend"
+  }
+}
