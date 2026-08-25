@@ -13,7 +13,7 @@ from app.routes import products, suggest, checkout, logs, agent_catalog, chat, c
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup: Initialize Database & Train ML Models
-    print("[INIT] Initializing NudgeAI Database & ML Recommender...")
+    print("[INIT] Initializing SellSense Database & ML Recommender...")
     seed_database()
 
     db = SessionLocal()
@@ -47,12 +47,12 @@ async def lifespan(app: FastAPI):
 
     # Train scikit-learn Cosine Similarity & Description Embedding matrices
     ml_recommender.train(products_list, orders_list)
-    print("[SUCCESS] NudgeAI Startup Complete - Ready for Inference & Agentic Commerce!")
+    print("[SUCCESS] SellSense Startup Complete - Ready for Inference & Agentic Commerce!")
     yield
-    print("[SHUTDOWN] NudgeAI Backend Shutdown.")
+    print("[SHUTDOWN] SellSense Backend Shutdown.")
 
 app = FastAPI(
-    title="NudgeAI Platform API",
+    title="SellSense Platform API",
     description="Python ML + Agentic Commerce Platform Backend (scikit-learn + FastAPI + Razorpay)",
     version="2.0.0",
     lifespan=lifespan
@@ -83,7 +83,7 @@ app.include_router(guardian.router)
 def health_check():
     return {
         "status": "OK",
-        "app": "NudgeAI Python FastAPI ML Platform",
+        "app": "SellSense Python FastAPI ML Platform",
         "ml_engines": [
             "scikit-learn Cosine Similarity Matrix",
             "TF-IDF Vector Embeddings",

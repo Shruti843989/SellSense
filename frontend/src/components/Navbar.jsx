@@ -23,10 +23,7 @@ export default function Navbar({
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <span className="font-extrabold text-lg tracking-tight text-white">Nudge<span className="text-cyan-400">AI</span></span>
-                <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
-                  Razorpay Buildathon
-                </span>
+                <span className="font-extrabold text-lg tracking-tight text-white">Sell<span className="text-cyan-400">Sense</span></span>
               </div>
               <p className="text-xs text-slate-400 hidden sm:block">Agentic Commerce &amp; ML Revenue Platform</p>
             </div>

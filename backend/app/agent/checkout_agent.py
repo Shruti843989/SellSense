@@ -33,7 +33,7 @@ class PythonCheckoutAgent:
                     for c in ml_candidates[:4]
                 ])
 
-                prompt = f"""You are NudgeAI, an expert agentic commerce checkout assistant.
+                prompt = f"""You are SellSense, an expert agentic commerce checkout assistant.
 Customer Cart:
 {cart_summary}
 
@@ -93,19 +93,14 @@ Return ONLY a valid JSON array:
         for c in ml_candidates[:3]:
             prod = c["product"]
             conf = c["ml_confidence_percent"]
+            co_score = c["co_purchase_score"]
+            sem_score = c["semantic_score"]
             cat = prod["category"]
             
-            cart_categories = [i["category"] for i in cart_items]
-            cart_names = " ".join([i["name"].lower() for i in cart_items])
-
-            if "Audio" in cart_categories and cat == "Accessories":
-                rationale = f"ML Co-purchase model matched this accessory ({conf}% match) as an essential companion for your audio gear."
-            elif "Electronics" in cart_categories and "charging" in prod.get("tags", []):
-                rationale = f"High-rated power solution ({conf}% similarity) frequently ordered alongside smart electronics."
-            elif "keyboard" in cart_names or "mouse" in cart_names:
-                rationale = f"Top-rated desk ergonomic pairing ({conf}% ML confidence) to complete your setup."
+            if co_score > sem_score:
+                rationale = f"scikit-learn Co-Purchase Matrix matched '{prod['name']}' ({conf}% ML confidence) based on 400+ past order transaction vectors."
             else:
-                rationale = f"High-confidence cross-sell recommendation ({conf}% ML score) based on past buyer purchase vectors."
+                rationale = f"TF-IDF Semantic Vector Embedding identified high content affinity ({conf}% similarity) with items in your cart."
 
             agent_results.append({
                 "product": prod,
@@ -117,7 +112,7 @@ Return ONLY a valid JSON array:
                 },
                 "rationale": rationale,
                 "suggestedDiscount": 10,
-                "ai_source": "Python ML & Agentic Synthesizer"
+                "ai_source": "SellSense Dual-Signal ML Engine"
             })
 
         return agent_results

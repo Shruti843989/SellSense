@@ -94,7 +94,7 @@ class GuardianAgent:
         if active_key and active_key.startswith("sk-"):
             try:
                 client = OpenAI(api_key=active_key)
-                prompt = f"""You are the NudgeAI Guardian Safety Supervisor Agent.
+                prompt = f"""You are the SellSense Guardian Safety Supervisor Agent.
 Supervised Agent: {agent_name}
 Action Type: {action_type}
 Proposed Action Payload: {json.dumps(payload, indent=2)}

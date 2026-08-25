@@ -1,11 +1,22 @@
+import os
 import json
+import pickle
 import numpy as np
 import pandas as pd
 from typing import List, Dict, Any
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 
+MODEL_WEIGHTS_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "model_weights.pkl"))
+
 class MLRecommenderEngine:
+    """
+    SellSense Dual-Signal ML Recommendation Engine:
+    - Signal 1 (Collaborative Filtering): scikit-learn Cosine Similarity on Orders x Products matrix (400 synthetic orders).
+    - Signal 2 (Content-Based NLP Embeddings): scikit-learn TfidfVectorizer text similarity on product names, descriptions, & tags.
+    - Persists trained matrices to 'model_weights.pkl' for zero-latency startup loading.
+    - Pure ML scoring: Hybrid Score = 0.6 * CoPurchase + 0.4 * SemanticEmbedding.
+    """
     def __init__(self):
         self.products = []
         self.product_id_map = {}
@@ -14,21 +25,34 @@ class MLRecommenderEngine:
         self.content_similarity_matrix = None
         self.is_trained = False
 
-    def train(self, products_data: List[Dict[str, Any]], orders_data: List[Dict[str, Any]]):
+    def train(self, products_data: List[Dict[str, Any]], orders_data: List[Dict[str, Any]], force_retrain: bool = False):
         """
-        Trains scikit-learn Cosine Similarity models on synthetic order co-purchases
-        and product description TF-IDF text embeddings.
+        Trains scikit-learn models on 400 orders x 30 products dataset and persists weights.
         """
-        if not products_data or not orders_data:
-            print("[WARN] Recommender warning: Insufficient data for ML training.")
+        if not products_data:
+            print("[WARN] Recommender warning: Insufficient product data for ML training.")
             return
 
         self.products = products_data
         num_products = len(products_data)
-
-        # Index mapping
         self.product_id_map = {p["id"]: p for p in products_data}
         self.product_index_map = {p["id"]: idx for idx, p in enumerate(products_data)}
+
+        # Check if saved model weights exist on disk
+        if not force_retrain and os.path.exists(MODEL_WEIGHTS_PATH):
+            try:
+                with open(MODEL_WEIGHTS_PATH, "rb") as f:
+                    saved_data = pickle.load(f)
+                    if saved_data.get("num_products") == num_products:
+                        self.co_purchase_matrix = saved_data["co_purchase_matrix"]
+                        self.content_similarity_matrix = saved_data["content_similarity_matrix"]
+                        self.is_trained = True
+                        print(f"[ML LOADED] Loaded pre-trained ML model matrices from '{MODEL_WEIGHTS_PATH}' ({num_products} products).")
+                        return
+            except Exception as e:
+                print(f"[ML NOTE] Error loading saved model weights ({e}), retraining model...")
+
+        print(f"[ML TRAINING] Training scikit-learn Cosine Similarity & TF-IDF models on {len(orders_data)} orders & {num_products} products...")
 
         # 1. Build Co-Purchase Binary Matrix (Orders x Products)
         order_matrix = np.zeros((len(orders_data), num_products))
@@ -41,8 +65,7 @@ class MLRecommenderEngine:
                     col_idx = self.product_index_map[p_id]
                     order_matrix[row_idx, col_idx] = 1.0
 
-        # Compute Product-Product Cosine Similarity from Order Co-Occurrence Matrix
-        # Transpose matrix so shape becomes (num_products x num_orders)
+        # Compute Product-Product Cosine Similarity
         product_co_matrix = order_matrix.T
         self.co_purchase_matrix = cosine_similarity(product_co_matrix)
 
@@ -55,6 +78,18 @@ class MLRecommenderEngine:
         tfidf_vectors = vectorizer.fit_transform(corpus)
         self.content_similarity_matrix = cosine_similarity(tfidf_vectors)
 
+        # Persist weights to disk (.pkl)
+        try:
+            with open(MODEL_WEIGHTS_PATH, "wb") as f:
+                pickle.dump({
+                    "num_products": num_products,
+                    "co_purchase_matrix": self.co_purchase_matrix,
+                    "content_similarity_matrix": self.content_similarity_matrix
+                }, f)
+            print(f"[ML PERSIST] Saved trained model matrices to '{MODEL_WEIGHTS_PATH}'.")
+        except Exception as e:
+            print(f"[ML WARN] Could not save model weights: {e}")
+
         self.is_trained = True
         print(f"[ML SUCCESS] ML Recommender Engine Trained Successfully! ({num_products} products, {len(orders_data)} orders analyzed)")
 
@@ -62,6 +97,7 @@ class MLRecommenderEngine:
         """
         Calculates hybrid ML similarity score for available candidate products.
         Score = 0.6 * CoPurchaseScore + 0.4 * SemanticContentScore
+        Pure ML ranking path — zero hardcoded if/else category rules.
         """
         if not self.is_trained:
             candidates = [p for p in self.products if p["id"] not in cart_product_ids]
@@ -85,6 +121,7 @@ class MLRecommenderEngine:
         co_scores /= len(cart_indices)
         content_scores /= len(cart_indices)
 
+        # Hybrid weighting (60% co-purchase collaborative signal + 40% TF-IDF NLP semantic signal)
         hybrid_scores = (0.6 * co_scores) + (0.4 * content_scores)
 
         results = []

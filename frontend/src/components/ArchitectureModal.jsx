@@ -17,8 +17,8 @@ export default function ArchitectureModal({ isOpen, onClose }) {
               <Brain className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="font-extrabold text-white text-lg">NudgeAI ML Architecture Blueprint</h3>
-              <p className="text-xs text-slate-400">Razorpay AI Buildathon (Track: AI Growth &amp; Agentic Commerce)</p>
+              <h3 className="font-extrabold text-white text-lg">SellSense ML Architecture Blueprint</h3>
+              <p className="text-xs text-slate-400">Agentic Commerce &amp; ML Revenue Platform</p>
             </div>
           </div>
 

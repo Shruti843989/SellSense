@@ -1,8 +1,7 @@
-# NudgeAI 🧠
+# SellSense 🧠
 ### Python ML & Agentic Commerce Platform with Guardian Safety Supervision
-**Razorpay AI Buildathon Submission (Track: AI Growth & Agentic Commerce)**
 
-NudgeAI is an AI/ML-powered e-commerce platform built with **Python, FastAPI, scikit-learn, and SQLAlchemy**. NudgeAI combines **real machine learning (co-purchase cosine similarity + description TF-IDF embeddings)** with a **Python AI Agent**, a **Pure Python Bounded & Gated Rule Engine**, an **Independent Guardian Safety Agent**, an **Agent-Readable Catalog API**, **Autonomous AI Buyer Agent Simulation**, **Razorpay Test Mode payments**, and **SQLAlchemy SQLite audit logging**.
+SellSense is an AI/ML-powered e-commerce platform built with **Python, FastAPI, scikit-learn, and SQLAlchemy**. SellSense combines **real machine learning (co-purchase cosine similarity + description TF-IDF embeddings)** with a **Python AI Agent**, a **Pure Python Bounded & Gated Rule Engine**, an **Independent Guardian Safety Agent**, an **Agent-Readable Catalog API**, **Autonomous AI Buyer Agent Simulation**, **Test Mode payments**, and **SQLAlchemy SQLite audit logging**.
 
 ---
 
@@ -11,8 +10,8 @@ NudgeAI is an AI/ML-powered e-commerce platform built with **Python, FastAPI, sc
 ```mermaid
 flowchart TD
     subgraph Clients["Client Layer"]
-        FE["Storefront React UI"]
-        CHAT["Conversational Chat Widget"]
+        FE["Storefront React UI (Sliding Carousels)"]
+        CHAT["Conversational Chat Widget (Budget Engine)"]
         BUYER["Autonomous AI Buyer Agent Script"]
     end
 
@@ -28,7 +27,7 @@ flowchart TD
     end
 
     subgraph External["Payments & Database Layer"]
-        RZP["Razorpay Sandbox Payment Gateway"]
+        RZP["Sandbox Payment Gateway"]
         DB[(SQLite Audit Trail & Guardian Logs)]
     end
 
@@ -55,90 +54,82 @@ flowchart TD
 
 ---
 
+## 🧠 ML Model Training, Scoring & Weight Persistence
+
+SellSense utilizes a dual-signal hybrid machine learning model trained on realistic synthetic transaction histories.
+
+### 1. Training Dataset Size
+- **Catalog**: 30 products across 8 categories (*Audio, Accessories, Bags, Electronics, Wearables, Fitness, Home, Stationery*).
+- **Transaction History**: 400 synthetic orders generated using realistic co-purchase pairs (e.g. laptop bags paired with wireless mice and power banks; workout mats paired with jump ropes).
+
+### 2. Hybrid ML Scoring Method
+$$ \text{HybridScore} = 0.6 \times \text{CoPurchaseSimilarity} + 0.4 \times \text{SemanticEmbeddingSimilarity} $$
+- **Collaborative Signal**: `scikit-learn` Cosine Similarity computed on binary 400 Orders $\times$ 30 Products matrix.
+- **Content Signal**: `TfidfVectorizer` NLP vector embeddings computed on product descriptions, categories, and tags.
+
+### 3. Model Weight Persistence & Zero-Latency Serving
+- Trained similarity matrices are serialized and saved to `backend/app/ml/model_weights.pkl`.
+- On application startup, the FastAPI server checks for `model_weights.pkl` and loads pre-trained matrices into memory, eliminating retraining latency on inference calls.
+
+---
+
 ## 🌟 Key Features & Core Components
 
-1. **Synthetic Dataset Generator (`backend/app/db/seed.py`)**:
-   - `pandas` + `numpy` generator building 10 catalog products and 120+ synthetic customer co-purchase order histories.
-   - Exports order co-occurrence dataset as `synthetic_orders.csv` and populates SQLite database.
+1. **Conversational Budget Engine (`backend/app/agent/chat_agent.py`)**:
+   - Structured numeric budget extraction supporting varied natural language queries (`"my budget is 500"`, `"budget 500"`, `"under 500"`, `"₹500"`, etc.).
+   - **Hard Filter Enforcement**: `price <= budget` is applied directly to catalog queries so out-of-budget products are never passed to the LLM or suggested.
+   - **Explicit Fallback**: If 0 items match the budget, explicitly notifies `"No products found under ₹{budget}. Here are the lowest-priced available options:"`.
 
-2. **ML Recommendation Engine (`backend/app/ml/recommender.py`)**:
-   - **Co-Purchase Matrix**: Cosine similarity computed on binary transaction matrix.
-   - **Semantic Embeddings**: `TfidfVectorizer` text similarity on product descriptions, categories, and tags.
-   - **Hybrid Scoring**: $0.6 \times \text{CoPurchaseScore} + 0.4 \times \text{SemanticScore}$.
+2. **Synthetic Dataset Generator (`backend/app/db/seed.py`)**:
+   - `pandas` + `numpy` generator building 30 catalog products and 400 synthetic co-purchase order histories saved to `synthetic_orders.csv`.
 
-3. **Upsell/Cross-Sell Agent (`backend/app/agent/checkout_agent.py`)**:
-   - Pipeline: ML candidates → LLM reasoning / Python agent rationale → Rule evaluation → Guardian safety review → Final personalized offers.
+3. **ML Recommendation Engine (`backend/app/ml/recommender.py`)**:
+   - Cosine similarity co-purchase matrix + TF-IDF description vector embeddings persisted as `.pkl`. Zero hardcoded category if/else heuristics.
 
 4. **Independent Guardian Agent (`backend/app/guardian/guardian_agent.py`)**:
-   - **Stage 1 (Statistical Anomaly Check)**: Calculates z-scores on discount percentages, cart price ratios, and execution frequency against baselines.
-   - **Stage 2 (Hard Safety Ceilings)**: Absolute discount cap $\le 15\%$, cart price ratio cap $\le 50\%$, and persona budget enforcement.
-   - **Stage 3 (LLM Risk Supervisor)**: Evaluates intent and issues verdicts: `APPROVE`, `FLAG_FOR_REVIEW`, or `BLOCK` with written explanations.
+   - **Stage 1**: Calculates z-score statistical anomalies on discount percentages and cart price ratios.
+   - **Stage 2**: Hard safety ceilings ($\le 15\%$ max discount, $\le 50\%$ cart price ratio).
+   - **Stage 3**: LLM risk supervisor issuing `APPROVE`, `FLAG_FOR_REVIEW`, or `BLOCK` verdicts with written explanations.
 
-5. **Conversational Checkout Agent (`backend/app/agent/chat_agent.py` & `/chat`)**:
-   - Natural language intent parsing, budget extraction, catalog querying, and instant recommendations.
+5. **Agent-Readable Catalog API (`/catalog/agent` or `/api/catalog/agent`)**:
+   - Structured JSON schema designed for autonomous AI buyer agents.
 
-6. **Agent-Readable Catalog API (`/catalog/agent` or `/api/catalog/agent`)**:
-   - Structured JSON schema designed specifically for external autonomous AI buyer agents.
+6. **Autonomous AI Buyer Simulation (`simulate_ai_buyer.py`)**:
+   - Executable CLI script performing catalog discovery, LLM budget decision making, sandbox checkout, payment verification, and audit logging.
 
-7. **Autonomous AI Buyer Simulation (`simulate_ai_buyer.py`)**:
-   - Standalone Python script executing an end-to-end agent-to-agent transaction: reads machine catalog, chooses item within persona budget, creates sandbox payment order, verifies payment, and logs audit trail.
-
-8. **FastAPI Endpoints**:
-   - `GET /products` & `GET /api/products` — Catalog listing
-   - `GET /catalog/agent` & `GET /api/catalog/agent` — Machine-readable catalog for AI buyers
-   - `POST /cart` & `POST /api/cart` — Cart validation & subtotal calculation
-   - `POST /suggest` & `POST /api/suggest` — ML + Main Agent + Rule Engine + Guardian pipeline
-   - `POST /chat` & `POST /api/chat` — Conversational checkout assistant
-   - `POST /checkout` & `POST /api/payment/create-order` — Razorpay Sandbox order creation
-   - `POST /payment/verify` & `POST /api/payment/verify` — HMAC signature verification & inventory deduction
-   - `GET /guardian/logs` & `GET /api/guardian/logs` — Guardian oversight audit trail
-   - `POST /guardian/simulate-misbehavior` — Trigger pitch demo rogue agent intervention
-   - `GET /logs` & `GET /api/logs` — Complete SQLite audit trail & analytics
+7. **Horizontal Sliding Carousels UI**:
+   - Storefront category rows (Bags, Accessories, Audio, Electronics, etc.), checkout recommendation modal, and chat assistant results feature horizontal sliding carousels with smooth scrolling and hover animations.
 
 ---
 
 ## 🚀 Quick Start & Local Setup
 
-### 1. Install Dependencies
-```bash
-# Install Python backend requirements
-pip install -r backend/requirements.txt
+### Prerequisites
+- Python 3.10+
+- Node.js 18+
 
-# Install React frontend requirements
-npm install --prefix frontend
+### 1. Install Backend & Seed Database
+```bash
+pip install fastapi uvicorn sqlalchemy pandas numpy scikit-learn openai pytest
+python backend/app/db/seed.py
 ```
 
-### 2. Start Servers
-- **Terminal 1 (Python FastAPI Backend)**:
-  ```bash
-  python backend/run.py
-  ```
-  *(Server runs at `http://localhost:5000` — automatically seeds database and trains scikit-learn ML model)*
+### 2. Run Standalone Budget Unit Tests
+```bash
+python backend/tests/test_chat_budget.py
+```
 
-- **Terminal 2 (React Frontend)**:
-  ```bash
-  npm run dev --prefix frontend
-  ```
-  *(Vite Dev Server runs at `http://localhost:5173`)*
+### 3. Start Servers
+```bash
+# Terminal 1: Backend Server (Port 5000)
+python backend/run.py
 
-### 3. Run Autonomous AI Buyer Simulation (CLI Demo)
-- **Terminal 3**:
-  ```bash
-  python simulate_ai_buyer.py
-  ```
+# Terminal 2: Frontend Server (Port 5173)
+cd frontend
+npm run dev
+```
 
----
-
-## 🛡️ Pitch Video Live Demo: Guardian Intervention
-
-To demonstrate Guardian Agent catching and blocking rogue agent actions in real time:
-1. Open `http://localhost:5173`.
-2. Click **Guardian Safety** in the top navigation header.
-3. Click **"Simulate Rogue 25% Discount"** or **"Simulate Budget Overspend"**.
-4. Observe the **Guardian Agent** intercepting the rogue action live, issuing a `BLOCK` verdict, logging the statistical anomaly score, and displaying the plain-language safety explanation.
-
----
-
-## 🏆 Submission Summary
-- **Track**: AI Growth & Agentic Commerce
-- **Key Innovation**: Dual-signal scikit-learn ML recommendation engine combined with an independent two-stage Guardian Safety Agent, pure Python safety gates, machine-readable agent catalog API, autonomous AI buyer simulation, Razorpay sandbox payment integration, and complete audit logging.
+### 4. Run Autonomous AI Buyer Simulation
+```bash
+python simulate_ai_buyer.py
+```

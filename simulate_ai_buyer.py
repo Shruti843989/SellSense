@@ -34,7 +34,7 @@ def run_ai_buyer_simulation(persona: str = "Tech enthusiast searching for a fast
             return {"success": False, "error": str(e2)}
 
     products = catalog_data.get("products", [])
-    print(f"-> Discovered {len(products)} machine-readable products in NudgeAI catalog.\n")
+    print(f"-> Discovered {len(products)} machine-readable products in SellSense catalog.\n")
 
     # Step 2: Autonomous Decision Making via Python LLM / Agentic Reasoning
     print("STEP 2: Autonomous Buyer Agent evaluating items against persona budget & constraints...")

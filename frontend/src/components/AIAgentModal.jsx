@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, ShieldCheck, Check, Plus, AlertCircle, ArrowRight, X, ChevronDown, ChevronUp, Tag, Brain, Cpu } from 'lucide-react';
+import { Sparkles, ShieldCheck, Check, Plus, AlertCircle, ArrowRight, X, ChevronDown, ChevronUp, Tag, Brain, Cpu, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function AIAgentModal({ 
   isOpen, 
@@ -47,7 +47,7 @@ export default function AIAgentModal({
             </div>
             <div>
               <div className="flex items-center space-x-2">
-                <h3 className="font-extrabold text-white text-lg">NudgeAI Recommendation Agent</h3>
+                <h3 className="font-extrabold text-white text-lg">SellSense Recommendation Agent</h3>
                 <span className="px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-[10px] font-bold uppercase tracking-wider">
                   scikit-learn ML + Agent
                 </span>
@@ -74,7 +74,7 @@ export default function AIAgentModal({
                 <Brain className="w-8 h-8 text-cyan-400 animate-pulse" />
               </div>
             </div>
-            <h4 className="text-lg font-bold text-white">Running NudgeAI ML Inference Pipeline...</h4>
+            <h4 className="text-lg font-bold text-white">Running SellSense ML Inference Pipeline...</h4>
             <p className="text-xs text-slate-400 mt-2 max-w-sm">
               1. Computing scikit-learn cosine similarity &amp; description TF-IDF embeddings.<br />
               2. Python AI Agent synthesizing rationale.<br />
@@ -136,7 +136,7 @@ export default function AIAgentModal({
               </div>
             )}
 
-            {/* Recommendations Display */}
+            {/* Carousel Recommendations Display */}
             {(!suggestionData?.approvedSuggestions || suggestionData.approvedSuggestions.length === 0) ? (
               <div className="p-8 text-center bg-slate-950/40 rounded-2xl border border-slate-800">
                 <AlertCircle className="w-10 h-10 text-amber-400 mx-auto mb-3" />
@@ -149,10 +149,11 @@ export default function AIAgentModal({
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <h4 className="font-bold text-white text-sm">Recommended Add-Ons for Your Order</h4>
-                  <span className="text-xs text-cyan-400">Click card to select/unselect</span>
+                  <span className="text-xs text-cyan-400">Horizontal Sliding Carousel • Click to select</span>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Horizontal Sliding Carousel */}
+                <div className="flex space-x-4 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-slate-700">
                   {suggestionData.approvedSuggestions.map((item) => {
                     const isSelected = selectedProductIds.includes(item.id);
                     const mlConfidence = item.ml_metrics?.ml_confidence_percent || 85;
@@ -161,14 +162,14 @@ export default function AIAgentModal({
                       <div 
                         key={item.id}
                         onClick={() => toggleSelect(item.id)}
-                        className={`cursor-pointer p-4 rounded-2xl transition-all duration-200 border flex flex-col justify-between relative ${
+                        className={`w-72 shrink-0 cursor-pointer p-4 rounded-2xl transition-all duration-300 border flex flex-col justify-between relative transform hover:-translate-y-1 ${
                           isSelected 
-                            ? 'bg-cyan-950/30 border-cyan-500 shadow-lg shadow-cyan-500/10' 
+                            ? 'bg-cyan-950/30 border-cyan-500 shadow-xl shadow-cyan-500/10' 
                             : 'glass-card border-slate-800 hover:border-slate-700'
                         }`}
                       >
                         {/* Checkbox badge */}
-                        <div className="absolute top-3 right-3">
+                        <div className="absolute top-3 right-3 z-10">
                           <div className={`w-6 h-6 rounded-full flex items-center justify-center transition-all ${
                             isSelected ? 'bg-cyan-500 text-slate-950 font-bold scale-110' : 'border border-slate-600 bg-slate-800'
                           }`}>
@@ -177,30 +178,28 @@ export default function AIAgentModal({
                         </div>
 
                         <div>
-                          {/* Image & Price Header */}
-                          <div className="flex items-center space-x-3 mb-3">
+                          {/* Image & Header */}
+                          <div className="space-y-2 mb-3">
                             <img 
                               src={item.image} 
                               alt={item.name} 
-                              className="w-14 h-14 rounded-xl object-cover bg-slate-900 border border-slate-700" 
+                              className="w-full h-32 rounded-xl object-cover bg-slate-900 border border-slate-700" 
                             />
-                            <div>
-                              <div className="flex items-center space-x-1.5">
-                                <span className="px-2 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-800 text-[10px] font-bold">
-                                  {mlConfidence}% ML Match
-                                </span>
-                                <span className="px-1.5 py-0.5 rounded bg-blue-950 text-cyan-400 border border-blue-800 text-[10px] font-semibold">
-                                  {item.category}
-                                </span>
-                              </div>
-                              <h5 className="font-bold text-white text-sm line-clamp-1 mt-1">{item.name}</h5>
-                              <div className="flex items-center space-x-2 mt-1">
-                                <span className="text-xs text-slate-400 line-through">₹{item.price}</span>
-                                <span className="text-sm font-extrabold text-emerald-400">₹{item.finalPrice}</span>
-                                <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950 px-1.5 py-0.5 rounded border border-emerald-800">
-                                  {item.discountPercent}% OFF
-                                </span>
-                              </div>
+                            <div className="flex items-center space-x-1.5 pt-1">
+                              <span className="px-2 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-800 text-[10px] font-bold">
+                                {mlConfidence}% ML Match
+                              </span>
+                              <span className="px-1.5 py-0.5 rounded bg-blue-950 text-cyan-400 border border-blue-800 text-[10px] font-semibold">
+                                {item.category}
+                              </span>
+                            </div>
+                            <h5 className="font-bold text-white text-sm line-clamp-1">{item.name}</h5>
+                            <div className="flex items-center space-x-2">
+                              <span className="text-xs text-slate-400 line-through">₹{item.price}</span>
+                              <span className="text-sm font-extrabold text-emerald-400">₹{item.finalPrice}</span>
+                              <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950 px-1.5 py-0.5 rounded border border-emerald-800">
+                                {item.discountPercent}% OFF
+                              </span>
                             </div>
                           </div>
 
@@ -208,9 +207,9 @@ export default function AIAgentModal({
                           <div className="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-xs text-slate-300 space-y-1">
                             <div className="flex items-center space-x-1 text-cyan-400 font-semibold text-[10px] uppercase tracking-wider">
                               <Sparkles className="w-3 h-3" />
-                              <span>NudgeAI Rationale</span>
+                              <span>SellSense Rationale</span>
                             </div>
-                            <p className="italic text-[11px] leading-relaxed">"{item.rationale}"</p>
+                            <p className="italic text-[11px] leading-relaxed line-clamp-3">"{item.rationale}"</p>
                           </div>
                         </div>
 
@@ -237,7 +236,7 @@ export default function AIAgentModal({
               
               {selectedItems.length > 0 && (
                 <div className="flex justify-between items-center text-sm text-emerald-400">
-                  <span>Selected NudgeAI Add-ons ({selectedItems.length})</span>
+                  <span>Selected SellSense Add-ons ({selectedItems.length})</span>
                   <span className="font-semibold">+ ₹{upsellTotal.toLocaleString('en-IN')}</span>
                 </div>
               )}
@@ -259,7 +258,7 @@ export default function AIAgentModal({
                   onClick={() => onAcceptSuggestions(selectedItems)}
                   className="py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-bold text-xs hover:from-emerald-400 hover:to-cyan-400 transition-all shadow-lg shadow-emerald-500/20 flex items-center justify-center space-x-2"
                 >
-                  <span>Add &amp; Proceed to Razorpay</span>
+                  <span>Add &amp; Proceed to Checkout</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

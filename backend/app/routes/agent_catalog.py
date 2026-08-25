@@ -31,7 +31,7 @@ def generate_agent_catalog(db: Session):
 
     return {
         "schema_version": "2.0-agentic",
-        "store_name": "NudgeAI Agentic Commerce Storefront",
+        "store_name": "SellSense Agentic Commerce Storefront",
         "description": "Machine-readable catalog schema optimized for autonomous AI buyer agents.",
         "supported_agent_actions": ["browse_catalog", "check_stock", "create_order", "verify_payment"],
         "total_items": len(agent_products),

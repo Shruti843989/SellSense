@@ -221,7 +221,7 @@ export default function App() {
                 
                 <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 text-xs font-bold uppercase tracking-wider">
                   <Brain className="w-3.5 h-3.5" />
-                  <span>NudgeAI • AI Agentic Commerce Platform</span>
+                  <span>SellSense • AI Agentic Commerce Platform</span>
                 </div>
 
                 <h1 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight tracking-tight">
@@ -229,7 +229,7 @@ export default function App() {
                 </h1>
 
                 <p className="text-sm text-slate-300 leading-relaxed">
-                  Revenue optimization via <strong className="text-cyan-400">scikit-learn co-purchase similarity &amp; NLP vector embeddings</strong>, conversational intent parsing, KMeans stock clustering, and a machine-readable <strong className="text-purple-400">Agent API (`/catalog/agent`)</strong> with Razorpay Test Mode checkout.
+                  Revenue optimization via <strong className="text-cyan-400">scikit-learn co-purchase similarity &amp; NLP vector embeddings</strong>, conversational intent parsing, KMeans stock clustering, and a machine-readable <strong className="text-purple-400">Agent API (`/catalog/agent`)</strong> with test checkout.
                 </p>
 
                 {/* Live Demo Quick Action */}
@@ -243,7 +243,7 @@ export default function App() {
                     className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-xs transition-all shadow-lg shadow-cyan-500/20 flex items-center space-x-2"
                   >
                     <Brain className="w-4 h-4 text-slate-950" />
-                    <span>Try NudgeAI Upsell Agent</span>
+                    <span>Try SellSense Upsell Agent</span>
                   </button>
 
                   <button
@@ -259,7 +259,7 @@ export default function App() {
 
             {/* Category Filter Tabs */}
             <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-              <div className="flex items-center space-x-2 overflow-x-auto pb-1 sm:pb-0">
+              <div className="flex items-center space-x-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
                 {categories.map((cat) => (
                   <button
                     key={cat}
@@ -276,24 +276,84 @@ export default function App() {
               </div>
 
               <span className="text-xs text-slate-400 hidden sm:block">
-                Showing <strong className="text-white">{filteredProducts.length}</strong> items
+                Catalog Size: <strong className="text-white">{products.length}</strong> items across {categories.length - 1} categories
               </span>
             </div>
 
-            {/* Product Catalog Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {filteredProducts.map((product) => {
-                const isInCart = cart.some((i) => i.id === product.id);
-                return (
-                  <ProductCard
-                    key={product.id}
-                    product={product}
-                    onAddToCart={addToCart}
-                    isInCart={isInCart}
-                  />
-                );
-              })}
-            </div>
+            {/* Product Catalog Display — Sliding Category Carousels */}
+            {categoryFilter === 'All' ? (
+              <div className="space-y-10">
+                {categories.filter(c => c !== 'All').map((cat) => {
+                  const catProducts = products.filter(p => p.category === cat);
+                  if (catProducts.length === 0) return null;
+
+                  return (
+                    <div key={cat} className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-2">
+                          <h2 className="text-xl font-extrabold text-white tracking-tight">{cat}</h2>
+                          <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-400 font-semibold border border-slate-700">
+                            {catProducts.length} items
+                          </span>
+                        </div>
+                        <button
+                          onClick={() => setCategoryFilter(cat)}
+                          className="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors"
+                        >
+                          View All in {cat} →
+                        </button>
+                      </div>
+
+                      {/* Horizontal Sliding Carousel Row */}
+                      <div className="relative group">
+                        <div 
+                          id={`carousel-${cat}`} 
+                          className="flex space-x-5 overflow-x-auto pb-4 pt-1 scroll-smooth scrollbar-thin scrollbar-thumb-slate-700"
+                        >
+                          {catProducts.map((product) => {
+                            const isInCart = cart.some((i) => i.id === product.id);
+                            return (
+                              <div key={product.id} className="w-72 shrink-0">
+                                <ProductCard
+                                  product={product}
+                                  onAddToCart={addToCart}
+                                  isInCart={isInCart}
+                                />
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-xl font-extrabold text-white tracking-tight">{categoryFilter} Products</h2>
+                  <button 
+                    onClick={() => setCategoryFilter('All')}
+                    className="text-xs font-semibold text-cyan-400 hover:text-cyan-300"
+                  >
+                    ← Back to All Categories
+                  </button>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {filteredProducts.map((product) => {
+                    const isInCart = cart.some((i) => i.id === product.id);
+                    return (
+                      <ProductCard
+                        key={product.id}
+                        product={product}
+                        onAddToCart={addToCart}
+                        isInCart={isInCart}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            )}
 
           </div>
         )}
@@ -326,8 +386,7 @@ export default function App() {
       {/* Footer */}
       <footer className="border-t border-slate-800 bg-slate-950/80 py-6 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-500 space-y-1">
-          <p className="font-semibold text-slate-400">NudgeAI • AI Agentic Commerce Platform</p>
-          <p>Built for Razorpay AI Buildathon 2026 • Track: AI Growth &amp; Agentic Commerce</p>
+          <p className="font-semibold text-slate-400">SellSense • Agentic Commerce &amp; ML Revenue Platform</p>
         </div>
       </footer>
 
