@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Package, Truck, MessageSquare, Send, CheckCircle2, Clock, ArrowRight, ShieldCheck, Sparkles, RefreshCw } from 'lucide-react';
 
+import { useAuth } from '../context/AuthContext';
+
 export default function OrdersView() {
+  const { authFetch } = useAuth();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedOrderId, setSelectedOrderId] = useState(null);
@@ -14,7 +17,7 @@ export default function OrdersView() {
   const fetchOrders = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/orders');
+      const res = await authFetch('/api/orders');
       const data = await res.json();
       if (data.success) {
         setOrders(data.orders || []);
@@ -33,6 +36,7 @@ export default function OrdersView() {
   useEffect(() => {
     fetchOrders();
   }, []);
+
 
   const initChatForOrder = (order) => {
     setChatMessages([

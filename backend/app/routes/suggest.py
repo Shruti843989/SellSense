@@ -13,6 +13,8 @@ from app.agent.checkout_agent import checkout_agent
 from app.rules.rule_engine import rule_engine
 from app.guardian.guardian_agent import guardian_agent
 
+from app.auth import get_optional_user
+
 router = APIRouter(tags=["Suggestions"])
 
 class SuggestionRequest(BaseModel):
@@ -26,7 +28,7 @@ class ActionRequest(BaseModel):
     action: str  # 'accepted', 'skipped'
     acceptedProducts: Optional[List[Dict[str, Any]]] = []
 
-async def process_suggestion_pipeline(req: SuggestionRequest, db: Session):
+async def process_suggestion_pipeline(req: SuggestionRequest, db: Session, current_user: Optional[Any] = None):
     # Priority 2 Edge Case: Handle Empty Cart gracefully
     if not req.cartItems or len(req.cartItems) == 0:
         return {
@@ -110,13 +112,15 @@ async def process_suggestion_pipeline(req: SuggestionRequest, db: Session):
             item["inferredBudgetTier"] = inferred_tier
             final_guardian_approved.append(item)
 
-    # Step 5: Persist Audit Log in SQLite via SQLAlchemy
+    # Step 5: Persist Audit Log in DB
     audit_id = f"audit_{int(time.time() * 1000)}_{random.randint(1000, 9999)}"
     session_id = req.sessionId or f"sess_{int(time.time())}"
+    user_id = current_user.id if current_user else None
 
     audit_entry = AuditLog(
         id=audit_id,
         session_id=session_id,
+        user_id=user_id,
         timestamp=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         cart_contents=json.dumps([
             {"id": i["id"], "name": i["name"], "qty": i.get("quantity", 1), "price": i["price"]}
@@ -156,12 +160,21 @@ async def process_suggestion_pipeline(req: SuggestionRequest, db: Session):
     }
 
 @router.post("/suggest")
-async def generate_suggestions_root(req: SuggestionRequest, db: Session = Depends(get_db)):
-    return await process_suggestion_pipeline(req, db)
+async def generate_suggestions_root(
+    req: SuggestionRequest,
+    current_user: Optional[Any] = Depends(get_optional_user),
+    db: Session = Depends(get_db)
+):
+    return await process_suggestion_pipeline(req, db, current_user)
 
 @router.post("/api/suggest")
-async def generate_suggestions_api(req: SuggestionRequest, db: Session = Depends(get_db)):
-    return await process_suggestion_pipeline(req, db)
+async def generate_suggestions_api(
+    req: SuggestionRequest,
+    current_user: Optional[Any] = Depends(get_optional_user),
+    db: Session = Depends(get_db)
+):
+    return await process_suggestion_pipeline(req, db, current_user)
+
 
 @router.post("/suggest/action")
 @router.post("/api/suggest/action")

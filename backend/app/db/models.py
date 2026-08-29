@@ -1,6 +1,59 @@
 import datetime
-from sqlalchemy import Column, String, Float, Integer, Text, DateTime
+from sqlalchemy import Column, String, Float, Integer, Text, DateTime, ForeignKey, Boolean
+from sqlalchemy.orm import relationship
 from app.db.database import Base
+
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(String, primary_key=True, index=True)
+    name = Column(String, nullable=False)
+    email = Column(String, unique=True, index=True, nullable=False)
+    hashed_password = Column(String, nullable=False)
+    role = Column(String, default="customer", nullable=False)  # "customer" or "admin"
+    is_suspended = Column(Boolean, default=False, nullable=False)
+    created_at = Column(String, default=lambda: datetime.datetime.utcnow().isoformat())
+
+    # Relationships
+    cart_items = relationship("CartItem", back_populates="user", cascade="all, delete-orphan")
+    wishlist_items = relationship("WishlistItem", back_populates="user", cascade="all, delete-orphan")
+    chat_memory = relationship("ChatMemory", back_populates="user", uselist=False, cascade="all, delete-orphan")
+    orders = relationship("Order", back_populates="user")
+    audit_logs = relationship("AuditLog", back_populates="user")
+
+class CartItem(Base):
+    __tablename__ = "cart_items"
+
+    id = Column(String, primary_key=True, index=True)
+    user_id = Column(String, ForeignKey("users.id", ondelete="CASCADE"), index=True, nullable=False)
+    product_id = Column(String, ForeignKey("products.id"), nullable=False)
+    quantity = Column(Integer, default=1, nullable=False)
+    created_at = Column(String, default=lambda: datetime.datetime.utcnow().isoformat())
+    updated_at = Column(String, default=lambda: datetime.datetime.utcnow().isoformat())
+
+    user = relationship("User", back_populates="cart_items")
+    product = relationship("Product")
+
+class WishlistItem(Base):
+    __tablename__ = "wishlist_items"
+
+    id = Column(String, primary_key=True, index=True)
+    user_id = Column(String, ForeignKey("users.id", ondelete="CASCADE"), index=True, nullable=False)
+    product_id = Column(String, ForeignKey("products.id"), nullable=False)
+    created_at = Column(String, default=lambda: datetime.datetime.utcnow().isoformat())
+
+    user = relationship("User", back_populates="wishlist_items")
+    product = relationship("Product")
+
+class ChatMemory(Base):
+    __tablename__ = "chat_memories"
+
+    id = Column(String, primary_key=True, index=True)
+    user_id = Column(String, ForeignKey("users.id", ondelete="CASCADE"), unique=True, index=True, nullable=False)
+    messages = Column(Text, nullable=False, default="[]")  # JSON string array of {role, content, timestamp}
+    updated_at = Column(String, default=lambda: datetime.datetime.utcnow().isoformat())
+
+    user = relationship("User", back_populates="chat_memory")
 
 class Product(Base):
     __tablename__ = "products"
@@ -40,6 +93,7 @@ class AuditLog(Base):
 
     id = Column(String, primary_key=True, index=True)
     session_id = Column(String, index=True, nullable=False)
+    user_id = Column(String, ForeignKey("users.id", ondelete="SET NULL"), index=True, nullable=True)
     timestamp = Column(String, nullable=False)
     cart_contents = Column(Text, nullable=False)  # JSON string
     ml_candidates = Column(Text, nullable=False)  # JSON string
@@ -49,11 +103,14 @@ class AuditLog(Base):
     payment_status = Column(String, default="pending") # pending, success, failed
     failure_reason = Column(Text, nullable=True)
 
+    user = relationship("User", back_populates="audit_logs")
+
 class Order(Base):
     __tablename__ = "orders"
 
     id = Column(String, primary_key=True, index=True)
     order_number = Column(String, unique=True, index=True, nullable=False)
+    user_id = Column(String, ForeignKey("users.id", ondelete="SET NULL"), index=True, nullable=True)
     razorpay_order_id = Column(String, nullable=True)
     razorpay_payment_id = Column(String, nullable=True)
     total_amount = Column(Float, nullable=False)
@@ -61,6 +118,8 @@ class Order(Base):
     status = Column(String, nullable=False) # SUCCESS / FAILED
     failure_reason = Column(Text, nullable=True)
     created_at = Column(String, default=lambda: datetime.datetime.utcnow().isoformat())
+
+    user = relationship("User", back_populates="orders")
 
 class GuardianLog(Base):
     __tablename__ = "guardian_logs"
@@ -76,4 +135,5 @@ class GuardianLog(Base):
     reasoning = Column(Text, nullable=False)
     is_demo_simulation = Column(Integer, default=0) # 1 if simulated misbehavior for demo
     created_at = Column(String, default=lambda: datetime.datetime.utcnow().isoformat())
+
 

@@ -7,8 +7,8 @@ import json
 
 from app.db.database import SessionLocal
 from app.db.models import AuditLog
-from app.agents.rule_engine import rule_engine
-from app.agents.guardian_agent import guardian_agent
+from app.rules.rule_engine import rule_engine
+from app.guardian.guardian_agent import guardian_agent
 
 router = APIRouter()
 
@@ -61,15 +61,15 @@ def trigger_abandoned_cart_recovery(req: AbandonedCartRequest):
         }
     )
 
-    # Log in SQLite Audit Trail under 'Abandoned Cart Recovery Agent'
+    # Log in Audit Trail
     db = SessionLocal()
     audit_id = f"aud_recov_{uuid.uuid4().hex[:8]}"
 
     audit_entry = AuditLog(
         id=audit_id,
-        session_id=req.sessionId,
-        cart_items=json.dumps(req.cartItems),
-        candidates_evaluated=json.dumps([{"id": "nudge", "incentive": f"{discount_pct}%"}]),
+        session_id=req.sessionId or "sess_abandoned",
+        cart_contents=json.dumps(req.cartItems),
+        ml_candidates=json.dumps([{"id": "nudge", "incentive": f"{discount_pct}%"}]),
         rule_results=json.dumps([{
             "rule": "5% Abandoned Cart Incentive Cap",
             "passed": rule_eval.overall_pass,
@@ -88,6 +88,7 @@ def trigger_abandoned_cart_recovery(req: AbandonedCartRequest):
     db.add(audit_entry)
     db.commit()
     db.close()
+
 
     return {
         "success": True,

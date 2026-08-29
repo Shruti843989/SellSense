@@ -1,3 +1,4 @@
+import pytest
 import asyncio
 import os
 import sys
@@ -16,7 +17,9 @@ TEST_CATALOG = [
     {"id": "prod-out-of-stock", "name": "Sold Out Headset", "price": 999.0, "category": "Audio", "stock": 0}
 ]
 
+@pytest.mark.asyncio
 async def test_invalid_negative_budget():
+
     """Priority 2: Negative budget ('budget is -500') must be caught and rejected gracefully."""
     res = await chat_agent.process_chat(
         message="my budget is -500",
@@ -35,6 +38,7 @@ def test_out_of_stock_filtering():
     assert any(p["stock"] == 0 for p in TEST_CATALOG)
     print("[PASS] Out-of-stock product query filtering verified!")
 
+@pytest.mark.asyncio
 async def test_llm_fallback_timeout():
     """Priority 2: LLM API failure or timeout must fall back to raw ML candidates gracefully."""
     ml_candidates = [
@@ -56,7 +60,9 @@ async def test_llm_fallback_timeout():
     assert recs[0]["product"]["id"] == "prod-in-stock"
     print("[PASS] LLM timeout / exception graceful fallback verified!")
 
+@pytest.mark.asyncio
 async def test_guardian_fail_safe_block():
+
     """Priority 2: Guardian Agent failure MUST fail SAFE -> verdict = BLOCK."""
     # Mock hard limits to raise exception
     with mock.patch("app.guardian.guardian_rules.GuardianHardRules.evaluate_hard_limits", side_effect=RuntimeError("Simulated Guardian DB Crash")):

@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { MessageSquare, Send, Sparkles, X, Plus, Check, Bot, User, ChevronRight, ChevronLeft, Brain } from 'lucide-react';
 
+import { useAuth } from '../context/AuthContext';
+
 export default function ChatWidget({ isOpen, onClose, onAddToCart }) {
+  const { user, authFetch } = useAuth();
   const [messages, setMessages] = useState([
     {
       sender: 'bot',
@@ -10,6 +14,30 @@ export default function ChatWidget({ isOpen, onClose, onAddToCart }) {
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+
+  // Load chat history for logged-in user from PostgreSQL ChatMemory table
+  useEffect(() => {
+    const loadHistory = async () => {
+      if (!user) return;
+      try {
+        const res = await authFetch('/api/chat/history');
+        const data = await res.json();
+        if (data.success && data.messages && data.messages.length > 0) {
+          const formatted = data.messages.map(m => ({
+            sender: m.sender === 'user' ? 'user' : 'bot',
+            text: m.content,
+            products: m.recommendedProducts || []
+          }));
+          setMessages(formatted);
+        }
+      } catch (err) {
+        console.error("Failed to load chat history:", err);
+      }
+    };
+    if (isOpen) {
+      loadHistory();
+    }
+  }, [isOpen, user]);
 
   if (!isOpen) return null;
 
@@ -23,9 +51,8 @@ export default function ChatWidget({ isOpen, onClose, onAddToCart }) {
     setLoading(true);
 
     try {
-      const res = await fetch('/api/chat', {
+      const res = await authFetch('/api/chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userMsg })
       });
       const data = await res.json();
@@ -47,6 +74,7 @@ export default function ChatWidget({ isOpen, onClose, onAddToCart }) {
       setLoading(false);
     }
   };
+
 
   return (
     <div className="fixed bottom-6 right-6 z-50 w-full max-w-md bg-[#fffaf5] dark:bg-slate-900 border border-[#ede0d5] dark:border-slate-800 rounded-3xl shadow-2xl overflow-hidden glass-panel flex flex-col h-[540px] animate-slide-up">

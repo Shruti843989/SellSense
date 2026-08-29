@@ -1,3 +1,4 @@
+import pytest
 import asyncio
 import os
 import sys
@@ -6,6 +7,7 @@ import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from app.agent.chat_agent import chat_agent
+
 
 TEST_CATALOG = [
     {"id": "prod-1", "name": "AuraSound Pro Headphones", "price": 6999.0, "category": "Audio", "stock": 15, "rating": 4.8},
@@ -49,6 +51,7 @@ def test_budget_extraction_phrases():
 
     print(f"[PASS] Successfully verified budget extraction across {len(test_cases)} diverse phrasing expressions!")
 
+@pytest.mark.asyncio
 async def test_chat_budget_hard_filter_enforcement():
     """
     Test: Hard budget filter enforcement.
@@ -73,6 +76,7 @@ async def test_chat_budget_hard_filter_enforcement():
 
     print("[PASS] Hard budget price filter enforcement verified across multiple price caps!")
 
+@pytest.mark.asyncio
 async def test_chat_budget_no_matches_fallback():
     """
     Test: Budget ₹100 when lowest item is ₹199.
@@ -90,7 +94,9 @@ async def test_chat_budget_no_matches_fallback():
     assert intent.get("is_budget_exceeded_fallback") == True
     print("[PASS] No-matches fallback protection verified!")
 
+@pytest.mark.asyncio
 async def test_category_keyword_matching():
+
     """
     Test: Category-specific query matching (Audio, Electronics, Fitness).
     """

@@ -1,90 +1,68 @@
-from fastapi import APIRouter
-from pydantic import BaseModel
-from typing import List, Dict, Any, Optional
 import json
 import datetime
+from typing import List, Dict, Any, Optional
+from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel
+from sqlalchemy.orm import Session
 
-from app.db.database import SessionLocal
-from app.db.models import AuditLog, Product
+from app.db.database import get_db
+from app.db.models import Order, AuditLog, Product, User
+from app.auth import get_optional_user, get_current_user
 from app.ml.recommender import ml_recommender
 
-router = APIRouter()
+router = APIRouter(prefix="/api/orders", tags=["Orders"])
 
 class PostPurchaseChatRequest(BaseModel):
     orderId: str
     message: str
 
-@router.get("/orders")
-def get_order_history():
+@router.get("")
+def get_order_history(
+    current_user: Optional[User] = Depends(get_optional_user),
+    db: Session = Depends(get_db)
+):
     """
-    Returns list of past completed orders from SQLite Audit Log database.
+    Returns order history sourced from PostgreSQL database.
+    If user is authenticated as customer, returns orders for that user.
+    If user is admin, returns all system orders.
     """
-    db = SessionLocal()
-    logs = db.query(AuditLog).order_by(AuditLog.timestamp.desc()).all()
-    db.close()
+    query = db.query(Order)
+    
+    if current_user and current_user.role != "admin":
+        query = query.filter(Order.user_id == current_user.id)
 
-    orders = []
-    for log in logs:
-        # Parse cart items
-        cart_items = []
-        if log.cart_items:
-            try:
-                cart_items = json.loads(log.cart_items)
-            except Exception:
-                cart_items = []
+    db_orders = query.order_by(Order.created_at.desc()).all()
 
-        total_amount = sum(float(i.get("price", 0)) * int(i.get("quantity", 1)) for i in cart_items)
-        if total_amount <= 0:
-            total_amount = 4999.0  # Fallback demo order total
+    orders_list = []
+    for ord_record in db_orders:
+        try:
+            items_parsed = json.loads(ord_record.items) if ord_record.items else []
+        except Exception:
+            items_parsed = []
 
-        status = log.payment_status if log.payment_status else "success"
-
-        orders.append({
-            "orderId": log.id,
-            "sessionId": log.session_id,
-            "timestamp": log.timestamp,
-            "status": status,
-            "items": cart_items,
-            "totalAmount": total_amount,
-            "trackingNumber": f"TRK-{log.id[-6:].upper()}",
+        orders_list.append({
+            "orderId": ord_record.id,
+            "orderNumber": ord_record.order_number,
+            "userId": ord_record.user_id,
+            "razorpayOrderId": ord_record.razorpay_order_id,
+            "razorpayPaymentId": ord_record.razorpay_payment_id,
+            "timestamp": ord_record.created_at,
+            "status": ord_record.status.lower() if ord_record.status else "success",
+            "items": items_parsed,
+            "totalAmount": ord_record.total_amount,
+            "failureReason": ord_record.failure_reason,
+            "trackingNumber": f"TRK-{ord_record.id[-6:].upper()}",
             "estimatedDelivery": "Delivering in 2 business days via Express Logistics"
         })
 
-    # If no orders in database yet, provide 2 realistic seed orders for demo
-    if not orders:
-        orders = [
-            {
-                "orderId": "ord_demo_101",
-                "sessionId": "sess_demo_1",
-                "timestamp": datetime.datetime.utcnow().isoformat(),
-                "status": "success",
-                "items": [
-                    {"id": "prod-1", "name": "AuraSound Pro Wireless Headphones", "price": 6999.0, "quantity": 1},
-                    {"id": "prod-7", "name": "UltraMag 10,000mAh Magnetic Power Bank", "price": 1899.0, "quantity": 1}
-                ],
-                "totalAmount": 8898.0,
-                "trackingNumber": "TRK-DEMO8898",
-                "estimatedDelivery": "Delivering in 2 business days via Express Logistics"
-            },
-            {
-                "orderId": "ord_demo_102",
-                "sessionId": "sess_demo_2",
-                "timestamp": (datetime.datetime.utcnow() - datetime.timedelta(days=2)).isoformat(),
-                "status": "success",
-                "items": [
-                    {"id": "prod-9", "name": "ErgoComfort Aluminum Laptop Stand", "price": 1299.0, "quantity": 1},
-                    {"id": "prod-47", "name": "ErgoLeather Desk Blotter & Pad", "price": 799.0, "quantity": 1}
-                ],
-                "totalAmount": 2098.0,
-                "trackingNumber": "TRK-DEMO2098",
-                "estimatedDelivery": "Delivered on Thursday, 28 Aug"
-            }
-        ]
+    return {"success": True, "orders": orders_list}
 
-    return {"success": True, "orders": orders}
-
-@router.post("/orders/post-purchase-chat")
-def post_purchase_chat(req: PostPurchaseChatRequest):
+@router.post("/post-purchase-chat")
+def post_purchase_chat(
+    req: PostPurchaseChatRequest,
+    current_user: Optional[User] = Depends(get_optional_user),
+    db: Session = Depends(get_db)
+):
     """
     Post-Purchase Agent handling order questions:
     1. Delivery/Tracking queries ("when will this arrive") -> returns delivery estimate.
@@ -92,21 +70,27 @@ def post_purchase_chat(req: PostPurchaseChatRequest):
     """
     msg_lower = req.message.lower()
 
-    db = SessionLocal()
-    audit_entry = db.query(AuditLog).filter(AuditLog.id == req.orderId).first()
+    # Look up order in Order DB
+    order_record = db.query(Order).filter(Order.id == req.orderId).first()
     
     order_items = []
-    if audit_entry and audit_entry.cart_items:
+    if order_record and order_record.items:
         try:
-            order_items = json.loads(audit_entry.cart_items)
+            order_items = json.loads(order_record.items)
         except Exception:
             order_items = []
 
     if not order_items:
-        # Fallback to default items
-        order_items = [{"id": "prod-1", "name": "AuraSound Pro Wireless Headphones", "price": 6999.0}]
+        # Fallback query in AuditLog
+        audit_entry = db.query(AuditLog).filter(AuditLog.id == req.orderId).first()
+        if audit_entry and audit_entry.cart_contents:
+            try:
+                order_items = json.loads(audit_entry.cart_contents)
+            except Exception:
+                order_items = []
 
-    db.close()
+    if not order_items:
+        order_items = [{"id": "prod-1", "name": "AuraSound Pro Wireless Headphones", "price": 6999.0}]
 
     # Intent 1: Delivery / Tracking
     if any(kw in msg_lower for kw in ["arrive", "delivery", "track", "shipping", "status", "when"]):

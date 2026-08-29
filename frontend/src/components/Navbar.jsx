@@ -1,5 +1,10 @@
 import React from 'react';
-import { ShoppingBag, ShieldCheck, ShieldAlert, Cpu, Settings, Brain, MessageSquare, TrendingUp, Bot, Sun, Moon, Laptop, Heart, Package } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+import { 
+  ShoppingBag, ShieldCheck, ShieldAlert, Cpu, Settings, Brain, 
+  MessageSquare, TrendingUp, Bot, Sun, Moon, Laptop, Heart, 
+  Package, User, LogIn, LogOut, ShieldCheck as AdminShield
+} from 'lucide-react';
 
 export default function Navbar({ 
   activeTab, 
@@ -11,10 +16,13 @@ export default function Navbar({
   setIsSettingsOpen, 
   setIsArchOpen,
   setIsChatOpen,
+  setIsAuthOpen,
   apiConnected,
   themeMode,
   setThemeMode
 }) {
+  const { user, isAdmin, logout } = useAuth();
+
   return (
     <header className="sticky top-0 z-40 glass-panel border-b border-[#ede0d5] dark:border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -72,6 +80,21 @@ export default function Navbar({
               <span>AI Campaigns</span>
             </button>
 
+            {/* Admin Panel Tab (Strictly for Role="admin") */}
+            {isAdmin && (
+              <button
+                onClick={() => setActiveTab('admin')}
+                className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                  activeTab === 'admin' 
+                    ? 'bg-[#f4795b] dark:bg-indigo-600 text-white shadow-md' 
+                    : 'text-[#f4795b] dark:text-indigo-400 hover:bg-[#f4795b]/10 border border-[#f4795b]/30'
+                }`}
+              >
+                <AdminShield className="w-3.5 h-3.5" />
+                <span>Admin Panel</span>
+              </button>
+            )}
+
             <button
               onClick={() => setActiveTab('agent_api')}
               className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
@@ -81,7 +104,7 @@ export default function Navbar({
               }`}
             >
               <Bot className="w-3.5 h-3.5 text-[#f4795b] dark:text-indigo-400" />
-              <span>Agent API &amp; Buyer</span>
+              <span>Agent API</span>
             </button>
 
             <button
@@ -93,19 +116,7 @@ export default function Navbar({
               }`}
             >
               <ShieldAlert className="w-3.5 h-3.5 text-[#c85450] dark:text-rose-400" />
-              <span>Guardian Safety</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('logs')}
-              className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                activeTab === 'logs' 
-                  ? 'bg-[#5b824b]/10 text-[#5b824b] dark:bg-emerald-500/10 dark:text-emerald-300 border border-[#5b824b]/30 dark:border-emerald-500/30 shadow-sm' 
-                  : 'text-[#6e5d57] dark:text-slate-300 hover:text-[#3a2e2a] dark:hover:text-white hover:bg-[#fceef0] dark:hover:bg-slate-800/50'
-              }`}
-            >
-              <ShieldCheck className="w-3.5 h-3.5 text-[#5b824b] dark:text-emerald-400" />
-              <span>Audit Trail</span>
+              <span>Guardian</span>
             </button>
 
             <button
@@ -117,9 +128,37 @@ export default function Navbar({
             </button>
           </nav>
 
-          {/* Actions, Wishlist, Theme Switcher & Chat Trigger */}
+          {/* Actions, Auth State, Wishlist, Theme Switcher & Chat Trigger */}
           <div className="flex items-center space-x-2">
             
+            {/* User Auth Profile Badge or Sign In Trigger */}
+            {user ? (
+              <div className="flex items-center space-x-2 bg-[#fdf3ea] dark:bg-slate-900 border border-[#ede0d5] dark:border-slate-800 p-1.5 rounded-2xl">
+                <div className="w-7 h-7 rounded-xl bg-[#f4795b]/20 dark:bg-indigo-500/20 text-[#f4795b] dark:text-indigo-400 font-bold text-xs flex items-center justify-center">
+                  {user.name.charAt(0).toUpperCase()}
+                </div>
+                <div className="hidden lg:block text-left pr-1">
+                  <div className="font-bold text-xs text-[#3a2e2a] dark:text-white leading-tight truncate max-w-[100px]">{user.name}</div>
+                  <div className="text-[10px] text-[#6e5d57] dark:text-slate-400 font-mono leading-tight">{user.role}</div>
+                </div>
+                <button
+                  onClick={logout}
+                  className="p-1 rounded-lg text-[#94827b] hover:text-[#c85450] dark:text-slate-400 dark:hover:text-rose-400 transition-colors"
+                  title="Log Out"
+                >
+                  <LogOut className="w-4 h-4" />
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => setIsAuthOpen(true)}
+                className="px-3 py-1.5 rounded-xl bg-[#fdf3ea] hover:bg-[#fceef0] dark:bg-slate-900 dark:hover:bg-slate-800 border border-[#ede0d5] dark:border-slate-800 text-[#3a2e2a] dark:text-white text-xs font-bold transition-all flex items-center space-x-1.5"
+              >
+                <LogIn className="w-3.5 h-3.5 text-[#f4795b]" />
+                <span className="hidden sm:inline">Sign In / Register</span>
+              </button>
+            )}
+
             {/* Wishlist Button */}
             <button
               onClick={() => setIsWishlistOpen(true)}
@@ -158,18 +197,6 @@ export default function Navbar({
                 title="Dark Theme"
               >
                 <Moon className="w-3.5 h-3.5" />
-              </button>
-
-              <button
-                onClick={() => setThemeMode('system')}
-                className={`p-1.5 rounded-lg text-xs transition-all ${
-                  themeMode === 'system'
-                    ? 'bg-[#f4795b] dark:bg-indigo-600 text-white shadow-sm font-bold'
-                    : 'text-[#6e5d57] hover:text-[#3a2e2a] dark:text-slate-400 dark:hover:text-white'
-                }`}
-                title="System OS Preference"
-              >
-                <Laptop className="w-3.5 h-3.5" />
               </button>
             </div>
 

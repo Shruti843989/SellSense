@@ -1,3 +1,4 @@
+import pytest
 import asyncio
 import os
 import sys
@@ -16,7 +17,9 @@ TEST_CATALOG = [
     {"id": "prod-8", "name": "USB-C SuperFast Cable", "price": 499.0, "category": "Accessories", "stock": 50}
 ]
 
+@pytest.mark.asyncio
 async def test_three_message_conversation_memory():
+
     session_id = "test_sess_mem_101"
     
     # Message 1: Budget statement

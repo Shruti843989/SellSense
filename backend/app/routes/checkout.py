@@ -10,6 +10,8 @@ from app.db.database import get_db
 from app.db.models import Order, AuditLog, Product
 from app.payments.razorpay_service import create_razorpay_order, verify_payment_signature, DEFAULT_KEY_ID
 
+from app.auth import get_optional_user
+
 router = APIRouter(tags=["Payment"])
 
 class CreateOrderRequest(BaseModel):
@@ -54,7 +56,11 @@ def create_order(req: CreateOrderRequest):
 
 @router.post("/payment/verify")
 @router.post("/api/payment/verify")
-def verify_payment(req: VerifyPaymentRequest, db: Session = Depends(get_db)):
+def verify_payment(
+    req: VerifyPaymentRequest,
+    current_user: Optional[Any] = Depends(get_optional_user),
+    db: Session = Depends(get_db)
+):
     is_valid = verify_payment_signature(
         razorpay_order_id=req.razorpay_order_id,
         razorpay_payment_id=req.razorpay_payment_id or "pay_sim",
@@ -65,6 +71,8 @@ def verify_payment(req: VerifyPaymentRequest, db: Session = Depends(get_db)):
     if not is_valid:
         raise HTTPException(status_code=400, detail="Invalid Razorpay payment signature")
 
+    user_id = current_user.id if current_user else None
+
     # Save successful order in DB
     order_id = f"ord_{int(time.time() * 1000)}"
     order_num = f"RZP-ORD-{random.randint(100000, 999999)}"
@@ -72,6 +80,7 @@ def verify_payment(req: VerifyPaymentRequest, db: Session = Depends(get_db)):
     new_order = Order(
         id=order_id,
         order_number=order_num,
+        user_id=user_id,
         razorpay_order_id=req.razorpay_order_id,
         razorpay_payment_id=req.razorpay_payment_id or f"pay_sim_{int(time.time())}",
         total_amount=req.total_amount,
@@ -89,11 +98,13 @@ def verify_payment(req: VerifyPaymentRequest, db: Session = Depends(get_db)):
         if prod:
             prod.stock = max(0, prod.stock - qty)
 
-    # Update audit log status
+    # Update audit log status & user_id
     if req.auditId:
         audit_log = db.query(AuditLog).filter(AuditLog.id == req.auditId).first()
         if audit_log:
             audit_log.payment_status = "success"
+            if user_id:
+                audit_log.user_id = user_id
 
     db.commit()
 
@@ -105,13 +116,19 @@ def verify_payment(req: VerifyPaymentRequest, db: Session = Depends(get_db)):
 
 @router.post("/payment/simulate-failure")
 @router.post("/api/payment/simulate-failure")
-def simulate_failure(req: SimulateFailureRequest, db: Session = Depends(get_db)):
+def simulate_failure(
+    req: SimulateFailureRequest,
+    current_user: Optional[Any] = Depends(get_optional_user),
+    db: Session = Depends(get_db)
+):
+    user_id = current_user.id if current_user else None
     order_id = f"ord_fail_{int(time.time() * 1000)}"
     order_num = f"RZP-FAIL-{random.randint(100000, 999999)}"
 
     failed_order = Order(
         id=order_id,
         order_number=order_num,
+        user_id=user_id,
         razorpay_order_id=req.razorpay_order_id or f"order_fail_{int(time.time())}",
         razorpay_payment_id=None,
         total_amount=req.total_amount,
@@ -127,6 +144,8 @@ def simulate_failure(req: SimulateFailureRequest, db: Session = Depends(get_db))
         if audit_log:
             audit_log.payment_status = "failed"
             audit_log.failure_reason = req.failureReason
+            if user_id:
+                audit_log.user_id = user_id
 
     db.commit()
 
@@ -141,3 +160,4 @@ def simulate_failure(req: SimulateFailureRequest, db: Session = Depends(get_db))
             "Click 'Retry Payment' to attempt transaction again"
         ]
     }
+

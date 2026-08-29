@@ -13,12 +13,16 @@ import CampaignDashboard from './components/CampaignDashboard';
 import AgentCatalogView from './components/AgentCatalogView';
 import GuardianLogsView from './components/GuardianLogsView';
 import OrdersView from './components/OrdersView';
+import AdminDashboard from './components/AdminDashboard';
+import AuthModal from './components/AuthModal';
+import { useAuth } from './context/AuthContext';
 import { useTheme } from './hooks/useTheme';
 
-import { Sparkles, ShieldCheck, Tag, ShoppingBag, ArrowRight, Zap, RefreshCw, Brain, MessageSquare, TrendingUp, Bot, Package, Heart, Plus, Check } from 'lucide-react';
+import { Sparkles, ShieldCheck, Tag, ShoppingBag, ArrowRight, Brain, MessageSquare, TrendingUp, Bot, Package, Heart, Plus } from 'lucide-react';
 
 export default function App() {
   const { themeMode, setThemeMode } = useTheme();
+  const { user, token, authFetch, isAdmin } = useAuth();
 
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
@@ -36,6 +40,7 @@ export default function App() {
   const [isArchOpen, setIsArchOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isAuthOpen, setIsAuthOpen] = useState(false);
 
   // AI & Payment Data
   const [agentLoading, setAgentLoading] = useState(false);
@@ -67,13 +72,62 @@ export default function App() {
     }
   };
 
+  // Sync user-scoped Cart & Wishlist from PostgreSQL database
+  const syncUserCartAndWishlist = async () => {
+    if (!token) {
+      // Clear in-memory cart/wishlist on logout
+      setCart([]);
+      setWishlist([]);
+      return;
+    }
+    try {
+      // Sync Cart
+      const resC = await authFetch('/api/cart');
+      const dataC = await resC.json();
+      if (dataC.success) {
+        setCart(dataC.items || []);
+      }
+
+      // Sync Wishlist
+      const resW = await authFetch('/api/wishlist');
+      const dataW = await resW.json();
+      if (dataW.success) {
+        setWishlist(dataW.items || []);
+      }
+    } catch (err) {
+      console.error("Failed to sync user cart/wishlist from PostgreSQL:", err);
+    }
+  };
+
   useEffect(() => {
     fetchProductsAndBundles();
   }, []);
 
-  // Cart operations
-  const addToCart = (product) => {
+  useEffect(() => {
+    syncUserCartAndWishlist();
+  }, [user, token]);
+
+  // Cart operations (Account-Scoped PostgreSQL Persistence when logged in)
+  const addToCart = async (product) => {
     if (product.stock <= 0) return;
+
+    if (user && token) {
+      try {
+        const res = await authFetch('/api/cart/add', {
+          method: 'POST',
+          body: JSON.stringify({ product_id: product.id, quantity: 1 })
+        });
+        const data = await res.json();
+        if (data.success) {
+          setCart(data.items || []);
+          return;
+        }
+      } catch (err) {
+        console.error("Failed to add to DB cart:", err);
+      }
+    }
+
+    // Unauthenticated Fallback
     setCart((prev) => {
       const existing = prev.find((item) => item.id === product.id);
       if (existing) {
@@ -85,33 +139,90 @@ export default function App() {
     });
   };
 
-  const addBundleToCart = (bundle) => {
-    bundle.items.forEach(item => {
-      addToCart(item);
-    });
+  const addBundleToCart = async (bundle) => {
+    for (const item of bundle.items) {
+      await addToCart(item);
+    }
     setIsCartOpen(true);
   };
 
-  const updateCartQty = (id, newQty) => {
+  const updateCartQty = async (id, newQty) => {
     if (newQty <= 0) {
       removeFromCart(id);
       return;
     }
+
+    if (user && token) {
+      try {
+        const res = await authFetch('/api/cart/update', {
+          method: 'PUT',
+          body: JSON.stringify({ product_id: id, quantity: newQty })
+        });
+        const data = await res.json();
+        if (data.success) {
+          setCart(data.items || []);
+          return;
+        }
+      } catch (err) {
+        console.error("Failed to update DB cart qty:", err);
+      }
+    }
+
     setCart((prev) =>
       prev.map((item) => (item.id === id ? { ...item, quantity: newQty } : item))
     );
   };
 
-  const removeFromCart = (id) => {
+  const removeFromCart = async (id) => {
+    if (user && token) {
+      try {
+        const res = await authFetch(`/api/cart/item/${id}`, {
+          method: 'DELETE'
+        });
+        const data = await res.json();
+        if (data.success) {
+          setCart(data.items || []);
+          return;
+        }
+      } catch (err) {
+        console.error("Failed to remove from DB cart:", err);
+      }
+    }
+
     setCart((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const clearCart = () => {
+  const clearCart = async () => {
+    if (user && token) {
+      try {
+        await authFetch('/api/cart/clear', { method: 'DELETE' });
+        setCart([]);
+        return;
+      } catch (err) {
+        console.error("Failed to clear DB cart:", err);
+      }
+    }
     setCart([]);
   };
 
-  // Wishlist operations
-  const toggleWishlist = (product) => {
+  // Wishlist operations (Account-Scoped PostgreSQL Persistence when logged in)
+  const toggleWishlist = async (product) => {
+    if (user && token) {
+      try {
+        const res = await authFetch('/api/wishlist/toggle', {
+          method: 'POST',
+          body: JSON.stringify({ product_id: product.id })
+        });
+        const data = await res.json();
+        if (data.success) {
+          setWishlist(data.items || []);
+          return;
+        }
+      } catch (err) {
+        console.error("Failed to toggle DB wishlist:", err);
+      }
+    }
+
     setWishlist(prev => {
       const exists = prev.some(i => i.id === product.id);
       if (exists) return prev.filter(i => i.id !== product.id);
@@ -119,9 +230,14 @@ export default function App() {
     });
   };
 
-  const moveToCartFromWishlist = (product) => {
-    addToCart(product);
-    setWishlist(prev => prev.filter(i => i.id !== product.id));
+  const moveToCartFromWishlist = async (product) => {
+    await addToCart(product);
+    if (user && token) {
+      await authFetch(`/api/wishlist/${product.id}`, { method: 'DELETE' });
+      syncUserCartAndWishlist();
+    } else {
+      setWishlist(prev => prev.filter(i => i.id !== product.id));
+    }
     setIsCartOpen(true);
   };
 
@@ -133,9 +249,8 @@ export default function App() {
     setSuggestionData(null);
 
     try {
-      const res = await fetch('/api/suggest', {
+      const res = await authFetch('/api/suggest', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           cartItems: cart,
           wishlistItems: wishlist,
@@ -158,9 +273,8 @@ export default function App() {
 
     if (auditId) {
       try {
-        await fetch('/api/suggest/action', {
+        await authFetch('/api/suggest/action', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             auditId,
             action: 'accepted',
@@ -180,7 +294,7 @@ export default function App() {
     setCheckoutOrderData({
       auditId,
       items: combinedItems,
-      cartSubtotal: cart.reduce((s, i) => s + i.price * i.quantity, 0),
+      cartSubtotal: cart.reduce((s, i) => s + i.price * (i.quantity || 1), 0),
       totalAmount,
       selectedAddons
     });
@@ -194,9 +308,8 @@ export default function App() {
     const auditId = suggestionData?.auditId;
     if (auditId) {
       try {
-        await fetch('/api/suggest/action', {
+        await authFetch('/api/suggest/action', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             auditId,
             action: 'skipped',
@@ -206,7 +319,7 @@ export default function App() {
       } catch (e) {}
     }
 
-    const totalAmount = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+    const totalAmount = cart.reduce((s, i) => s + i.price * (i.quantity || 1), 0);
     setCheckoutOrderData({
       auditId,
       items: cart.map(i => ({ ...i, finalPrice: i.price })),
@@ -228,8 +341,8 @@ export default function App() {
     ? products
     : products.filter((p) => p.category === categoryFilter);
 
-  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const cartSubtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const cartCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+  const cartSubtotal = cart.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0);
 
   return (
     <div className="min-h-screen flex flex-col justify-between">
@@ -245,6 +358,7 @@ export default function App() {
         setIsSettingsOpen={setIsSettingsOpen}
         setIsArchOpen={setIsArchOpen}
         setIsChatOpen={setIsChatOpen}
+        setIsAuthOpen={setIsAuthOpen}
         apiConnected={apiConnected}
         themeMode={themeMode}
         setThemeMode={setThemeMode}
@@ -261,7 +375,7 @@ export default function App() {
                 
                 <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#f4795b]/10 text-[#f4795b] dark:bg-indigo-500/10 dark:text-indigo-300 border border-[#f4795b]/20 dark:border-indigo-500/20 text-xs font-mono font-bold uppercase tracking-wider">
                   <Brain className="w-3.5 h-3.5 text-[#f4795b] dark:text-indigo-400" />
-                  <span>SellSense • Expanded Catalog (80 Products • 10 Categories)</span>
+                  <span>SellSense Multi-User Platform • PostgreSQL Engine</span>
                 </div>
 
                 <h1 className="font-display text-3xl sm:text-4xl font-extrabold text-[#3a2e2a] dark:text-white leading-tight tracking-tight">
@@ -269,7 +383,7 @@ export default function App() {
                 </h1>
 
                 <p className="text-xs sm:text-sm text-[#6e5d57] dark:text-slate-300 leading-relaxed font-medium">
-                  Tri-signal ML inference (<strong className="text-[#f4795b] dark:text-indigo-300">Precision@3: 63.6% benchmark</strong>), Wishlist soft signals, AI Bundle Builder, Abandoned Cart Recovery, and Post-Purchase Agent.
+                  Persistent PostgreSQL database, bcrypt authentication, account-scoped cart &amp; wishlist, admin operations panel, and real-time ML inference.
                 </p>
 
                 {/* Quick Actions */}
@@ -286,18 +400,20 @@ export default function App() {
                     <span>Try SellSense Upsell Agent</span>
                   </button>
 
-                  <button
-                    onClick={() => setIsChatOpen(true)}
-                    className="px-4 py-2.5 rounded-xl bg-[#f5b759]/15 hover:bg-[#f5b759]/25 text-[#8c5000] dark:text-amber-300 font-bold text-xs transition-all border border-[#f5b759]/30 flex items-center space-x-1.5 active:scale-95"
-                  >
-                    <MessageSquare className="w-4 h-4 text-[#d97706] dark:text-amber-400" />
-                    <span>Open Session AI Chat</span>
-                  </button>
+                  {!user && (
+                    <button
+                      onClick={() => setIsAuthOpen(true)}
+                      className="px-4 py-2.5 rounded-xl bg-[#f5b759]/15 hover:bg-[#f5b759]/25 text-[#8c5000] dark:text-amber-300 font-bold text-xs transition-all border border-[#f5b759]/30 flex items-center space-x-1.5 active:scale-95"
+                    >
+                      <MessageSquare className="w-4 h-4 text-[#d97706] dark:text-amber-400" />
+                      <span>Log In / Sign Up</span>
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
 
-            {/* NEW FEATURE 2: Smart AI-Generated Bundles Carousel Section */}
+            {/* Smart AI-Generated Bundles Carousel Section */}
             {smartBundles.length > 0 && (
               <div className="space-y-4 p-6 rounded-3xl glass-panel bg-[#fdf3ea]/80 dark:bg-slate-950/40 border border-[#f5b759]/40">
                 <div className="flex items-center justify-between">
@@ -478,6 +594,7 @@ export default function App() {
           </div>
         )}
 
+        {activeTab === 'admin' && <AdminDashboard />}
         {activeTab === 'orders' && <OrdersView />}
         {activeTab === 'campaigns' && <CampaignDashboard />}
         {activeTab === 'agent_api' && <AgentCatalogView />}
@@ -526,7 +643,10 @@ export default function App() {
         isOpen={isWishlistOpen}
         onClose={() => setIsWishlistOpen(false)}
         wishlist={wishlist}
-        onRemoveFromWishlist={(id) => setWishlist(prev => prev.filter(i => i.id !== id))}
+        onRemoveFromWishlist={(id) => {
+          const item = wishlist.find(i => i.id === id);
+          if (item) toggleWishlist(item);
+        }}
         onMoveToCart={moveToCartFromWishlist}
       />
 
@@ -567,6 +687,11 @@ export default function App() {
         isOpen={isChatOpen}
         onClose={() => setIsChatOpen(false)}
         onAddToCart={addToCart}
+      />
+
+      <AuthModal
+        isOpen={isAuthOpen}
+        onClose={() => setIsAuthOpen(false)}
       />
 
     </div>

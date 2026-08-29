@@ -3,8 +3,9 @@ from typing import List, Dict, Any
 from app.db.database import SessionLocal
 from app.db.models import Product
 from app.ml.recommender import ml_recommender
-from app.agents.rule_engine import rule_engine
-from app.agents.guardian_agent import guardian_agent
+from app.rules.rule_engine import rule_engine
+from app.guardian.guardian_agent import guardian_agent
+
 
 router = APIRouter()
 

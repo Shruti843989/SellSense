@@ -8,12 +8,17 @@ from app.db.database import SessionLocal, engine, Base
 from app.db.seed import seed_database
 from app.db.models import Product, SyntheticOrder
 from app.ml.recommender import ml_recommender
-from app.routes import products, suggest, checkout, logs, agent_catalog, chat, campaign, buyer_simulation, cart, guardian, bundles, abandoned_cart, orders
+from app.routes import (
+    products, suggest, checkout, logs, agent_catalog, chat, 
+    campaign, buyer_simulation, cart, guardian, bundles, 
+    abandoned_cart, orders, auth, wishlist, admin
+)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Startup: Initialize Database & Train ML Models
     print("[INIT] Initializing SellSense Database & ML Recommender...")
+    Base.metadata.create_all(bind=engine)
     seed_database()
 
     db = SessionLocal()
@@ -68,6 +73,10 @@ app.add_middleware(
 )
 
 # Router mounts (Root and /api prefix)
+app.include_router(auth.router, prefix="/api")
+app.include_router(wishlist.router)
+app.include_router(admin.router)
+
 app.include_router(products.router)
 app.include_router(cart.router)
 app.include_router(suggest.router)
@@ -86,6 +95,7 @@ app.include_router(orders.router)
 app.include_router(bundles.router, prefix="/api")
 app.include_router(abandoned_cart.router, prefix="/api")
 app.include_router(orders.router, prefix="/api")
+
 
 @app.get("/health")
 def health_check():
