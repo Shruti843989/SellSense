@@ -8,7 +8,7 @@ from app.db.database import SessionLocal, engine, Base
 from app.db.seed import seed_database
 from app.db.models import Product, SyntheticOrder
 from app.ml.recommender import ml_recommender
-from app.routes import products, suggest, checkout, logs, agent_catalog, chat, campaign, buyer_simulation, cart, guardian
+from app.routes import products, suggest, checkout, logs, agent_catalog, chat, campaign, buyer_simulation, cart, guardian, bundles, abandoned_cart, orders
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -67,7 +67,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Router mounts
+# Router mounts (Root and /api prefix)
 app.include_router(products.router)
 app.include_router(cart.router)
 app.include_router(suggest.router)
@@ -78,6 +78,14 @@ app.include_router(chat.router)
 app.include_router(campaign.router)
 app.include_router(buyer_simulation.router)
 app.include_router(guardian.router)
+app.include_router(bundles.router)
+app.include_router(abandoned_cart.router)
+app.include_router(orders.router)
+
+# Mount with /api prefix as well
+app.include_router(bundles.router, prefix="/api")
+app.include_router(abandoned_cart.router, prefix="/api")
+app.include_router(orders.router, prefix="/api")
 
 @app.get("/health")
 def health_check():

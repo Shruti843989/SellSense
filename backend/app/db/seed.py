@@ -11,7 +11,7 @@ from app.db.models import Product, SyntheticOrder
 from app.ml.recommender import ml_recommender
 
 INITIAL_PRODUCTS = [
-  # --- Category 1: Audio (6 items) ---
+  # --- Category 1: Audio (8 items) ---
   {
     "id": "prod-1",
     "name": "AuraSound Pro Wireless Headphones",
@@ -84,8 +84,32 @@ INITIAL_PRODUCTS = [
     "tags": ["audio", "microphone", "usb", "podcast", "streaming", "recording", "condenser"],
     "rating": 4.7
   },
+  {
+    "id": "prod-63",
+    "name": "MiniPocket Ultra-Portable TWS Earbuds",
+    "description": "Budget compact true wireless earbuds featuring Bluetooth 5.3, 13mm dynamic drivers, smart touch controls, and 18-hour total playback time.",
+    "price": 699.0,
+    "category": "Audio",
+    "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&auto=format&fit=crop&q=80",
+    "stock": 50,
+    "sales_velocity": 170,
+    "tags": ["audio", "earbuds", "budget", "tws", "portable"],
+    "rating": 4.3
+  },
+  {
+    "id": "prod-64",
+    "name": "Audiophile High-Res Tube Headphone Amplifier",
+    "description": "Premium vacuum tube audiophile desktop headphone DAC & amplifier delivering warm harmonic rich sound stage with balanced XLR and 6.35mm outputs.",
+    "price": 12999.0,
+    "category": "Audio",
+    "image": "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=600&auto=format&fit=crop&q=80",
+    "stock": 5,
+    "sales_velocity": 25,
+    "tags": ["audio", "amplifier", "dac", "audiophile", "premium", "hifi"],
+    "rating": 4.9
+  },
 
-  # --- Category 2: Accessories (8 items) ---
+  # --- Category 2: Accessories (10 items) ---
   {
     "id": "prod-7",
     "name": "UltraMag 10,000mAh Magnetic Power Bank",
@@ -182,8 +206,32 @@ INITIAL_PRODUCTS = [
     "tags": ["accessories", "charger", "gan", "fast-charging", "usbc"],
     "rating": 4.8
   },
+  {
+    "id": "prod-65",
+    "name": "Multi-Angle Foldable Pocket Phone Stand",
+    "description": "Ultra-slim pocket-sized aluminum phone stand with 270-degree rotation hinge and non-slip silicone anti-scratch pads.",
+    "price": 299.0,
+    "category": "Accessories",
+    "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=600&auto=format&fit=crop&q=80",
+    "stock": 60,
+    "sales_velocity": 180,
+    "tags": ["accessories", "phone-stand", "budget", "portable", "desk"],
+    "rating": 4.4
+  },
+  {
+    "id": "prod-66",
+    "name": "3-in-1 Foldable MagSafe Wireless Charging Tree",
+    "description": "Premium 15W wireless charging station powering iPhone, Apple Watch, and AirPods simultaneously with compact folding travel design.",
+    "price": 2799.0,
+    "category": "Accessories",
+    "image": "https://images.unsplash.com/photo-1609592424109-dd9892f1b177?w=600&auto=format&fit=crop&q=80",
+    "stock": 20,
+    "sales_velocity": 95,
+    "tags": ["accessories", "charging", "magsafe", "3in1", "wireless", "premium"],
+    "rating": 4.8
+  },
 
-  # --- Category 3: Bags (7 items) ---
+  # --- Category 3: Bags (9 items) ---
   {
     "id": "prod-15",
     "name": "TravelTech Pro Anti-Theft Backpack",
@@ -268,8 +316,32 @@ INITIAL_PRODUCTS = [
     "tags": ["bags", "tote", "canvas", "eco", "budget"],
     "rating": 4.3
   },
+  {
+    "id": "prod-67",
+    "name": "Waterproof High-Vis Backpack Rain Cover",
+    "description": "Elastic 210T silver-coated waterproof backpack rain shield with reflective night safety stripe and storage pouch.",
+    "price": 349.0,
+    "category": "Bags",
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop&q=80",
+    "stock": 45,
+    "sales_velocity": 100,
+    "tags": ["bags", "raincover", "budget", "waterproof", "travel"],
+    "rating": 4.5
+  },
+  {
+    "id": "prod-68",
+    "name": "Executive Italian Leather Laptop Briefcase",
+    "description": "Handcrafted full-grain Italian leather laptop briefcase featuring dual brass lock clasps, padded 15.6-inch laptop pocket, and removable leather strap.",
+    "price": 5499.0,
+    "category": "Bags",
+    "image": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&auto=format&fit=crop&q=80",
+    "stock": 8,
+    "sales_velocity": 35,
+    "tags": ["bags", "briefcase", "leather", "executive", "premium", "laptop"],
+    "rating": 4.9
+  },
 
-  # --- Category 4: Electronics (7 items) ---
+  # --- Category 4: Electronics (9 items) ---
   {
     "id": "prod-22",
     "name": "PulseFit Pro Smartwatch",
@@ -354,8 +426,32 @@ INITIAL_PRODUCTS = [
     "tags": ["electronics", "mouse", "vertical", "ergonomic", "desk"],
     "rating": 4.5
   },
+  {
+    "id": "prod-69",
+    "name": "Wireless Digital Presentation Laser Pointer",
+    "description": "Plug-and-play 2.4GHz wireless presenter remote with red laser pointer, slide control buttons, and 100ft operating range.",
+    "price": 599.0,
+    "category": "Electronics",
+    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&auto=format&fit=crop&q=80",
+    "stock": 35,
+    "sales_velocity": 90,
+    "tags": ["electronics", "presenter", "laser", "budget", "office"],
+    "rating": 4.4
+  },
+  {
+    "id": "prod-70",
+    "name": "Dual 4K Thunderbolt 4 Aluminum Docking Station",
+    "description": "12-in-1 Thunderbolt 4 workstation hub supporting dual 4K@60Hz monitors, 96W laptop charging, Gigabit Ethernet, and UHS-II SD reader.",
+    "price": 9999.0,
+    "category": "Electronics",
+    "image": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&auto=format&fit=crop&q=80",
+    "stock": 6,
+    "sales_velocity": 30,
+    "tags": ["electronics", "docking-station", "thunderbolt", "4k", "premium", "desk"],
+    "rating": 4.9
+  },
 
-  # --- Category 5: Wearables (5 items) ---
+  # --- Category 5: Wearables (7 items) ---
   {
     "id": "prod-29",
     "name": "ActiveRing Health & Sleep Tracker",
@@ -416,8 +512,32 @@ INITIAL_PRODUCTS = [
     "tags": ["wearables", "pedometer", "clip", "fitness", "budget"],
     "rating": 4.2
   },
+  {
+    "id": "prod-71",
+    "name": "Smart Body Fat & BMI Bluetooth Analyzer Scale",
+    "description": "Bioelectrical impedance smart bathroom scale measuring body fat %, muscle mass, BMR, and water mass with sync to Apple Health & Fitbit.",
+    "price": 1899.0,
+    "category": "Wearables",
+    "image": "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=600&auto=format&fit=crop&q=80",
+    "stock": 20,
+    "sales_velocity": 80,
+    "tags": ["wearables", "scale", "health", "smart", "bodyfat"],
+    "rating": 4.7
+  },
+  {
+    "id": "prod-72",
+    "name": "Breathable Silicone Sports Strap Pack (22mm)",
+    "description": "Set of 3 sweatproof soft silicone ventilation replacement wristbands for fitness smartwatches.",
+    "price": 299.0,
+    "category": "Wearables",
+    "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&auto=format&fit=crop&q=80",
+    "stock": 50,
+    "sales_velocity": 130,
+    "tags": ["wearables", "strap", "silicone", "budget", "sports"],
+    "rating": 4.3
+  },
 
-  # --- Category 6: Fitness (6 items) ---
+  # --- Category 6: Fitness (8 items) ---
   {
     "id": "prod-34",
     "name": "ProGrip Heavy Resistance Bands Set (5-Pack)",
@@ -490,8 +610,32 @@ INITIAL_PRODUCTS = [
     "tags": ["fitness", "weights", "ankle-weights", "cardio", "budget"],
     "rating": 4.4
   },
+  {
+    "id": "prod-73",
+    "name": "Deep-Tissue High-Density EVA Foam Roller",
+    "description": "Grid-patterned trigger point foam roller for spinal realignment, IT band release, and post-workout soreness relief.",
+    "price": 799.0,
+    "category": "Fitness",
+    "image": "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=600&auto=format&fit=crop&q=80",
+    "stock": 35,
+    "sales_velocity": 90,
+    "tags": ["fitness", "foam-roller", "recovery", "muscle", "workout"],
+    "rating": 4.6
+  },
+  {
+    "id": "prod-74",
+    "name": "Color-Coded Tactical Push-Up Trainer Board",
+    "description": "Multi-angle color-coded heavy duty pushup board system targeting chest, shoulders, triceps, and back muscle groups.",
+    "price": 499.0,
+    "category": "Fitness",
+    "image": "https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=600&auto=format&fit=crop&q=80",
+    "stock": 40,
+    "sales_velocity": 110,
+    "tags": ["fitness", "pushup", "board", "workout", "budget"],
+    "rating": 4.3
+  },
 
-  # --- Category 7: Home (5 items) ---
+  # --- Category 7: Home (7 items) ---
   {
     "id": "prod-40",
     "name": "TempControl Smart Thermal Desk Mug",
@@ -552,8 +696,32 @@ INITIAL_PRODUCTS = [
     "tags": ["home", "pillow", "lumbar", "ergonomic", "desk-chair", "memory-foam"],
     "rating": 4.7
   },
+  {
+    "id": "prod-75",
+    "name": "Smart Ambient RGB LED Light Bar Pair",
+    "description": "Dual standing RGB atmosphere light bars with music reactive audio sync, 16 million colors, and smart app timing controls.",
+    "price": 1999.0,
+    "category": "Home",
+    "image": "https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=600&auto=format&fit=crop&q=80",
+    "stock": 18,
+    "sales_velocity": 70,
+    "tags": ["home", "lighting", "rgb", "smart", "desk"],
+    "rating": 4.6
+  },
+  {
+    "id": "prod-76",
+    "name": "Ergonomic Memory Foam Under-Desk Footrest",
+    "description": "Teardrop-shaped ergonomic under-desk footrest pillow elevating feet to relieve leg pressure and lower back strain.",
+    "price": 1199.0,
+    "category": "Home",
+    "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&auto=format&fit=crop&q=80",
+    "stock": 25,
+    "sales_velocity": 60,
+    "tags": ["home", "footrest", "ergonomic", "desk", "memory-foam"],
+    "rating": 4.7
+  },
 
-  # --- Category 8: Stationery (6 items) ---
+  # --- Category 8: Stationery (8 items) ---
   {
     "id": "prod-45",
     "name": "ReSmart Reusable Digital Notebook",
@@ -625,35 +793,237 @@ INITIAL_PRODUCTS = [
     "sales_velocity": 85,
     "tags": ["stationery", "journal", "planner", "productivity", "habit"],
     "rating": 4.8
+  },
+  {
+    "id": "prod-77",
+    "name": "Pastel Sticky Notes & Index Page Marker Tabs",
+    "description": "Set of 12 aesthetic pastel sticky notes & translucent waterproof index flags for bullet journaling.",
+    "price": 199.0,
+    "category": "Stationery",
+    "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
+    "stock": 60,
+    "sales_velocity": 160,
+    "tags": ["stationery", "stickynotes", "budget", "office", "journal"],
+    "rating": 4.4
+  },
+  {
+    "id": "prod-78",
+    "name": "Handcrafted Walnut Wood Desktop Pen & Phone Dock",
+    "description": "Solid American walnut wood organizer tray featuring phone charging slot, watch holder, and pen rest.",
+    "price": 1299.0,
+    "category": "Stationery",
+    "image": "https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&auto=format&fit=crop&q=80",
+    "stock": 20,
+    "sales_velocity": 65,
+    "tags": ["stationery", "walnut", "wood", "desk", "organizer", "dock"],
+    "rating": 4.8
+  },
+
+  # --- Category 9: Gifting (7 items - NEW) ---
+  {
+    "id": "prod-51",
+    "name": "Luxury Artisan Leather Journal & Fountain Pen Gift Set",
+    "description": "Handbound full-grain leather journal with brass latch closure and heavy metallic fountain pen in a premium velvet gift box.",
+    "price": 2499.0,
+    "category": "Gifting",
+    "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600&auto=format&fit=crop&q=80",
+    "stock": 18,
+    "sales_velocity": 75,
+    "tags": ["gifting", "journal", "pen", "leather", "giftset", "luxury"],
+    "rating": 4.9
+  },
+  {
+    "id": "prod-52",
+    "name": "Curated Specialty Coffee & Ceramic Thermal Mug Gift Box",
+    "description": "Single-origin Arabica coffee beans paired with a double-wall temperature control ceramic travel mug and stainless steel scoop.",
+    "price": 1899.0,
+    "category": "Gifting",
+    "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&auto=format&fit=crop&q=80",
+    "stock": 22,
+    "sales_velocity": 85,
+    "tags": ["gifting", "coffee", "mug", "curated", "giftbox"],
+    "rating": 4.8
+  },
+  {
+    "id": "prod-53",
+    "name": "AromaTherapy Essential Oils & Glass Reed Diffuser Set",
+    "description": "Calming lavender and eucalyptus pure essential oil blend with hand-blown frosted glass reed diffuser and lava stone desk rocks.",
+    "price": 1299.0,
+    "category": "Gifting",
+    "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&auto=format&fit=crop&q=80",
+    "stock": 30,
+    "sales_velocity": 95,
+    "tags": ["gifting", "diffuser", "essential-oils", "relaxation", "home"],
+    "rating": 4.7
+  },
+  {
+    "id": "prod-54",
+    "name": "SellSense Universal E-Gift Card (₹1000 Value)",
+    "description": "Instant digital shopping credit voucher valid across all 80 SellSense catalog products with zero expiration date.",
+    "price": 1000.0,
+    "category": "Gifting",
+    "image": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80",
+    "stock": 999,
+    "sales_velocity": 250,
+    "tags": ["gifting", "giftcard", "voucher", "digital", "universal"],
+    "rating": 5.0
+  },
+  {
+    "id": "prod-55",
+    "name": "Gourmet Dark Chocolate & Roasted Nut Hamper",
+    "description": "Handcrafted 70% single-origin Belgian dark chocolates paired with honey-roasted almonds and cashews in a reusable woven hamper.",
+    "price": 1499.0,
+    "category": "Gifting",
+    "image": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=600&auto=format&fit=crop&q=80",
+    "stock": 25,
+    "sales_velocity": 110,
+    "tags": ["gifting", "chocolate", "nuts", "hamper", "gourmet"],
+    "rating": 4.8
+  },
+  {
+    "id": "prod-56",
+    "name": "Executive Metallic Pen & Business Card Holder Set",
+    "description": "Sleek gunmetal rollerball pen matched with an RFID-shielded stainless steel business card holder.",
+    "price": 899.0,
+    "category": "Gifting",
+    "image": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=600&auto=format&fit=crop&q=80",
+    "stock": 35,
+    "sales_velocity": 80,
+    "tags": ["gifting", "pen", "cardholder", "executive", "budget"],
+    "rating": 4.6
+  },
+  {
+    "id": "prod-80",
+    "name": "Signature Gourmet Tea Infuser & Glass Tumbler Gift Set",
+    "description": "Double-wall borosilicate glass tea tumbler with removable stainless steel strainer basket and 3 organic loose leaf tea tins.",
+    "price": 1599.0,
+    "category": "Gifting",
+    "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&auto=format&fit=crop&q=80",
+    "stock": 20,
+    "sales_velocity": 70,
+    "tags": ["gifting", "tea", "tumbler", "giftset", "wellness"],
+    "rating": 4.7
+  },
+
+  # --- Category 10: Travel (7 items - NEW) ---
+  {
+    "id": "prod-57",
+    "name": "Universal All-in-One International Travel Adapter",
+    "description": "Global AC power plug converter usable in over 150 countries featuring 4x USB-A ports and 1x USB-C 35W Power Delivery fast charging port.",
+    "price": 1499.0,
+    "category": "Travel",
+    "image": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&auto=format&fit=crop&q=80",
+    "stock": 40,
+    "sales_velocity": 160,
+    "tags": ["travel", "adapter", "international", "charging", "usbc", "universal"],
+    "rating": 4.8
+  },
+  {
+    "id": "prod-58",
+    "name": "ProTravel Memory Foam Neck Pillow & Eye Mask Kit",
+    "description": "360-degree chin-support ergonomic memory foam travel neck pillow with 3D contoured blackout eye sleep mask and memory earplugs.",
+    "price": 999.0,
+    "category": "Travel",
+    "image": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&auto=format&fit=crop&q=80",
+    "stock": 30,
+    "sales_velocity": 120,
+    "tags": ["travel", "pillow", "eyemask", "sleep", "flight", "comfort"],
+    "rating": 4.7
+  },
+  {
+    "id": "prod-59",
+    "name": "RFID-Blocking Leather Passport Holder & Luggage Tag",
+    "description": "Handmade top-grain leather passport cover wallet with RFID blocking layer and matching adjustable privacy luggage tag.",
+    "price": 799.0,
+    "category": "Travel",
+    "image": "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?w=600&auto=format&fit=crop&q=80",
+    "stock": 35,
+    "sales_velocity": 90,
+    "tags": ["travel", "passport", "rfid", "leather", "luggage-tag", "wallet"],
+    "rating": 4.6
+  },
+  {
+    "id": "prod-60",
+    "name": "Ultralight Compression Packing Cubes (6-Piece Set)",
+    "description": "Double-zippered tear-resistant nylon packing organizer cubes compressing clothing volume by 40% for luggage efficiency.",
+    "price": 1199.0,
+    "category": "Travel",
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop&q=80",
+    "stock": 28,
+    "sales_velocity": 100,
+    "tags": ["travel", "packing-cubes", "organizer", "luggage", "compression"],
+    "rating": 4.8
+  },
+  {
+    "id": "prod-61",
+    "name": "Compact Windproof Auto Open/Close Travel Umbrella",
+    "description": "Reinforced 9-rib fiberglass frame portable folding umbrella with Teflon waterproof canopy and automatic one-touch handle.",
+    "price": 599.0,
+    "category": "Travel",
+    "image": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&auto=format&fit=crop&q=80",
+    "stock": 45,
+    "sales_velocity": 85,
+    "tags": ["travel", "umbrella", "windproof", "compact", "budget"],
+    "rating": 4.5
+  },
+  {
+    "id": "prod-62",
+    "name": "Digital Hanging Luggage Scale (50kg Capacity)",
+    "description": "High-precision digital luggage weight scale with backlit LCD display, tare function, and heavy-duty stainless steel hook.",
+    "price": 499.0,
+    "category": "Travel",
+    "image": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&auto=format&fit=crop&q=80",
+    "stock": 50,
+    "sales_velocity": 115,
+    "tags": ["travel", "scale", "luggage", "digital", "budget"],
+    "rating": 4.4
+  },
+  {
+    "id": "prod-79",
+    "name": "Mini Express Handheld Travel Clothes Steamer",
+    "description": "Compact 1000W fast 15-second heat-up handheld garment steamer removing wrinkles from travel clothes on the go.",
+    "price": 1699.0,
+    "category": "Travel",
+    "image": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&auto=format&fit=crop&q=80",
+    "stock": 18,
+    "sales_velocity": 65,
+    "tags": ["travel", "steamer", "garment", "portable", "hotel"],
+    "rating": 4.6
   }
 ]
 
-# Granular 12 Co-Purchase Affinity Clusters (Priority 3 Expansion)
+# Granular 15 Co-Purchase Affinity Clusters (80 Products, 10 Categories)
 AFFINITY_GROUPS = [
   # 1. Home Office Desktop Setup
-  ["prod-9", "prod-24", "prod-23", "prod-47", "prod-27"],
+  ["prod-9", "prod-24", "prod-23", "prod-47", "prod-27", "prod-75"],
   # 2. Travel Workspace Mobility
-  ["prod-16", "prod-15", "prod-26", "prod-14", "prod-20"],
+  ["prod-16", "prod-15", "prod-26", "prod-14", "prod-20", "prod-57"],
   # 3. Wireless Mobile Audio
-  ["prod-3", "prod-1", "prod-7", "prod-8"],
+  ["prod-3", "prod-1", "prod-7", "prod-8", "prod-63"],
   # 4. Studio & Wired Audio
-  ["prod-5", "prod-6", "prod-1", "prod-25"],
+  ["prod-5", "prod-6", "prod-1", "prod-25", "prod-64"],
   # 5. Smartphone Fast Charging
-  ["prod-7", "prod-8", "prod-14", "prod-10"],
+  ["prod-7", "prod-8", "prod-14", "prod-10", "prod-66"],
   # 6. Car & Commute Mobile
-  ["prod-12", "prod-7", "prod-19", "prod-2"],
+  ["prod-12", "prod-7", "prod-19", "prod-2", "prod-65"],
   # 7. Fitness & Cardio Recovery
-  ["prod-36", "prod-35", "prod-38", "prod-37", "prod-18"],
+  ["prod-36", "prod-35", "prod-38", "prod-37", "prod-18", "prod-73", "prod-74"],
   # 8. Wearables & Health Tracking
-  ["prod-29", "prod-22", "prod-30", "prod-13", "prod-34"],
+  ["prod-29", "prod-22", "prod-30", "prod-13", "prod-34", "prod-71", "prod-72"],
   # 9. Study & Daily Journaling
-  ["prod-45", "prod-46", "prod-50", "prod-41"],
+  ["prod-45", "prod-46", "prod-50", "prod-41", "prod-77"],
   # 10. Desk Organization & Cable Management
-  ["prod-48", "prod-49", "prod-47", "prod-11"],
+  ["prod-48", "prod-49", "prod-47", "prod-11", "prod-78"],
   # 11. Smart Home Climate & Lighting
-  ["prod-41", "prod-40", "prod-42", "prod-43"],
+  ["prod-41", "prod-40", "prod-42", "prod-43", "prod-75"],
   # 12. Ergonomic Lumbar & Seating
-  ["prod-44", "prod-28", "prod-9", "prod-31"]
+  ["prod-44", "prod-28", "prod-9", "prod-31", "prod-76"],
+  # 13. Gifting & Executive Desk Sets (NEW)
+  ["prod-51", "prod-46", "prod-56", "prod-78", "prod-52", "prod-80", "prod-54"],
+  # 14. International Travel Essentials (NEW)
+  ["prod-57", "prod-58", "prod-59", "prod-60", "prod-61", "prod-62", "prod-79", "prod-15"],
+  # 15. Premium Executive Tech & Workstation (NEW)
+  ["prod-64", "prod-68", "prod-70", "prod-29", "prod-51"]
 ]
 
 CUSTOMER_TYPES = [
@@ -661,15 +1031,17 @@ CUSTOMER_TYPES = [
   {"type": "tech_enthusiast", "budget_tier": "mid-range", "affinity_idx": 0},
   {"type": "mobile_professional", "budget_tier": "mid-range", "affinity_idx": 1},
   {"type": "fitness_pro", "budget_tier": "mid-range", "affinity_idx": 6},
-  {"type": "executive_premium", "budget_tier": "premium", "affinity_idx": 10},
-  {"type": "audiophile_creator", "budget_tier": "premium", "affinity_idx": 3}
+  {"type": "executive_premium", "budget_tier": "premium", "affinity_idx": 14},
+  {"type": "audiophile_creator", "budget_tier": "premium", "affinity_idx": 3},
+  {"type": "frequent_traveler", "budget_tier": "mid-range", "affinity_idx": 13},
+  {"type": "gift_shopper", "budget_tier": "mid-range", "affinity_idx": 12}
 ]
 
 def seed_database():
     Base.metadata.create_all(bind=engine)
     db = SessionLocal()
 
-    # Seed products (replace existing to update catalog to 50 items)
+    # Seed products (replace existing to update catalog to 80 items)
     db.query(Product).delete()
     for p in INITIAL_PRODUCTS:
         prod_obj = Product(
@@ -686,9 +1058,9 @@ def seed_database():
         )
         db.add(prod_obj)
     db.commit()
-    print(f"[SUCCESS] {len(INITIAL_PRODUCTS)} Products seeded successfully across 8 categories.")
+    print(f"[SUCCESS] {len(INITIAL_PRODUCTS)} Products seeded successfully across 10 categories.")
 
-    # Generate 1,000 Realistic Synthetic Orders with 12 granular affinity clusters & customer session context
+    # Generate 1,500 Realistic Synthetic Orders with 15 granular affinity clusters & customer session context
     db.query(SyntheticOrder).delete()
     random.seed(42)
     np.random.seed(42)
@@ -696,11 +1068,11 @@ def seed_database():
     orders_list = []
     all_prod_ids = [p["id"] for p in INITIAL_PRODUCTS]
 
-    for i in range(1000):
+    for i in range(1500):
         cust = random.choice(CUSTOMER_TYPES)
         order_items = set()
         
-        # 85% probability: generate order based on 12 granular affinity clusters
+        # 85% probability: generate order based on 15 granular affinity clusters
         if random.random() < 0.85:
             group_idx = cust["affinity_idx"] if random.random() < 0.70 else random.randint(0, len(AFFINITY_GROUPS) - 1)
             group = AFFINITY_GROUPS[group_idx]
@@ -730,7 +1102,7 @@ def seed_database():
         })
 
     db.commit()
-    print(f"[SUCCESS] {len(orders_list)} Synthetic Orders generated with 12 granular co-purchase affinity clusters.")
+    print(f"[SUCCESS] {len(orders_list)} Synthetic Orders generated with 15 granular co-purchase affinity clusters.")
 
     # Export to CSV for audit/versioning
     df_orders = pd.DataFrame([

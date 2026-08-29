@@ -7,39 +7,41 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: {
-          50: '#f0f4ff',
-          100: '#e0e9fe',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
-          950: '#0f172a',
-        },
-        razor: {
-          blue: '#02042b',
-          accent: '#0c2340',
-          cyan: '#00d2ff',
+        sellsense: {
+          bg: '#0b0f19',
+          surface: '#111827',
+          card: '#1f2937',
+          border: 'rgba(255, 255, 255, 0.08)',
+          indigo: '#6366f1',
+          'indigo-dark': '#4f46e5',
+          amber: '#f59e0b',
+          'amber-dark': '#d97706',
           emerald: '#10b981',
-          rose: '#f43f5e'
+          rose: '#ef4444'
         }
       },
       fontFamily: {
+        display: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       animation: {
-        'pulse-glow': 'pulseGlow 2s infinite',
-        'float': 'float 4s ease-in-out infinite',
+        'message-in': 'messageIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'slide-up': 'slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'pulse-agent': 'pulseAgent 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
       keyframes: {
-        pulseGlow: {
-          '0%, 100%': { opacity: 1, filter: 'drop-shadow(0 0 10px rgba(0, 210, 255, 0.6))' },
-          '50%': { opacity: 0.7, filter: 'drop-shadow(0 0 2px rgba(0, 210, 255, 0.2))' },
+        messageIn: {
+          '0%': { opacity: '0', transform: 'translateY(8px) scale(0.98)' },
+          '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
         },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-6px)' },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(12px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        pulseAgent: {
+          '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+          '50%': { opacity: '0.4', transform: 'scale(0.95)' },
         }
       }
     },

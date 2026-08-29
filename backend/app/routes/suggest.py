@@ -17,6 +17,7 @@ router = APIRouter(tags=["Suggestions"])
 
 class SuggestionRequest(BaseModel):
     cartItems: Optional[List[Dict[str, Any]]] = []
+    wishlistItems: Optional[List[Dict[str, Any]]] = []
     apiKey: Optional[str] = None
     sessionId: Optional[str] = None
 
@@ -44,15 +45,17 @@ async def process_suggestion_pipeline(req: SuggestionRequest, db: Session):
 
     cart_subtotal = sum(float(item.get("price", 0)) * int(item.get("quantity", 1)) for item in req.cartItems)
     cart_product_ids = [item["id"] for item in req.cartItems if "id" in item]
+    wishlist_product_ids = [item["id"] for item in (req.wishlistItems or []) if "id" in item]
 
     # Priority 4: Infer Session Budget Tier for Personalization
     inferred_tier = ml_recommender.infer_budget_tier(cart_subtotal)
 
-    # Step 1: ML Scoring (Tri-Signal ML + Light Budget-Tier Personalization Boost)
+    # Step 1: ML Scoring (Tri-Signal ML + Wishlist Personalization + Budget-Tier Boost)
     ml_candidates = ml_recommender.recommend_candidates_for_cart(
         cart_product_ids, 
         top_k=5, 
-        session_budget_tier=inferred_tier
+        session_budget_tier=inferred_tier,
+        wishlist_product_ids=wishlist_product_ids
     )
 
     # Step 2: Python AI Agent Layer (LLM Selection & Reasoning)

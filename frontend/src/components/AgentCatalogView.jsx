@@ -45,18 +45,18 @@ export default function AgentCatalogView() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
       
       {/* Top Banner */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 glass-panel p-6 rounded-3xl">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 glass-panel p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
         <div>
           <div className="flex items-center space-x-3">
-            <div className="p-2.5 rounded-2xl bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
+            <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
               <Bot className="w-6 h-6" />
             </div>
             <div>
-              <h1 className="text-2xl font-extrabold text-white">Agent-to-Agent Commerce Portal</h1>
-              <p className="text-xs text-slate-400">Machine-Readable Schema (`GET /api/catalog/agent`) &amp; Autonomous AI Buyer Simulator</p>
+              <h1 className="font-display text-xl font-extrabold text-slate-900 dark:text-white">Agent-to-Agent Commerce Portal</h1>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Machine-Readable Schema (`GET /api/catalog/agent`) &amp; Autonomous AI Buyer Simulator</p>
             </div>
           </div>
         </div>
@@ -64,40 +64,40 @@ export default function AgentCatalogView() {
         <button
           onClick={handleRunSimulation}
           disabled={runningSimulation}
-          className="flex items-center space-x-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 text-white font-bold text-xs hover:from-cyan-400 hover:to-indigo-500 transition-all shadow-lg shadow-cyan-500/20"
+          className="flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs transition-all shadow-md shadow-indigo-600/20 active:scale-95 disabled:opacity-50"
         >
-          <Play className={`w-4 h-4 fill-white ${runningSimulation ? 'animate-spin' : ''}`} />
+          <Play className={`w-3.5 h-3.5 fill-white ${runningSimulation ? 'animate-spin' : ''}`} />
           <span>{runningSimulation ? 'Running Agent Simulation...' : 'Run Autonomous AI Buyer Simulation'}</span>
         </button>
       </div>
 
       {/* Autonomous AI Buyer Simulation Result Box */}
       {simulationResult && (
-        <div className="p-6 rounded-3xl bg-slate-950 border border-cyan-500/40 space-y-4 shadow-2xl">
+        <div className="p-5 rounded-2xl bg-white dark:bg-slate-950 border border-indigo-500/30 space-y-4 shadow-xl animate-slide-up">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <div className="p-2 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+            <div className="flex items-center space-x-2.5">
+              <div className="p-1.5 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
                 <CheckCircle2 className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-extrabold text-white text-base">Autonomous Agent-to-Agent Purchase Complete</h3>
-                <p className="text-xs text-cyan-400">Order Number: {simulationResult.orderNumber}</p>
+                <h3 className="font-display font-bold text-slate-900 dark:text-white text-sm">Autonomous Agent-to-Agent Purchase Complete</h3>
+                <p className="font-mono text-xs text-indigo-600 dark:text-indigo-400">Order Number: {simulationResult.orderNumber}</p>
               </div>
             </div>
 
-            <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 font-extrabold text-xs border border-emerald-500/40">
+            <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 font-mono font-bold text-[10px] border border-emerald-500/30">
               SUCCESS
             </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
             {/* Step Trace */}
-            <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
-              <h4 className="font-bold text-white uppercase tracking-wider text-[10px]">Agent Execution Step Trace</h4>
-              <ul className="space-y-1.5 text-slate-300">
+            <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+              <h4 className="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-[10px]">Agent Execution Step Trace</h4>
+              <ul className="space-y-1.5 text-slate-700 dark:text-slate-300">
                 {simulationResult.stepTrace?.map((step, i) => (
                   <li key={i} className="flex items-start space-x-2">
-                    <span className="text-cyan-400 font-bold shrink-0">•</span>
+                    <span className="text-indigo-600 dark:text-indigo-400 font-bold shrink-0">•</span>
                     <span>{step}</span>
                   </li>
                 ))}
@@ -105,12 +105,12 @@ export default function AgentCatalogView() {
             </div>
 
             {/* Decision Summary */}
-            <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
-              <h4 className="font-bold text-white uppercase tracking-wider text-[10px]">Buyer Decision Summary</h4>
-              <div className="space-y-1 text-slate-300">
-                <p><strong className="text-slate-400">Buyer Persona:</strong> {simulationResult.persona}</p>
-                <p><strong className="text-slate-400">Product Selected:</strong> {simulationResult.chosenProduct?.title}</p>
-                <p><strong className="text-slate-400">Total Paid (Razorpay Sandbox):</strong> ₹{simulationResult.totalAmount}</p>
+            <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2">
+              <h4 className="font-bold text-slate-900 dark:text-white uppercase tracking-wider text-[10px]">Buyer Decision Summary</h4>
+              <div className="space-y-1 text-slate-700 dark:text-slate-300">
+                <p><strong className="text-slate-500 dark:text-slate-400">Buyer Persona:</strong> {simulationResult.persona}</p>
+                <p><strong className="text-slate-500 dark:text-slate-400">Product Selected:</strong> {simulationResult.chosenProduct?.title}</p>
+                <p><strong className="text-slate-500 dark:text-slate-400">Total Paid (Razorpay Sandbox):</strong> <span className="font-mono text-emerald-600 dark:text-emerald-400 font-bold">₹{simulationResult.totalAmount}</span></p>
               </div>
             </div>
           </div>
@@ -118,16 +118,16 @@ export default function AgentCatalogView() {
       )}
 
       {/* Machine-Readable JSON Schema View */}
-      <div className="glass-panel rounded-3xl border border-slate-800 overflow-hidden shadow-2xl p-6 space-y-4">
-        <div className="flex justify-between items-center pb-2 border-b border-slate-800">
+      <div className="glass-panel rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-xl p-6 space-y-4">
+        <div className="flex justify-between items-center pb-2 border-b border-slate-200 dark:border-slate-800">
           <div className="flex items-center space-x-2">
-            <Code className="w-5 h-5 text-purple-400" />
-            <h3 className="font-bold text-white text-base">GET /api/catalog/agent (Machine Schema Output)</h3>
+            <Code className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+            <h3 className="font-display font-bold text-slate-900 dark:text-white text-sm">GET /api/catalog/agent (Machine Schema Output)</h3>
           </div>
-          <span className="text-xs text-slate-400 font-mono">schema_version: 2.0-agentic</span>
+          <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">schema_version: 2.0-agentic</span>
         </div>
 
-        <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 text-xs font-mono text-cyan-300 overflow-x-auto max-h-[420px]">
+        <div className="p-4 rounded-xl bg-slate-900 text-indigo-300 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs font-mono overflow-x-auto max-h-[420px]">
           <pre>{JSON.stringify(catalogSchema, null, 2)}</pre>
         </div>
       </div>

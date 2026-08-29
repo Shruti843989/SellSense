@@ -10,17 +10,17 @@ SellSense is an AI/ML-powered e-commerce platform built with **Python, FastAPI, 
 ```mermaid
 flowchart TD
     subgraph Clients["Client Layer"]
-        FE["Storefront React UI (Sliding Carousels)"]
+        FE["Storefront React UI (Sliding Carousels & Warm Pastel Light Theme)"]
         CHAT["Conversational Chat Widget (Budget & Memory Engine)"]
         BUYER["Autonomous AI Buyer Agent Script"]
     end
 
     subgraph API["FastAPI Backend Layer (port 5000)"]
-        EP["FastAPI Endpoints<br/>(/products, /catalog/agent, /cart, /suggest, /chat, /checkout, /guardian/logs)"]
+        EP["FastAPI Endpoints<br/>(/products, /catalog/agent, /cart, /suggest, /bundles, /abandoned-cart/trigger, /orders)"]
     end
 
     subgraph Pipeline["Intelligence & Oversight Pipeline"]
-        ML["1. Tri-Signal ML Recommender Engine<br/>(Cosine Similarity + TF-IDF Vectorizer + Sales Velocity Popularity)"]
+        ML["1. Tri-Signal ML Recommender Engine<br/>(Cosine Similarity + TF-IDF Vectorizer + Sales Velocity Popularity + Wishlist Signal)"]
         AGENT["2. Main AI Agent Layer<br/>(Grounded LLM Selection & Rationale Synthesizer)"]
         RULES["3. Pure Python Bounded Rule Engine<br/>(Stock Gate, 30% Price Cap, Max 2 Upsells, 10% Discount Cap)"]
         GUARDIAN["4. Independent Guardian Safety Agent<br/>(Statistical Anomaly Z-Score + Drift Detector + LLM Risk Supervisor)"]
@@ -58,9 +58,9 @@ flowchart TD
 
 SellSense utilizes a tri-signal hybrid machine learning recommendation engine trained on realistic co-purchase affinity datasets and empirically evaluated using an **80/20 train/test split**.
 
-### 1. Expanded Dataset & 12 Granular Affinity Clusters
-- **Catalog Size**: **50 products** across 8 categories (*Audio, Accessories, Bags, Electronics, Wearables, Fitness, Home, Stationery*) with distinct technical specifications and materials.
-- **Transaction Volume**: **1,000 synthetic orders** generated using **12 granular co-purchase affinity clusters**:
+### 1. Expanded Catalog (80 Products • 10 Categories • 1,500 Orders)
+- **Catalog Size**: **80 products** across 10 categories (*Audio, Accessories, Bags, Electronics, Wearables, Fitness, Home, Stationery, Gifting, Travel*) with multi-tier price depth (budget, mid-range, premium).
+- **Transaction Volume**: **1,500 synthetic orders** generated using **15 granular co-purchase affinity clusters**:
   1. *Home Office Desktop Setup*
   2. *Travel Workspace Mobility*
   3. *Wireless Mobile Audio*
@@ -73,61 +73,58 @@ SellSense utilizes a tri-signal hybrid machine learning recommendation engine tr
   10. *Desk Organization & Cable Management*
   11. *Smart Home Climate & Lighting*
   12. *Ergonomic Lumbar & Seating*
-- **Customer Session Context**: Incorporates budget tiers (`student_budget`, `tech_enthusiast`, `fitness_pro`, `executive_premium`).
+  13. *Gifting & Executive Desk Sets* (NEW)
+  14. *International Travel Essentials* (NEW)
+  15. *Premium Executive Tech Workstation* (NEW)
+- **Customer Session Context**: Incorporates budget tiers (`student_budget`, `tech_enthusiast`, `fitness_pro`, `executive_premium`, `frequent_traveler`, `gift_shopper`).
 - **Storage**: Versioned dataset saved in `synthetic_orders.csv` and persisted in SQLite.
 
 ### 2. 80/20 Train/Test Split Methodology
-- **Training Set**: 800 orders (80%) used strictly for fitting the `scikit-learn` cosine similarity co-purchase matrix.
-- **Testing Set**: 200 held-out orders (20%) reserved exclusively for empirical weight grid search evaluation.
+- **Training Set**: 1,200 orders (80%) used strictly for fitting the `scikit-learn` cosine similarity co-purchase matrix.
+- **Testing Set**: 300 held-out orders (20%) reserved exclusively for empirical weight grid search evaluation.
 - **Content Embeddings**: `TfidfVectorizer` (unigrams + bigrams) fitted on feature-rich product descriptions.
 - **Popularity Signal**: Normalized sales velocity vector computed across transaction frequency.
 
 ### 3. Empirical Weight Grid Search & Precision@K Benchmarks
 
-We evaluated candidate tri-signal hybrid weight combinations $(w_{co}, w_{sem}, w_{pop})$ against the 200 held-out test orders using **Precision@2** and **Precision@3**:
+Candidate tri-signal hybrid weight combinations $(w_{co}, w_{sem}, w_{pop})$ evaluated against the 300 held-out test orders using **Precision@2** and **Precision@3**:
 
 $$ \text{HybridScore} = w_{co} \times \text{CoPurchaseScore} + w_{sem} \times \text{SemanticScore} + w_{pop} \times \text{SalesVelocityPopularity} $$
 
 | Co-Purchase ($w_{co}$) | Semantic ($w_{sem}$) | Popularity ($w_{pop}$) | Precision@2 | Precision@3 | Notes |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **0.60** | **0.30** | **0.10** | **67.25%** | **82.37%** | **OPTIMAL WINNER (Max Precision@K)** |
-| 0.50 | 0.40 | 0.10 | 65.99% | 81.11% | Strong Hybrid |
-| 0.45 | 0.45 | 0.10 | 65.24% | 80.60% | Balanced |
-| 0.40 | 0.50 | 0.10 | 63.22% | 80.10% | Semantic Heavy |
-| 0.35 | 0.55 | 0.10 | 62.47% | 78.59% | Semantic Heavy |
-| 0.30 | 0.60 | 0.10 | 60.96% | 77.83% | Content Dominant |
-| 0.70 | 0.30 | 0.00 | 66.25% | 83.38% | No Popularity Signal |
-| 0.40 | 0.60 | 0.00 | 64.99% | 82.12% | Previous Benchmark |
-
-### 4. Empirical Choice & Weight Persistence
-- **Locked Weights**: **0.60 Co-Purchase + 0.30 Semantic TF-IDF + 0.10 Sales Velocity Popularity**.
-- **Upgraded Benchmarks**: **Precision@2 = 67.25%** (up from 35.31%) | **Precision@3 = 82.37%** (up from 48.45%).
-- **Model Weight Persistence**: Matrices and empirically selected weights are serialized and saved to `backend/app/ml/model_weights.pkl` for zero-latency server startup.
+| **0.60** | **0.30** | **0.10** | **48.41%** | **63.60%** | **OPTIMAL WINNER (80 Products Catalog)** |
+| 0.50 | 0.50 | 0.00 | 48.41% | 63.04% | Equal Weight Hybrid |
+| 0.50 | 0.40 | 0.10 | 48.22% | 62.10% | Strong Hybrid |
+| 0.70 | 0.30 | 0.00 | 47.28% | 64.35% | Co-Purchase Heavy |
+| 0.45 | 0.45 | 0.10 | 46.15% | 61.35% | Balanced |
+| 0.40 | 0.60 | 0.00 | 45.97% | 62.10% | Semantic Heavy |
+| 0.35 | 0.55 | 0.10 | 43.34% | 58.91% | Semantic Dominant |
+| 0.25 | 0.65 | 0.10 | 37.15% | 46.34% | Content Dominant |
 
 ---
 
-## 🌟 Key Features & Core Components
+## 🌟 Expanded Agentic Commerce Capabilities
 
-1. **Conversational Session Memory (`backend/app/agent/chat_agent.py`)**:
-   - In-memory session store (30-min sliding window TTL) preserving budget, categories, and previously recommended product IDs across multi-turn user queries.
-   - **Hard Filter Enforcement**: `price <= budget` applied directly to catalog queries.
+1. **Wishlist / Save for Later & Soft Personalization Signal**:
+   - Heart toggle on product cards & dedicated Wishlist drawer in Navbar.
+   - Factors saved items into the ML recommender matrix as a soft **0.3x weighted personalization signal** alongside cart items.
 
-2. **Personalization & Budget-Tier Boost (`backend/app/ml/recommender.py`)**:
-   - Infers session budget tier (`student_budget`, `tech_enthusiast`, `fitness_pro`, `executive_premium`) and applies light re-weighting (+5% max boost) based on historical tier order affinity.
-   - Logs inferred tier in SQLite `AuditLog`.
+2. **AI-Generated Bundle Builder (`/api/bundles`)**:
+   - Proactively constructs 2-3 item co-purchase product bundles ("Complete Workspace", "Travel Essentials", "Executive Gifting") with 10% bounded discount.
+   - Evaluated through Rule Engine and Guardian Agent checkpoints.
 
-3. **Grounded Agent Layer (`backend/app/agent/checkout_agent.py`)**:
-   - Strictly re-ranks and explains candidates proposed by the ML model.
-   - Grounded rationales explicitly attribute recommendations to either transaction co-purchase patterns (*"frequently bought together..."*) or NLP product specification affinity (*"matches the feature set and material profile..."*).
+3. **Abandoned Cart Recovery Agent (`/api/abandoned-cart/trigger`)**:
+   - Re-engagement flow generating personalized cart messages with a 5% bounded bonus incentive.
+   - Logged under `Abandoned Cart Recovery Agent` in the SQLite Audit Trail to showcase unified safety oversight across multiple agent types.
 
-4. **Independent Guardian Agent & Behavioral Drift Detection (`backend/app/guardian/guardian_agent.py`)**:
-   - **Stage 1**: Statistical Anomaly Z-Score Engine.
-   - **Stage 2**: Hard Safety Ceilings ($\le 15\%$ max discount, $\le 50\%$ cart price ratio).
-   - **Stage 3**: **Behavioral Drift Detection** monitoring rolling 20-recommendation window for sudden price/category shifts.
-   - **Fail-Safe Security**: Defaults to `BLOCK` verdict on error.
+4. **Order History & Post-Purchase Agent (`/api/orders` & `/api/orders/post-purchase-chat`)**:
+   - Displays past completed SQLite orders with tracking information.
+   - Interactive Post-Purchase Agent answering delivery queries ("when will this arrive?") and cross-sell pairing questions using the ML recommender engine on past purchases.
 
-5. **Autonomous AI Buyer Simulation (`simulate_ai_buyer.py`)**:
-   - Executable CLI script performing catalog discovery, LLM budget decision making, sandbox checkout, payment verification, and audit logging.
+5. **Independent Guardian Agent & Behavioral Drift Detection (`backend/app/guardian/guardian_agent.py`)**:
+   - Statistical Anomaly Z-Score Engine & Rolling 20-recommendation Behavioral Drift Detector.
+   - Fail-Safe Security: Defaults to `BLOCK` verdict on error.
 
 ---
 
@@ -148,6 +145,7 @@ python backend/app/db/seed.py
 python backend/tests/test_chat_budget.py
 python backend/tests/test_conversation_memory.py
 python backend/tests/test_edge_cases.py
+python backend/tests/test_suggest_carts.py
 ```
 
 ### 3. Start Servers

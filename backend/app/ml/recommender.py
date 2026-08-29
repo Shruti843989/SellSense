@@ -261,11 +261,13 @@ class MLRecommenderEngine:
         self, 
         cart_product_ids: List[str], 
         top_k: int = 5,
-        session_budget_tier: Optional[str] = None
+        session_budget_tier: Optional[str] = None,
+        wishlist_product_ids: Optional[List[str]] = None
     ) -> List[Dict[str, Any]]:
         """
         Calculates tri-signal hybrid ML score + light budget-tier personalization boost (+5% max).
-        Query-level filtering enforces stock > 0 (Priority 2 Robustness).
+        Query-level filtering enforces stock > 0.
+        Wishlist items are factored in as a soft 0.3x weighted personalization signal.
         """
         if not self.is_trained:
             # Query level filtering: stock > 0
@@ -273,18 +275,30 @@ class MLRecommenderEngine:
             return [{"product": c, "co_purchase_score": 0.5, "semantic_score": 0.5, "hybrid_ml_score": 0.5, "ml_confidence_percent": 50} for c in candidates[:top_k]]
 
         cart_indices = [self.product_index_map[pid] for pid in cart_product_ids if pid in self.product_index_map]
+        wishlist_indices = [self.product_index_map[pid] for pid in (wishlist_product_ids or []) if pid in self.product_index_map]
 
         num_products = len(self.products)
         co_scores = np.zeros(num_products)
         content_scores = np.zeros(num_products)
 
-        if cart_indices:
-            for idx in cart_indices:
-                co_scores += self.co_purchase_matrix[idx]
-                content_scores += self.content_similarity_matrix[idx]
+        if cart_indices or wishlist_indices:
+            total_weight = 0.0
+            if cart_indices:
+                for idx in cart_indices:
+                    co_scores += self.co_purchase_matrix[idx]
+                    content_scores += self.content_similarity_matrix[idx]
+                total_weight += len(cart_indices)
 
-            co_scores /= len(cart_indices)
-            content_scores /= len(cart_indices)
+            # Wishlist soft signal (0.3x weight)
+            if wishlist_indices:
+                for idx in wishlist_indices:
+                    co_scores += (self.co_purchase_matrix[idx] * 0.3)
+                    content_scores += (self.content_similarity_matrix[idx] * 0.3)
+                total_weight += (len(wishlist_indices) * 0.3)
+
+            if total_weight > 0:
+                co_scores /= total_weight
+                content_scores /= total_weight
         else:
             co_scores.fill(0.3)
             content_scores.fill(0.3)
@@ -296,7 +310,7 @@ class MLRecommenderEngine:
             (self.optimal_w_pop * self.normalized_popularity)
         )
 
-        # Priority 4: Light Personalization Boost (+5% max based on inferred budget tier)
+        # Light Personalization Boost (+5% max based on inferred budget tier)
         tier_boosts = np.zeros(num_products)
         if session_budget_tier and session_budget_tier in self.tier_affinity_matrix:
             raw_tier_affinity = self.tier_affinity_matrix[session_budget_tier]
@@ -310,7 +324,7 @@ class MLRecommenderEngine:
 
         for idx, prod in enumerate(self.products):
             p_id = prod["id"]
-            # Priority 2: Filter out in-cart items and out-of-stock items (stock <= 0)
+            # Query-level filtering: Filter out in-cart items and out-of-stock items (stock <= 0)
             if p_id in cart_set or prod.get("stock", 0) <= 0:
                 continue
 

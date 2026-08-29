@@ -3,64 +3,171 @@
 @tailwind utilities;
 
 @layer base {
+  /* Warm Pastel Light Theme (Default Root) */
+  :root {
+    --bg-primary: #fdf3ea;         /* Pale Peach / Golden Hour Cream Base */
+    --bg-secondary: #fceef0;       /* Soft Blush Pink Section Background */
+    --bg-surface: #fffaf5;         /* Soft Ivory-Peach Card Surface */
+    --bg-card: #fffaf5;            /* Soft Ivory-Peach Elevated Card */
+    --bg-panel: rgba(255, 250, 245, 0.92);
+    
+    --border-subtle: #ede0d5;       /* Soft Warm Beige Divider */
+    --border-strong: #e2d1c3;       /* Deeper Beige Border */
+    
+    --text-primary: #3a2e2a;        /* Deep Warm Espresso Brown (WCAG AA Compliant) */
+    --text-secondary: #6e5d57;      /* Warm Mid-Brown Grey */
+    --text-muted: #94827b;          /* Soft Taupe Brown */
+    --text-inverse: #ffffff;
+
+    --accent-indigo: #f4795b;       /* Sunset Coral (Primary CTA / Active State) */
+    --accent-indigo-hover: #e26243; /* Deeper Sunset Coral */
+    --accent-indigo-light: rgba(244, 121, 91, 0.12);
+    
+    --accent-amber: #f5b759;        /* Soft Golden Yellow (AI Agent Reasoning Accent) */
+    --accent-amber-light: rgba(245, 183, 89, 0.15);
+    
+    --accent-rose: #e8899a;         /* Dusty Rose Pink (Highlight Header Accent) */
+    --accent-rose-light: rgba(232, 137, 154, 0.15);
+
+    --accent-emerald: #5b824b;      /* Warm Sage Green (Guardian APPROVE Verdict) */
+    --accent-emerald-light: rgba(91, 130, 75, 0.15);
+
+    --accent-block: #c85450;        /* Warm Terracotta Red (Guardian BLOCK Verdict) */
+    --accent-block-light: rgba(200, 84, 80, 0.15);
+
+    --shadow-sm: 0 2px 6px rgba(74, 58, 53, 0.04);
+    --shadow-md: 0 6px 20px -4px rgba(74, 58, 53, 0.07);
+    --shadow-lg: 0 14px 32px -6px rgba(74, 58, 53, 0.1);
+  }
+
+  /* Dark Theme (Unchanged) */
+  .dark {
+    --bg-primary: #0b0f19;
+    --bg-secondary: #111827;
+    --bg-surface: #111827;
+    --bg-card: #1f2937;
+    --bg-panel: rgba(17, 24, 39, 0.85);
+    
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.15);
+
+    --text-primary: #f9fafb;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+    --text-inverse: #0f172a;
+
+    --accent-indigo: #6366f1;
+    --accent-indigo-hover: #4f46e5;
+    --accent-indigo-light: rgba(99, 102, 241, 0.15);
+
+    --accent-amber: #f59e0b;
+    --accent-amber-light: rgba(245, 158, 11, 0.15);
+
+    --accent-rose: #e8899a;
+    --accent-rose-light: rgba(232, 137, 154, 0.15);
+
+    --accent-emerald: #10b981;
+    --accent-emerald-light: rgba(16, 185, 129, 0.15);
+
+    --accent-block: #ef4444;
+    --accent-block-light: rgba(239, 68, 68, 0.15);
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 12px 32px -8px rgba(0, 0, 0, 0.6);
+  }
+
   body {
-    @apply bg-[#0b0f19] text-slate-100 font-sans;
-    background-image: 
-      radial-gradient(at 0% 0%, rgba(12, 35, 64, 0.5) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.08) 0px, transparent 50%),
-      radial-gradient(at 50% 50%, rgba(0, 210, 255, 0.05) 0px, transparent 50%);
-    background-attachment: fixed;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, sans-serif;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    min-height: 100vh;
+  }
+
+  /* Smooth Theme Transition */
+  *, ::before, ::after {
+    transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    transition-duration: 0.2s;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
   }
 }
 
-/* Custom Glassmorphism Effect */
+/* Dynamic Glassmorphism Surface Components */
 .glass-panel {
-  background: rgba(15, 23, 42, 0.75);
+  background: var(--bg-panel);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-md);
 }
 
 .glass-card {
-  background: rgba(30, 41, 59, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.18s ease, box-shadow 0.18s ease;
 }
 
 .glass-card:hover {
-  border-color: rgba(56, 189, 248, 0.3);
-  box-shadow: 0 10px 30px -10px rgba(0, 210, 255, 0.25);
+  transform: translateY(-2px);
+  border-color: var(--accent-indigo);
+  box-shadow: var(--shadow-lg);
 }
 
-/* Glow highlights */
-.glow-cyan {
-  box-shadow: 0 0 20px -3px rgba(0, 210, 255, 0.4);
+/* Warm Section Alternating Background Utility */
+.section-blush {
+  background-color: var(--bg-secondary);
 }
 
-.glow-emerald {
-  box-shadow: 0 0 20px -3px rgba(16, 185, 129, 0.4);
+/* Agentic Thinking Indicator */
+.agent-thinking-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-amber);
+  display: inline-block;
+  animation: agentDotPulse 1.4s infinite ease-in-out both;
 }
 
-.glow-purple {
-  box-shadow: 0 0 25px -3px rgba(168, 85, 247, 0.35);
+.agent-thinking-dot:nth-child(1) { animation-delay: -0.32s; }
+.agent-thinking-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes agentDotPulse {
+  0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
+  40% { transform: scale(1); opacity: 1; }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #334155;
-  border-radius: 4px;
+  background: var(--text-muted);
+  border-radius: 3px;
+  opacity: 0.5;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: var(--text-secondary);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
