@@ -16,7 +16,7 @@ from app.guardian.guardian_agent import guardian_agent
 router = APIRouter(tags=["Suggestions"])
 
 class SuggestionRequest(BaseModel):
-    cartItems: List[Dict[str, Any]]
+    cartItems: Optional[List[Dict[str, Any]]] = []
     apiKey: Optional[str] = None
     sessionId: Optional[str] = None
 
@@ -26,16 +26,36 @@ class ActionRequest(BaseModel):
     acceptedProducts: Optional[List[Dict[str, Any]]] = []
 
 async def process_suggestion_pipeline(req: SuggestionRequest, db: Session):
+    # Priority 2 Edge Case: Handle Empty Cart gracefully
     if not req.cartItems or len(req.cartItems) == 0:
-        raise HTTPException(status_code=400, detail="Cart items array is required")
+        return {
+            "success": True,
+            "auditId": f"audit_empty_{int(time.time())}",
+            "cartSubtotal": 0.0,
+            "totalEvaluated": 0,
+            "passedCount": 0,
+            "blockedCount": 0,
+            "ruleResults": [],
+            "guardianReviews": [],
+            "approvedSuggestions": [],
+            "inferredBudgetTier": "student_budget",
+            "message": "Your cart is empty. Add products to get personalized recommendations!"
+        }
 
-    cart_subtotal = sum(float(item["price"]) * int(item.get("quantity", 1)) for item in req.cartItems)
-    cart_product_ids = [item["id"] for item in req.cartItems]
+    cart_subtotal = sum(float(item.get("price", 0)) * int(item.get("quantity", 1)) for item in req.cartItems)
+    cart_product_ids = [item["id"] for item in req.cartItems if "id" in item]
 
-    # Step 1: ML Scoring (scikit-learn Cosine Similarity + Description TF-IDF vectors)
-    ml_candidates = ml_recommender.recommend_candidates_for_cart(cart_product_ids, top_k=5)
+    # Priority 4: Infer Session Budget Tier for Personalization
+    inferred_tier = ml_recommender.infer_budget_tier(cart_subtotal)
 
-    # Step 2: Python AI Agent Layer (LLMSelection & Reasoning)
+    # Step 1: ML Scoring (Tri-Signal ML + Light Budget-Tier Personalization Boost)
+    ml_candidates = ml_recommender.recommend_candidates_for_cart(
+        cart_product_ids, 
+        top_k=5, 
+        session_budget_tier=inferred_tier
+    )
+
+    # Step 2: Python AI Agent Layer (LLM Selection & Reasoning)
     agent_candidates = await checkout_agent.select_and_explain(
         cart_items=req.cartItems,
         ml_candidates=ml_candidates,
@@ -55,7 +75,7 @@ async def process_suggestion_pipeline(req: SuggestionRequest, db: Session):
             agent_name="Upsell Checkout Agent",
             action_type="UPSELL_RECOMMENDATION",
             payload=item,
-            context={"cartSubtotal": cart_subtotal},
+            context={"cartSubtotal": cart_subtotal, "inferredTier": inferred_tier},
             api_key=req.apiKey
         )
         guardian_reviews.append({
@@ -84,6 +104,7 @@ async def process_suggestion_pipeline(req: SuggestionRequest, db: Session):
         if g_review["verdict"] != "BLOCK":
             item["guardianStatus"] = g_review["verdict"]
             item["guardianReasoning"] = g_review["reasoning"]
+            item["inferredBudgetTier"] = inferred_tier
             final_guardian_approved.append(item)
 
     # Step 5: Persist Audit Log in SQLite via SQLAlchemy
@@ -103,7 +124,8 @@ async def process_suggestion_pipeline(req: SuggestionRequest, db: Session):
                 "id": c["product"]["id"],
                 "name": c["product"]["name"],
                 "price": c["product"]["price"],
-                "ml_metrics": c["ml_metrics"]
+                "ml_metrics": c["ml_metrics"],
+                "inferred_tier": inferred_tier
             }
             for c in agent_candidates
         ]),
@@ -121,6 +143,7 @@ async def process_suggestion_pipeline(req: SuggestionRequest, db: Session):
         "success": True,
         "auditId": audit_id,
         "cartSubtotal": cart_subtotal,
+        "inferredBudgetTier": inferred_tier,
         "totalEvaluated": rule_evaluation["total_evaluated"],
         "passedCount": len(final_guardian_approved),
         "blockedCount": rule_evaluation["total_evaluated"] - len(final_guardian_approved),

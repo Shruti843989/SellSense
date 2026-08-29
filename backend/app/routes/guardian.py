@@ -13,7 +13,7 @@ from app.guardian.guardian_agent import guardian_agent
 router = APIRouter(tags=["Guardian Agent Oversight"])
 
 class MisbehaviorSimulationRequest(BaseModel):
-    simulationType: Optional[str] = "UNAUTHORIZED_DISCOUNT"  # "UNAUTHORIZED_DISCOUNT" or "BUDGET_BREACH"
+    simulationType: Optional[str] = "UNAUTHORIZED_DISCOUNT"  # "UNAUTHORIZED_DISCOUNT" or "BUDGET_BREACH" or "BEHAVIORAL_DRIFT"
     apiKey: Optional[str] = None
 
 def fetch_guardian_logs(db: Session):
@@ -45,6 +45,9 @@ def fetch_guardian_logs(db: Session):
             "isDemoSimulation": bool(l.is_demo_simulation)
         })
 
+    # Priority 6: Include Behavioral Drift Status in Guardian Metrics
+    _, _, drift_metrics = guardian_agent.check_behavioral_drift({})
+
     return {
         "success": True,
         "totalLogs": len(logs),
@@ -52,7 +55,12 @@ def fetch_guardian_logs(db: Session):
             "approvedCount": approved_cnt,
             "flaggedCount": flagged_cnt,
             "blockedCount": blocked_cnt,
-            "safetyPassRate": f"{((approved_cnt / len(logs)) * 100):.1f}%" if logs else "100.0%"
+            "safetyPassRate": f"{((approved_cnt / len(logs)) * 100):.1f}%" if logs else "100.0%",
+            "driftStatus": drift_metrics["status"],
+            "recentAvgPrice": drift_metrics["recentAvgPrice"],
+            "priceShiftPct": drift_metrics["priceShiftPct"],
+            "categoryConcentrationPct": drift_metrics["categoryConcentrationPct"],
+            "driftReason": drift_metrics["driftReason"]
         },
         "logs": logs
     }
@@ -60,14 +68,14 @@ def fetch_guardian_logs(db: Session):
 @router.get("/guardian/logs")
 def get_guardian_logs_root(db: Session = Depends(get_db)):
     """
-    GET /guardian/logs — View Guardian supervision trail & safety metrics.
+    GET /guardian/logs — View Guardian supervision trail & safety/drift metrics.
     """
     return fetch_guardian_logs(db)
 
 @router.get("/api/guardian/logs")
 def get_guardian_logs_api(db: Session = Depends(get_db)):
     """
-    GET /api/guardian/logs — API alias for Guardian supervision logs.
+    GET /api/guardian/logs — API alias for Guardian supervision logs & drift metrics.
     """
     return fetch_guardian_logs(db)
 
@@ -76,8 +84,7 @@ def get_guardian_logs_api(db: Session = Depends(get_db)):
 async def simulate_misbehaving_agent(req: MisbehaviorSimulationRequest, db: Session = Depends(get_db)):
     """
     Pitch Demo Trigger:
-    Simulates a rogue / misbehaving agent attempting an unsafe action (e.g. 25% discount or budget breach)
-    and demonstrates the Guardian Agent catching and blocking it in real time.
+    Simulates a rogue agent or behavioral price shift and demonstrates Guardian Agent catching it in real time.
     """
     sim_type = req.simulationType or "UNAUTHORIZED_DISCOUNT"
 
@@ -93,6 +100,21 @@ async def simulate_misbehaving_agent(req: MisbehaviorSimulationRequest, db: Sess
             "rationale": "Special flash discount generated autonomously by rogue main agent."
         }
         context = {"cartSubtotal": 7000.0}
+    elif sim_type == "BEHAVIORAL_DRIFT":
+        agent_name = "Drifting Upsell Agent (Simulated)"
+        action_type = "PRICE_DRIFT_SPIKE"
+        payload = {
+            "productId": "prod-1",
+            "productName": "AuraSound Pro Wireless Headphones",
+            "price": 8999.0,
+            "category": "Audio",
+            "discountPercent": 10.0,
+            "rationale": "High-value recommendation pushing price baseline upwards."
+        }
+        # Inject items to trigger drift
+        for _ in range(10):
+            guardian_agent.check_behavioral_drift({"price": 8999.0, "category": "Audio"})
+        context = {"cartSubtotal": 9000.0}
     else:
         agent_name = "Rogue AI Buyer Agent (Simulated)"
         action_type = "PERSONA_BUDGET_OVERSPEND"
@@ -103,7 +125,7 @@ async def simulate_misbehaving_agent(req: MisbehaviorSimulationRequest, db: Sess
             "discountPercent": 0.0,
             "rationale": "Buying premium audio headphones despite persona budget limit."
         }
-        context = {"cartSubtotal": 7000.0, "personaBudget": 1500.0} # Price ₹6999 > Budget ₹1500!
+        context = {"cartSubtotal": 7000.0, "personaBudget": 1500.0}
 
     # Execute Guardian Review Checkpoint
     review = await guardian_agent.review_action(
@@ -137,7 +159,7 @@ async def simulate_misbehaving_agent(req: MisbehaviorSimulationRequest, db: Sess
         "agentName": agent_name,
         "attemptedPayload": payload,
         "guardianIntervention": review,
-        "pitchDemoSummary": f"Guardian Agent caught rogue action by {agent_name} and issued verdict '{review['verdict']}' (Risk Score: {review['riskScore']}/100). Reason: {review['reasoning']}"
+        "pitchDemoSummary": f"Guardian Agent caught action by {agent_name} and issued verdict '{review['verdict']}' (Risk Score: {review['riskScore']}/100). Reason: {review['reasoning']}"
     }
 
 @router.post("/guardian/clear")

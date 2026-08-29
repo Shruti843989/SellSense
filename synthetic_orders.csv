@@ -1,401 +1,1001 @@
-order_id,products_json
-synth_ord_0001,"[""prod-8"", ""prod-6"", ""prod-1""]"
-synth_ord_0002,"[""prod-3"", ""prod-6"", ""prod-5""]"
-synth_ord_0003,"[""prod-3""]"
-synth_ord_0004,"[""prod-8"", ""prod-5"", ""prod-6""]"
-synth_ord_0005,"[""prod-19""]"
-synth_ord_0006,"[""prod-8"", ""prod-17""]"
-synth_ord_0007,"[""prod-13"", ""prod-11""]"
-synth_ord_0008,"[""prod-8"", ""prod-17"", ""prod-11""]"
-synth_ord_0009,"[""prod-11""]"
-synth_ord_0010,"[""prod-20""]"
-synth_ord_0011,"[""prod-13"", ""prod-14"", ""prod-19""]"
-synth_ord_0012,"[""prod-3""]"
-synth_ord_0013,"[""prod-13"", ""prod-21""]"
-synth_ord_0014,"[""prod-6"", ""prod-7""]"
-synth_ord_0015,"[""prod-3"", ""prod-6"", ""prod-5""]"
-synth_ord_0016,"[""prod-22"", ""prod-11""]"
-synth_ord_0017,"[""prod-25"", ""prod-27""]"
-synth_ord_0018,"[""prod-17"", ""prod-11""]"
-synth_ord_0019,"[""prod-8""]"
-synth_ord_0020,"[""prod-23""]"
-synth_ord_0021,"[""prod-29"", ""prod-30"", ""prod-28""]"
-synth_ord_0022,"[""prod-12"", ""prod-19"", ""prod-7""]"
-synth_ord_0023,"[""prod-5""]"
-synth_ord_0024,"[""prod-14""]"
-synth_ord_0025,"[""prod-25"", ""prod-24"", ""prod-23""]"
-synth_ord_0026,"[""prod-29"", ""prod-30""]"
-synth_ord_0027,"[""prod-11""]"
-synth_ord_0028,"[""prod-18"", ""prod-27"", ""prod-19""]"
-synth_ord_0029,"[""prod-10""]"
-synth_ord_0030,"[""prod-13""]"
-synth_ord_0031,"[""prod-18""]"
-synth_ord_0032,"[""prod-30"", ""prod-11""]"
-synth_ord_0033,"[""prod-3"", ""prod-5""]"
-synth_ord_0034,"[""prod-6""]"
-synth_ord_0035,"[""prod-3"", ""prod-6"", ""prod-5""]"
-synth_ord_0036,"[""prod-6"", ""prod-28""]"
-synth_ord_0037,"[""prod-13"", ""prod-14"", ""prod-19""]"
-synth_ord_0038,"[""prod-8"", ""prod-11""]"
-synth_ord_0039,"[""prod-13""]"
-synth_ord_0040,"[""prod-30""]"
-synth_ord_0041,"[""prod-3"", ""prod-6"", ""prod-5""]"
-synth_ord_0042,"[""prod-6"", ""prod-1""]"
-synth_ord_0043,"[""prod-24""]"
-synth_ord_0044,"[""prod-23""]"
-synth_ord_0045,"[""prod-22"", ""prod-7""]"
-synth_ord_0046,"[""prod-22"", ""prod-11""]"
-synth_ord_0047,"[""prod-5""]"
-synth_ord_0048,"[""prod-3""]"
-synth_ord_0049,"[""prod-23""]"
-synth_ord_0050,"[""prod-25""]"
-synth_ord_0051,"[""prod-28""]"
-synth_ord_0052,"[""prod-28""]"
-synth_ord_0053,"[""prod-28"", ""prod-14""]"
-synth_ord_0054,"[""prod-14"", ""prod-19""]"
-synth_ord_0055,"[""prod-22"", ""prod-11""]"
-synth_ord_0056,"[""prod-29"", ""prod-30"", ""prod-28""]"
-synth_ord_0057,"[""prod-19""]"
-synth_ord_0058,"[""prod-8"", ""prod-6"", ""prod-1""]"
-synth_ord_0059,"[""prod-29"", ""prod-28"", ""prod-30""]"
-synth_ord_0060,"[""prod-3""]"
-synth_ord_0061,"[""prod-14"", ""prod-19""]"
-synth_ord_0062,"[""prod-5"", ""prod-1"", ""prod-6""]"
-synth_ord_0063,"[""prod-7""]"
-synth_ord_0064,"[""prod-27"", ""prod-19""]"
-synth_ord_0065,"[""prod-25"", ""prod-24""]"
-synth_ord_0066,"[""prod-6""]"
-synth_ord_0067,"[""prod-27""]"
-synth_ord_0068,"[""prod-10"", ""prod-29""]"
-synth_ord_0069,"[""prod-29"", ""prod-30"", ""prod-28""]"
-synth_ord_0070,"[""prod-4""]"
-synth_ord_0071,"[""prod-6""]"
-synth_ord_0072,"[""prod-27"", ""prod-19""]"
-synth_ord_0073,"[""prod-18"", ""prod-19"", ""prod-30""]"
-synth_ord_0074,"[""prod-22"", ""prod-11""]"
-synth_ord_0075,"[""prod-13"", ""prod-12"", ""prod-19""]"
-synth_ord_0076,"[""prod-22""]"
-synth_ord_0077,"[""prod-13"", ""prod-12"", ""prod-7""]"
-synth_ord_0078,"[""prod-6"", ""prod-1""]"
-synth_ord_0079,"[""prod-7""]"
-synth_ord_0080,"[""prod-8"", ""prod-17"", ""prod-11""]"
-synth_ord_0081,"[""prod-26""]"
-synth_ord_0082,"[""prod-1"", ""prod-30""]"
-synth_ord_0083,"[""prod-11""]"
-synth_ord_0084,"[""prod-3"", ""prod-5""]"
-synth_ord_0085,"[""prod-25"", ""prod-23""]"
-synth_ord_0086,"[""prod-13"", ""prod-19""]"
-synth_ord_0087,"[""prod-25"", ""prod-21""]"
-synth_ord_0088,"[""prod-28"", ""prod-30""]"
-synth_ord_0089,"[""prod-9""]"
-synth_ord_0090,"[""prod-22"", ""prod-11""]"
-synth_ord_0091,"[""prod-29""]"
-synth_ord_0092,"[""prod-23"", ""prod-7""]"
-synth_ord_0093,"[""prod-29"", ""prod-28"", ""prod-30""]"
-synth_ord_0094,"[""prod-8"", ""prod-17"", ""prod-11""]"
-synth_ord_0095,"[""prod-22"", ""prod-11""]"
-synth_ord_0096,"[""prod-13"", ""prod-19""]"
-synth_ord_0097,"[""prod-13"", ""prod-19"", ""prod-12""]"
-synth_ord_0098,"[""prod-13"", ""prod-19""]"
-synth_ord_0099,"[""prod-25"", ""prod-24"", ""prod-23""]"
-synth_ord_0100,"[""prod-18"", ""prod-27"", ""prod-30""]"
-synth_ord_0101,"[""prod-14""]"
-synth_ord_0102,"[""prod-14"", ""prod-19""]"
-synth_ord_0103,"[""prod-13"", ""prod-14"", ""prod-19""]"
-synth_ord_0104,"[""prod-13"", ""prod-12"", ""prod-7""]"
-synth_ord_0105,"[""prod-28"", ""prod-30""]"
-synth_ord_0106,"[""prod-4""]"
-synth_ord_0107,"[""prod-22""]"
-synth_ord_0108,"[""prod-8"", ""prod-11""]"
-synth_ord_0109,"[""prod-18""]"
-synth_ord_0110,"[""prod-25"", ""prod-23""]"
-synth_ord_0111,"[""prod-9""]"
-synth_ord_0112,"[""prod-13"", ""prod-14""]"
-synth_ord_0113,"[""prod-13"", ""prod-19""]"
-synth_ord_0114,"[""prod-3"", ""prod-8""]"
-synth_ord_0115,"[""prod-13"", ""prod-7"", ""prod-12""]"
-synth_ord_0116,"[""prod-29"", ""prod-28""]"
-synth_ord_0117,"[""prod-22"", ""prod-11""]"
-synth_ord_0118,"[""prod-8"", ""prod-11""]"
-synth_ord_0119,"[""prod-29"", ""prod-28"", ""prod-30""]"
-synth_ord_0120,"[""prod-23""]"
-synth_ord_0121,"[""prod-11""]"
-synth_ord_0122,"[""prod-20""]"
-synth_ord_0123,"[""prod-19""]"
-synth_ord_0124,"[""prod-11""]"
-synth_ord_0125,"[""prod-18"", ""prod-27""]"
-synth_ord_0126,"[""prod-8"", ""prod-11""]"
-synth_ord_0127,"[""prod-3"", ""prod-6""]"
-synth_ord_0128,"[""prod-3"", ""prod-12""]"
-synth_ord_0129,"[""prod-21"", ""prod-1""]"
-synth_ord_0130,"[""prod-7""]"
-synth_ord_0131,"[""prod-13""]"
-synth_ord_0132,"[""prod-13"", ""prod-19""]"
-synth_ord_0133,"[""prod-6""]"
-synth_ord_0134,"[""prod-27"", ""prod-23""]"
-synth_ord_0135,"[""prod-18""]"
-synth_ord_0136,"[""prod-19""]"
-synth_ord_0137,"[""prod-13""]"
-synth_ord_0138,"[""prod-19""]"
-synth_ord_0139,"[""prod-28""]"
-synth_ord_0140,"[""prod-26""]"
-synth_ord_0141,"[""prod-12""]"
-synth_ord_0142,"[""prod-3"", ""prod-6"", ""prod-5""]"
-synth_ord_0143,"[""prod-27""]"
-synth_ord_0144,"[""prod-8"", ""prod-17"", ""prod-11""]"
-synth_ord_0145,"[""prod-29"", ""prod-30"", ""prod-28""]"
-synth_ord_0146,"[""prod-18"", ""prod-19""]"
-synth_ord_0147,"[""prod-23""]"
-synth_ord_0148,"[""prod-22"", ""prod-11""]"
-synth_ord_0149,"[""prod-6""]"
-synth_ord_0150,"[""prod-27"", ""prod-30""]"
-synth_ord_0151,"[""prod-18"", ""prod-27"", ""prod-30""]"
-synth_ord_0152,"[""prod-22"", ""prod-11""]"
-synth_ord_0153,"[""prod-25"", ""prod-24""]"
-synth_ord_0154,"[""prod-11""]"
-synth_ord_0155,"[""prod-8"", ""prod-11""]"
-synth_ord_0156,"[""prod-29"", ""prod-30""]"
-synth_ord_0157,"[""prod-18""]"
-synth_ord_0158,"[""prod-8""]"
-synth_ord_0159,"[""prod-13""]"
-synth_ord_0160,"[""prod-18"", ""prod-27"", ""prod-30""]"
-synth_ord_0161,"[""prod-11""]"
-synth_ord_0162,"[""prod-29""]"
-synth_ord_0163,"[""prod-8"", ""prod-6"", ""prod-1""]"
-synth_ord_0164,"[""prod-25""]"
-synth_ord_0165,"[""prod-24"", ""prod-23""]"
-synth_ord_0166,"[""prod-8"", ""prod-1""]"
-synth_ord_0167,"[""prod-13""]"
-synth_ord_0168,"[""prod-5""]"
-synth_ord_0169,"[""prod-8"", ""prod-10""]"
-synth_ord_0170,"[""prod-11""]"
-synth_ord_0171,"[""prod-23"", ""prod-24""]"
-synth_ord_0172,"[""prod-8"", ""prod-6"", ""prod-1""]"
-synth_ord_0173,"[""prod-3""]"
-synth_ord_0174,"[""prod-3""]"
-synth_ord_0175,"[""prod-25"", ""prod-24""]"
-synth_ord_0176,"[""prod-18"", ""prod-27"", ""prod-30""]"
-synth_ord_0177,"[""prod-26""]"
-synth_ord_0178,"[""prod-14"", ""prod-19""]"
-synth_ord_0179,"[""prod-18""]"
-synth_ord_0180,"[""prod-18"", ""prod-27"", ""prod-19""]"
-synth_ord_0181,"[""prod-27"", ""prod-19"", ""prod-30""]"
-synth_ord_0182,"[""prod-8"", ""prod-6""]"
-synth_ord_0183,"[""prod-6""]"
-synth_ord_0184,"[""prod-19""]"
-synth_ord_0185,"[""prod-18"", ""prod-19"", ""prod-30""]"
-synth_ord_0186,"[""prod-25"", ""prod-23""]"
-synth_ord_0187,"[""prod-23""]"
-synth_ord_0188,"[""prod-8"", ""prod-17""]"
-synth_ord_0189,"[""prod-11""]"
-synth_ord_0190,"[""prod-11""]"
-synth_ord_0191,"[""prod-18"", ""prod-19""]"
-synth_ord_0192,"[""prod-27""]"
-synth_ord_0193,"[""prod-29"", ""prod-28""]"
-synth_ord_0194,"[""prod-8"", ""prod-17"", ""prod-11""]"
-synth_ord_0195,"[""prod-29""]"
-synth_ord_0196,"[""prod-25""]"
-synth_ord_0197,"[""prod-20""]"
-synth_ord_0198,"[""prod-18"", ""prod-27"", ""prod-19""]"
-synth_ord_0199,"[""prod-3"", ""prod-6""]"
-synth_ord_0200,"[""prod-27"", ""prod-19"", ""prod-30""]"
-synth_ord_0201,"[""prod-8""]"
-synth_ord_0202,"[""prod-13"", ""prod-14"", ""prod-19""]"
-synth_ord_0203,"[""prod-22"", ""prod-11""]"
-synth_ord_0204,"[""prod-18"", ""prod-19"", ""prod-30""]"
-synth_ord_0205,"[""prod-8"", ""prod-11""]"
-synth_ord_0206,"[""prod-8""]"
-synth_ord_0207,"[""prod-11""]"
-synth_ord_0208,"[""prod-24"", ""prod-23"", ""prod-25""]"
-synth_ord_0209,"[""prod-6""]"
-synth_ord_0210,"[""prod-28""]"
-synth_ord_0211,"[""prod-24""]"
-synth_ord_0212,"[""prod-7""]"
-synth_ord_0213,"[""prod-9"", ""prod-23""]"
-synth_ord_0214,"[""prod-6"", ""prod-5""]"
-synth_ord_0215,"[""prod-21""]"
-synth_ord_0216,"[""prod-28""]"
-synth_ord_0217,"[""prod-13"", ""prod-14"", ""prod-19""]"
-synth_ord_0218,"[""prod-22""]"
-synth_ord_0219,"[""prod-18""]"
-synth_ord_0220,"[""prod-6"", ""prod-5""]"
-synth_ord_0221,"[""prod-13"", ""prod-14"", ""prod-19""]"
-synth_ord_0222,"[""prod-11""]"
-synth_ord_0223,"[""prod-21"", ""prod-5""]"
-synth_ord_0224,"[""prod-18"", ""prod-27"", ""prod-19""]"
-synth_ord_0225,"[""prod-7""]"
-synth_ord_0226,"[""prod-14"", ""prod-19""]"
-synth_ord_0227,"[""prod-25"", ""prod-23""]"
-synth_ord_0228,"[""prod-4"", ""prod-19""]"
-synth_ord_0229,"[""prod-18"", ""prod-27"", ""prod-19""]"
-synth_ord_0230,"[""prod-8"", ""prod-5"", ""prod-1""]"
-synth_ord_0231,"[""prod-8""]"
-synth_ord_0232,"[""prod-18"", ""prod-27"", ""prod-19""]"
-synth_ord_0233,"[""prod-26"", ""prod-21""]"
-synth_ord_0234,"[""prod-8"", ""prod-17"", ""prod-11""]"
-synth_ord_0235,"[""prod-22""]"
-synth_ord_0236,"[""prod-29"", ""prod-30""]"
-synth_ord_0237,"[""prod-9""]"
-synth_ord_0238,"[""prod-26"", ""prod-28""]"
-synth_ord_0239,"[""prod-3"", ""prod-6""]"
-synth_ord_0240,"[""prod-8""]"
-synth_ord_0241,"[""prod-22"", ""prod-11""]"
-synth_ord_0242,"[""prod-29""]"
-synth_ord_0243,"[""prod-27"", ""prod-19"", ""prod-30""]"
-synth_ord_0244,"[""prod-13"", ""prod-14""]"
-synth_ord_0245,"[""prod-8""]"
-synth_ord_0246,"[""prod-24"", ""prod-23"", ""prod-25""]"
-synth_ord_0247,"[""prod-8"", ""prod-1""]"
-synth_ord_0248,"[""prod-29""]"
-synth_ord_0249,"[""prod-28"", ""prod-30""]"
-synth_ord_0250,"[""prod-21"", ""prod-16""]"
-synth_ord_0251,"[""prod-27""]"
-synth_ord_0252,"[""prod-23""]"
-synth_ord_0253,"[""prod-8"", ""prod-17"", ""prod-11""]"
-synth_ord_0254,"[""prod-13""]"
-synth_ord_0255,"[""prod-13"", ""prod-14"", ""prod-19""]"
-synth_ord_0256,"[""prod-8""]"
-synth_ord_0257,"[""prod-25"", ""prod-7""]"
-synth_ord_0258,"[""prod-13""]"
-synth_ord_0259,"[""prod-26""]"
-synth_ord_0260,"[""prod-19""]"
-synth_ord_0261,"[""prod-4""]"
-synth_ord_0262,"[""prod-5"", ""prod-6""]"
-synth_ord_0263,"[""prod-12"", ""prod-7""]"
-synth_ord_0264,"[""prod-30""]"
-synth_ord_0265,"[""prod-25"", ""prod-24""]"
-synth_ord_0266,"[""prod-13"", ""prod-14"", ""prod-19""]"
-synth_ord_0267,"[""prod-8""]"
-synth_ord_0268,"[""prod-14""]"
-synth_ord_0269,"[""prod-25""]"
-synth_ord_0270,"[""prod-13""]"
-synth_ord_0271,"[""prod-29"", ""prod-30"", ""prod-28""]"
-synth_ord_0272,"[""prod-22""]"
-synth_ord_0273,"[""prod-21""]"
-synth_ord_0274,"[""prod-13"", ""prod-14""]"
-synth_ord_0275,"[""prod-25"", ""prod-23""]"
-synth_ord_0276,"[""prod-8"", ""prod-17"", ""prod-11""]"
-synth_ord_0277,"[""prod-25""]"
-synth_ord_0278,"[""prod-3""]"
-synth_ord_0279,"[""prod-8""]"
-synth_ord_0280,"[""prod-29"", ""prod-30"", ""prod-28""]"
-synth_ord_0281,"[""prod-11""]"
-synth_ord_0282,"[""prod-8""]"
-synth_ord_0283,"[""prod-12"", ""prod-19"", ""prod-7""]"
-synth_ord_0284,"[""prod-29"", ""prod-28""]"
-synth_ord_0285,"[""prod-11""]"
-synth_ord_0286,"[""prod-27"", ""prod-19"", ""prod-30""]"
-synth_ord_0287,"[""prod-12"", ""prod-19"", ""prod-7""]"
-synth_ord_0288,"[""prod-5""]"
-synth_ord_0289,"[""prod-25"", ""prod-23""]"
-synth_ord_0290,"[""prod-8"", ""prod-17"", ""prod-11""]"
-synth_ord_0291,"[""prod-5"", ""prod-1"", ""prod-6""]"
-synth_ord_0292,"[""prod-24"", ""prod-23"", ""prod-25""]"
-synth_ord_0293,"[""prod-29""]"
-synth_ord_0294,"[""prod-27"", ""prod-19"", ""prod-30""]"
-synth_ord_0295,"[""prod-22""]"
-synth_ord_0296,"[""prod-13""]"
-synth_ord_0297,"[""prod-5""]"
-synth_ord_0298,"[""prod-7""]"
-synth_ord_0299,"[""prod-13"", ""prod-14"", ""prod-19""]"
-synth_ord_0300,"[""prod-5"", ""prod-1""]"
-synth_ord_0301,"[""prod-28"", ""prod-14""]"
-synth_ord_0302,"[""prod-22"", ""prod-11""]"
-synth_ord_0303,"[""prod-8""]"
-synth_ord_0304,"[""prod-11""]"
-synth_ord_0305,"[""prod-8""]"
-synth_ord_0306,"[""prod-5"", ""prod-6""]"
-synth_ord_0307,"[""prod-12""]"
-synth_ord_0308,"[""prod-13"", ""prod-14""]"
-synth_ord_0309,"[""prod-13"", ""prod-12""]"
-synth_ord_0310,"[""prod-6""]"
-synth_ord_0311,"[""prod-25"", ""prod-23"", ""prod-24""]"
-synth_ord_0312,"[""prod-5"", ""prod-6""]"
-synth_ord_0313,"[""prod-19"", ""prod-17""]"
-synth_ord_0314,"[""prod-25"", ""prod-24""]"
-synth_ord_0315,"[""prod-18""]"
-synth_ord_0316,"[""prod-29"", ""prod-28""]"
-synth_ord_0317,"[""prod-13"", ""prod-19""]"
-synth_ord_0318,"[""prod-5"", ""prod-1""]"
-synth_ord_0319,"[""prod-3""]"
-synth_ord_0320,"[""prod-13"", ""prod-14"", ""prod-19""]"
-synth_ord_0321,"[""prod-19"", ""prod-30""]"
-synth_ord_0322,"[""prod-6"", ""prod-1"", ""prod-5""]"
-synth_ord_0323,"[""prod-22"", ""prod-11""]"
-synth_ord_0324,"[""prod-19"", ""prod-7""]"
-synth_ord_0325,"[""prod-22""]"
-synth_ord_0326,"[""prod-22"", ""prod-11""]"
-synth_ord_0327,"[""prod-22"", ""prod-11""]"
-synth_ord_0328,"[""prod-13"", ""prod-14""]"
-synth_ord_0329,"[""prod-12""]"
-synth_ord_0330,"[""prod-3"", ""prod-6"", ""prod-5""]"
-synth_ord_0331,"[""prod-13"", ""prod-20""]"
-synth_ord_0332,"[""prod-13"", ""prod-19"", ""prod-7""]"
-synth_ord_0333,"[""prod-8"", ""prod-17"", ""prod-11""]"
-synth_ord_0334,"[""prod-24""]"
-synth_ord_0335,"[""prod-23""]"
-synth_ord_0336,"[""prod-24"", ""prod-23""]"
-synth_ord_0337,"[""prod-22""]"
-synth_ord_0338,"[""prod-5""]"
-synth_ord_0339,"[""prod-25"", ""prod-24""]"
-synth_ord_0340,"[""prod-29""]"
-synth_ord_0341,"[""prod-19"", ""prod-7""]"
-synth_ord_0342,"[""prod-22""]"
-synth_ord_0343,"[""prod-29"", ""prod-1""]"
-synth_ord_0344,"[""prod-22"", ""prod-11""]"
-synth_ord_0345,"[""prod-12"", ""prod-11""]"
-synth_ord_0346,"[""prod-27""]"
-synth_ord_0347,"[""prod-12""]"
-synth_ord_0348,"[""prod-25"", ""prod-24"", ""prod-23""]"
-synth_ord_0349,"[""prod-5""]"
-synth_ord_0350,"[""prod-13"", ""prod-12"", ""prod-7""]"
-synth_ord_0351,"[""prod-3""]"
-synth_ord_0352,"[""prod-25""]"
-synth_ord_0353,"[""prod-16""]"
-synth_ord_0354,"[""prod-29"", ""prod-28"", ""prod-30""]"
-synth_ord_0355,"[""prod-8""]"
-synth_ord_0356,"[""prod-3"", ""prod-5"", ""prod-6""]"
-synth_ord_0357,"[""prod-24""]"
-synth_ord_0358,"[""prod-8"", ""prod-17""]"
-synth_ord_0359,"[""prod-3"", ""prod-6""]"
-synth_ord_0360,"[""prod-24""]"
-synth_ord_0361,"[""prod-8"", ""prod-17"", ""prod-11""]"
-synth_ord_0362,"[""prod-16""]"
-synth_ord_0363,"[""prod-3""]"
-synth_ord_0364,"[""prod-2""]"
-synth_ord_0365,"[""prod-29"", ""prod-30""]"
-synth_ord_0366,"[""prod-22"", ""prod-11""]"
-synth_ord_0367,"[""prod-28"", ""prod-7""]"
-synth_ord_0368,"[""prod-28""]"
-synth_ord_0369,"[""prod-8"", ""prod-11""]"
-synth_ord_0370,"[""prod-13"", ""prod-6""]"
-synth_ord_0371,"[""prod-23"", ""prod-24""]"
-synth_ord_0372,"[""prod-24""]"
-synth_ord_0373,"[""prod-13"", ""prod-19"", ""prod-12""]"
-synth_ord_0374,"[""prod-27"", ""prod-30""]"
-synth_ord_0375,"[""prod-13"", ""prod-19"", ""prod-7""]"
-synth_ord_0376,"[""prod-8"", ""prod-17"", ""prod-11""]"
-synth_ord_0377,"[""prod-22"", ""prod-11""]"
-synth_ord_0378,"[""prod-25""]"
-synth_ord_0379,"[""prod-17"", ""prod-11""]"
-synth_ord_0380,"[""prod-24"", ""prod-23""]"
-synth_ord_0381,"[""prod-12"", ""prod-19""]"
-synth_ord_0382,"[""prod-18""]"
-synth_ord_0383,"[""prod-19"", ""prod-7""]"
-synth_ord_0384,"[""prod-18"", ""prod-19"", ""prod-30""]"
-synth_ord_0385,"[""prod-25""]"
-synth_ord_0386,"[""prod-3"", ""prod-5""]"
-synth_ord_0387,"[""prod-26""]"
-synth_ord_0388,"[""prod-11""]"
-synth_ord_0389,"[""prod-29"", ""prod-30"", ""prod-28""]"
-synth_ord_0390,"[""prod-13"", ""prod-12""]"
-synth_ord_0391,"[""prod-26""]"
-synth_ord_0392,"[""prod-8"", ""prod-17"", ""prod-11""]"
-synth_ord_0393,"[""prod-18"", ""prod-29""]"
-synth_ord_0394,"[""prod-27"", ""prod-30""]"
-synth_ord_0395,"[""prod-22""]"
-synth_ord_0396,"[""prod-21"", ""prod-15""]"
-synth_ord_0397,"[""prod-8""]"
-synth_ord_0398,"[""prod-7""]"
-synth_ord_0399,"[""prod-5""]"
-synth_ord_0400,"[""prod-13"", ""prod-7""]"
+order_id,products_json,customer_type,budget_tier
+synth_ord_0001,"[""prod-1"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0002,"[""prod-6""]",audiophile_creator,premium
+synth_ord_0003,"[""prod-50"", ""prod-45""]",student_budget,budget
+synth_ord_0004,"[""prod-18"", ""prod-38""]",tech_enthusiast,mid-range
+synth_ord_0005,"[""prod-45"", ""prod-50""]",student_budget,budget
+synth_ord_0006,"[""prod-25"", ""prod-22""]",tech_enthusiast,mid-range
+synth_ord_0007,"[""prod-50"", ""prod-45""]",student_budget,budget
+synth_ord_0008,"[""prod-38""]",fitness_pro,mid-range
+synth_ord_0009,"[""prod-48""]",audiophile_creator,premium
+synth_ord_0010,"[""prod-15"", ""prod-16"", ""prod-14""]",student_budget,budget
+synth_ord_0011,"[""prod-35"", ""prod-38""]",fitness_pro,mid-range
+synth_ord_0012,"[""prod-42"", ""prod-41""]",audiophile_creator,premium
+synth_ord_0013,"[""prod-23"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0014,"[""prod-23"", ""prod-9""]",audiophile_creator,premium
+synth_ord_0015,"[""prod-35"", ""prod-38"", ""prod-18"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0016,"[""prod-42"", ""prod-17""]",fitness_pro,mid-range
+synth_ord_0017,"[""prod-27"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0018,"[""prod-42"", ""prod-40"", ""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0019,"[""prod-18"", ""prod-37""]",tech_enthusiast,mid-range
+synth_ord_0020,"[""prod-36"", ""prod-34""]",executive_premium,premium
+synth_ord_0021,"[""prod-46"", ""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0022,"[""prod-50""]",student_budget,budget
+synth_ord_0023,"[""prod-42""]",executive_premium,premium
+synth_ord_0024,"[""prod-1"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0025,"[""prod-2"", ""prod-39""]",executive_premium,premium
+synth_ord_0026,"[""prod-16"", ""prod-20""]",student_budget,budget
+synth_ord_0027,"[""prod-6""]",executive_premium,premium
+synth_ord_0028,"[""prod-35""]",student_budget,budget
+synth_ord_0029,"[""prod-3"", ""prod-8""]",tech_enthusiast,mid-range
+synth_ord_0030,"[""prod-42"", ""prod-40"", ""prod-43""]",executive_premium,premium
+synth_ord_0031,"[""prod-15"", ""prod-29""]",fitness_pro,mid-range
+synth_ord_0032,"[""prod-46"", ""prod-45""]",student_budget,budget
+synth_ord_0033,"[""prod-45""]",student_budget,budget
+synth_ord_0034,"[""prod-15"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0035,"[""prod-37""]",audiophile_creator,premium
+synth_ord_0036,"[""prod-25""]",tech_enthusiast,mid-range
+synth_ord_0037,"[""prod-15"", ""prod-16"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0038,"[""prod-25""]",audiophile_creator,premium
+synth_ord_0039,"[""prod-9"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0040,"[""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0041,"[""prod-9"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0042,"[""prod-14"", ""prod-8"", ""prod-7"", ""prod-10""]",tech_enthusiast,mid-range
+synth_ord_0043,"[""prod-27""]",tech_enthusiast,mid-range
+synth_ord_0044,"[""prod-46"", ""prod-45""]",student_budget,budget
+synth_ord_0045,"[""prod-40"", ""prod-43""]",executive_premium,premium
+synth_ord_0046,"[""prod-39"", ""prod-37""]",student_budget,budget
+synth_ord_0047,"[""prod-46"", ""prod-50""]",student_budget,budget
+synth_ord_0048,"[""prod-23"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0049,"[""prod-20""]",fitness_pro,mid-range
+synth_ord_0050,"[""prod-5""]",executive_premium,premium
+synth_ord_0051,"[""prod-16"", ""prod-26"", ""prod-20""]",executive_premium,premium
+synth_ord_0052,"[""prod-47"", ""prod-49"", ""prod-11"", ""prod-48""]",fitness_pro,mid-range
+synth_ord_0053,"[""prod-9"", ""prod-28""]",tech_enthusiast,mid-range
+synth_ord_0054,"[""prod-43"", ""prod-42""]",executive_premium,premium
+synth_ord_0055,"[""prod-47""]",fitness_pro,mid-range
+synth_ord_0056,"[""prod-26""]",mobile_professional,mid-range
+synth_ord_0057,"[""prod-9"", ""prod-27""]",tech_enthusiast,mid-range
+synth_ord_0058,"[""prod-45""]",student_budget,budget
+synth_ord_0059,"[""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0060,"[""prod-23"", ""prod-27"", ""prod-24""]",student_budget,budget
+synth_ord_0061,"[""prod-46"", ""prod-50"", ""prod-45""]",student_budget,budget
+synth_ord_0062,"[""prod-2"", ""prod-22""]",tech_enthusiast,mid-range
+synth_ord_0063,"[""prod-6"", ""prod-5""]",fitness_pro,mid-range
+synth_ord_0064,"[""prod-15"", ""prod-30""]",student_budget,budget
+synth_ord_0065,"[""prod-25"", ""prod-6""]",mobile_professional,mid-range
+synth_ord_0066,"[""prod-26"", ""prod-14"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0067,"[""prod-40"", ""prod-42"", ""prod-41""]",executive_premium,premium
+synth_ord_0068,"[""prod-46"", ""prod-45"", ""prod-50""]",student_budget,budget
+synth_ord_0069,"[""prod-46"", ""prod-13""]",fitness_pro,mid-range
+synth_ord_0070,"[""prod-46"", ""prod-41""]",fitness_pro,mid-range
+synth_ord_0071,"[""prod-36"", ""prod-38""]",fitness_pro,mid-range
+synth_ord_0072,"[""prod-33"", ""prod-27""]",audiophile_creator,premium
+synth_ord_0073,"[""prod-14""]",mobile_professional,mid-range
+synth_ord_0074,"[""prod-44""]",audiophile_creator,premium
+synth_ord_0075,"[""prod-23"", ""prod-9""]",tech_enthusiast,mid-range
+synth_ord_0076,"[""prod-49"", ""prod-11""]",mobile_professional,mid-range
+synth_ord_0077,"[""prod-36"", ""prod-35"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0078,"[""prod-40""]",executive_premium,premium
+synth_ord_0079,"[""prod-1""]",audiophile_creator,premium
+synth_ord_0080,"[""prod-34"", ""prod-22""]",fitness_pro,mid-range
+synth_ord_0081,"[""prod-25"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0082,"[""prod-9"", ""prod-44""]",fitness_pro,mid-range
+synth_ord_0083,"[""prod-30"", ""prod-8""]",tech_enthusiast,mid-range
+synth_ord_0084,"[""prod-1"", ""prod-25""]",audiophile_creator,premium
+synth_ord_0085,"[""prod-28""]",audiophile_creator,premium
+synth_ord_0086,"[""prod-40"", ""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0087,"[""prod-30"", ""prod-13""]",audiophile_creator,premium
+synth_ord_0088,"[""prod-45"", ""prod-41""]",student_budget,budget
+synth_ord_0089,"[""prod-9"", ""prod-24"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0090,"[""prod-14"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0091,"[""prod-2""]",executive_premium,premium
+synth_ord_0092,"[""prod-40"", ""prod-43""]",executive_premium,premium
+synth_ord_0093,"[""prod-40"", ""prod-43""]",executive_premium,premium
+synth_ord_0094,"[""prod-24"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0095,"[""prod-40""]",fitness_pro,mid-range
+synth_ord_0096,"[""prod-37""]",fitness_pro,mid-range
+synth_ord_0097,"[""prod-12"", ""prod-25""]",tech_enthusiast,mid-range
+synth_ord_0098,"[""prod-15"", ""prod-26"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0099,"[""prod-16"", ""prod-26"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0100,"[""prod-9"", ""prod-27"", ""prod-24""]",audiophile_creator,premium
+synth_ord_0101,"[""prod-40"", ""prod-43""]",executive_premium,premium
+synth_ord_0102,"[""prod-25"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0103,"[""prod-14"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0104,"[""prod-25"", ""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0105,"[""prod-1"", ""prod-25"", ""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0106,"[""prod-46"", ""prod-45"", ""prod-41""]",student_budget,budget
+synth_ord_0107,"[""prod-28""]",mobile_professional,mid-range
+synth_ord_0108,"[""prod-25"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0109,"[""prod-36"", ""prod-35""]",fitness_pro,mid-range
+synth_ord_0110,"[""prod-16""]",mobile_professional,mid-range
+synth_ord_0111,"[""prod-42""]",executive_premium,premium
+synth_ord_0112,"[""prod-23"", ""prod-27""]",tech_enthusiast,mid-range
+synth_ord_0113,"[""prod-14"", ""prod-20""]",executive_premium,premium
+synth_ord_0114,"[""prod-40"", ""prod-43""]",executive_premium,premium
+synth_ord_0115,"[""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0116,"[""prod-40"", ""prod-42""]",executive_premium,premium
+synth_ord_0117,"[""prod-25"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0118,"[""prod-28""]",student_budget,budget
+synth_ord_0119,"[""prod-45"", ""prod-41""]",audiophile_creator,premium
+synth_ord_0120,"[""prod-20""]",mobile_professional,mid-range
+synth_ord_0121,"[""prod-46"", ""prod-50""]",tech_enthusiast,mid-range
+synth_ord_0122,"[""prod-18"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0123,"[""prod-15"", ""prod-16"", ""prod-14"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0124,"[""prod-35""]",fitness_pro,mid-range
+synth_ord_0125,"[""prod-6""]",executive_premium,premium
+synth_ord_0126,"[""prod-46"", ""prod-50""]",student_budget,budget
+synth_ord_0127,"[""prod-38"", ""prod-18"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0128,"[""prod-15"", ""prod-16"", ""prod-14"", ""prod-20""]",executive_premium,premium
+synth_ord_0129,"[""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0130,"[""prod-38""]",fitness_pro,mid-range
+synth_ord_0131,"[""prod-15"", ""prod-26""]",audiophile_creator,premium
+synth_ord_0132,"[""prod-38""]",fitness_pro,mid-range
+synth_ord_0133,"[""prod-23"", ""prod-27""]",tech_enthusiast,mid-range
+synth_ord_0134,"[""prod-38"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0135,"[""prod-38"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0136,"[""prod-47"", ""prod-48""]",student_budget,budget
+synth_ord_0137,"[""prod-1"", ""prod-8""]",mobile_professional,mid-range
+synth_ord_0138,"[""prod-28""]",tech_enthusiast,mid-range
+synth_ord_0139,"[""prod-31"", ""prod-22""]",fitness_pro,mid-range
+synth_ord_0140,"[""prod-2"", ""prod-7""]",mobile_professional,mid-range
+synth_ord_0141,"[""prod-49""]",audiophile_creator,premium
+synth_ord_0142,"[""prod-37""]",fitness_pro,mid-range
+synth_ord_0143,"[""prod-40"", ""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0144,"[""prod-9"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0145,"[""prod-9"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0146,"[""prod-39""]",student_budget,budget
+synth_ord_0147,"[""prod-25"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0148,"[""prod-46"", ""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0149,"[""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0150,"[""prod-35"", ""prod-18"", ""prod-36"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0151,"[""prod-14"", ""prod-8"", ""prod-10""]",fitness_pro,mid-range
+synth_ord_0152,"[""prod-42"", ""prod-40"", ""prod-43""]",executive_premium,premium
+synth_ord_0153,"[""prod-35"", ""prod-38""]",mobile_professional,mid-range
+synth_ord_0154,"[""prod-25"", ""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0155,"[""prod-35"", ""prod-37""]",audiophile_creator,premium
+synth_ord_0156,"[""prod-2"", ""prod-12"", ""prod-7""]",student_budget,budget
+synth_ord_0157,"[""prod-46"", ""prod-45""]",student_budget,budget
+synth_ord_0158,"[""prod-36"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0159,"[""prod-35"", ""prod-21""]",mobile_professional,mid-range
+synth_ord_0160,"[""prod-45""]",audiophile_creator,premium
+synth_ord_0161,"[""prod-1"", ""prod-25"", ""prod-5""]",tech_enthusiast,mid-range
+synth_ord_0162,"[""prod-38""]",fitness_pro,mid-range
+synth_ord_0163,"[""prod-41""]",student_budget,budget
+synth_ord_0164,"[""prod-43""]",executive_premium,premium
+synth_ord_0165,"[""prod-40"", ""prod-43""]",executive_premium,premium
+synth_ord_0166,"[""prod-25""]",audiophile_creator,premium
+synth_ord_0167,"[""prod-26"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0168,"[""prod-45"", ""prod-20""]",audiophile_creator,premium
+synth_ord_0169,"[""prod-31"", ""prod-25""]",tech_enthusiast,mid-range
+synth_ord_0170,"[""prod-42"", ""prod-41""]",executive_premium,premium
+synth_ord_0171,"[""prod-36"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0172,"[""prod-15"", ""prod-26"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0173,"[""prod-40"", ""prod-42""]",mobile_professional,mid-range
+synth_ord_0174,"[""prod-29"", ""prod-42""]",student_budget,budget
+synth_ord_0175,"[""prod-16"", ""prod-26"", ""prod-14"", ""prod-20""]",student_budget,budget
+synth_ord_0176,"[""prod-12"", ""prod-19""]",tech_enthusiast,mid-range
+synth_ord_0177,"[""prod-31""]",mobile_professional,mid-range
+synth_ord_0178,"[""prod-16""]",mobile_professional,mid-range
+synth_ord_0179,"[""prod-23"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0180,"[""prod-46"", ""prod-41""]",student_budget,budget
+synth_ord_0181,"[""prod-1"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0182,"[""prod-1"", ""prod-25"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0183,"[""prod-31"", ""prod-44""]",audiophile_creator,premium
+synth_ord_0184,"[""prod-23"", ""prod-9"", ""prod-27"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0185,"[""prod-18"", ""prod-38"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0186,"[""prod-43""]",audiophile_creator,premium
+synth_ord_0187,"[""prod-24"", ""prod-47""]",executive_premium,premium
+synth_ord_0188,"[""prod-44"", ""prod-24""]",fitness_pro,mid-range
+synth_ord_0189,"[""prod-19""]",mobile_professional,mid-range
+synth_ord_0190,"[""prod-14"", ""prod-30""]",tech_enthusiast,mid-range
+synth_ord_0191,"[""prod-23"", ""prod-27"", ""prod-24""]",audiophile_creator,premium
+synth_ord_0192,"[""prod-25"", ""prod-6""]",tech_enthusiast,mid-range
+synth_ord_0193,"[""prod-27"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0194,"[""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0195,"[""prod-49"", ""prod-11""]",student_budget,budget
+synth_ord_0196,"[""prod-45""]",student_budget,budget
+synth_ord_0197,"[""prod-35"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0198,"[""prod-42"", ""prod-43""]",executive_premium,premium
+synth_ord_0199,"[""prod-46"", ""prod-45""]",student_budget,budget
+synth_ord_0200,"[""prod-5""]",audiophile_creator,premium
+synth_ord_0201,"[""prod-26"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0202,"[""prod-34"", ""prod-33""]",fitness_pro,mid-range
+synth_ord_0203,"[""prod-15"", ""prod-14"", ""prod-20""]",executive_premium,premium
+synth_ord_0204,"[""prod-30"", ""prod-27""]",fitness_pro,mid-range
+synth_ord_0205,"[""prod-38"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0206,"[""prod-9""]",tech_enthusiast,mid-range
+synth_ord_0207,"[""prod-12"", ""prod-7"", ""prod-19""]",student_budget,budget
+synth_ord_0208,"[""prod-1"", ""prod-25""]",audiophile_creator,premium
+synth_ord_0209,"[""prod-39"", ""prod-7""]",student_budget,budget
+synth_ord_0210,"[""prod-40"", ""prod-41""]",executive_premium,premium
+synth_ord_0211,"[""prod-11"", ""prod-47""]",executive_premium,premium
+synth_ord_0212,"[""prod-42""]",executive_premium,premium
+synth_ord_0213,"[""prod-8"", ""prod-14"", ""prod-7"", ""prod-10""]",student_budget,budget
+synth_ord_0214,"[""prod-42"", ""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0215,"[""prod-36"", ""prod-38""]",fitness_pro,mid-range
+synth_ord_0216,"[""prod-23"", ""prod-47""]",student_budget,budget
+synth_ord_0217,"[""prod-1"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0218,"[""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0219,"[""prod-1"", ""prod-25"", ""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0220,"[""prod-8"", ""prod-7""]",tech_enthusiast,mid-range
+synth_ord_0221,"[""prod-1"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0222,"[""prod-16"", ""prod-14""]",executive_premium,premium
+synth_ord_0223,"[""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0224,"[""prod-36""]",fitness_pro,mid-range
+synth_ord_0225,"[""prod-29"", ""prod-30"", ""prod-22""]",mobile_professional,mid-range
+synth_ord_0226,"[""prod-46"", ""prod-41""]",student_budget,budget
+synth_ord_0227,"[""prod-5""]",audiophile_creator,premium
+synth_ord_0228,"[""prod-12"", ""prod-7""]",executive_premium,premium
+synth_ord_0229,"[""prod-45"", ""prod-41""]",student_budget,budget
+synth_ord_0230,"[""prod-11"", ""prod-47""]",audiophile_creator,premium
+synth_ord_0231,"[""prod-26"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0232,"[""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0233,"[""prod-50"", ""prod-45""]",student_budget,budget
+synth_ord_0234,"[""prod-40"", ""prod-41""]",executive_premium,premium
+synth_ord_0235,"[""prod-40"", ""prod-41""]",executive_premium,premium
+synth_ord_0236,"[""prod-2"", ""prod-12"", ""prod-7"", ""prod-19""]",fitness_pro,mid-range
+synth_ord_0237,"[""prod-46"", ""prod-41""]",tech_enthusiast,mid-range
+synth_ord_0238,"[""prod-25"", ""prod-22""]",mobile_professional,mid-range
+synth_ord_0239,"[""prod-42"", ""prod-41""]",audiophile_creator,premium
+synth_ord_0240,"[""prod-40"", ""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0241,"[""prod-8"", ""prod-14"", ""prod-7"", ""prod-10""]",executive_premium,premium
+synth_ord_0242,"[""prod-3"", ""prod-7""]",executive_premium,premium
+synth_ord_0243,"[""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0244,"[""prod-9"", ""prod-32""]",mobile_professional,mid-range
+synth_ord_0245,"[""prod-16"", ""prod-20""]",tech_enthusiast,mid-range
+synth_ord_0246,"[""prod-1"", ""prod-3""]",audiophile_creator,premium
+synth_ord_0247,"[""prod-1"", ""prod-3"", ""prod-7""]",tech_enthusiast,mid-range
+synth_ord_0248,"[""prod-11"", ""prod-48""]",audiophile_creator,premium
+synth_ord_0249,"[""prod-34"", ""prod-30"", ""prod-22"", ""prod-13""]",executive_premium,premium
+synth_ord_0250,"[""prod-46"", ""prod-45""]",fitness_pro,mid-range
+synth_ord_0251,"[""prod-43"", ""prod-42""]",executive_premium,premium
+synth_ord_0252,"[""prod-45""]",student_budget,budget
+synth_ord_0253,"[""prod-1"", ""prod-8"", ""prod-3""]",tech_enthusiast,mid-range
+synth_ord_0254,"[""prod-33"", ""prod-27""]",mobile_professional,mid-range
+synth_ord_0255,"[""prod-12"", ""prod-19""]",mobile_professional,mid-range
+synth_ord_0256,"[""prod-8""]",audiophile_creator,premium
+synth_ord_0257,"[""prod-34"", ""prod-29""]",audiophile_creator,premium
+synth_ord_0258,"[""prod-46"", ""prod-50"", ""prod-45"", ""prod-41""]",student_budget,budget
+synth_ord_0259,"[""prod-14"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0260,"[""prod-49"", ""prod-47""]",student_budget,budget
+synth_ord_0261,"[""prod-27"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0262,"[""prod-23"", ""prod-9"", ""prod-27"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0263,"[""prod-8"", ""prod-14"", ""prod-7""]",student_budget,budget
+synth_ord_0264,"[""prod-23"", ""prod-9"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0265,"[""prod-1"", ""prod-8"", ""prod-7""]",mobile_professional,mid-range
+synth_ord_0266,"[""prod-25"", ""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0267,"[""prod-23""]",tech_enthusiast,mid-range
+synth_ord_0268,"[""prod-30"", ""prod-22""]",executive_premium,premium
+synth_ord_0269,"[""prod-4""]",mobile_professional,mid-range
+synth_ord_0270,"[""prod-35"", ""prod-18"", ""prod-37""]",mobile_professional,mid-range
+synth_ord_0271,"[""prod-23"", ""prod-9"", ""prod-27"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0272,"[""prod-3"", ""prod-7""]",student_budget,budget
+synth_ord_0273,"[""prod-45"", ""prod-41""]",student_budget,budget
+synth_ord_0274,"[""prod-1"", ""prod-25"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0275,"[""prod-47""]",mobile_professional,mid-range
+synth_ord_0276,"[""prod-1"", ""prod-8"", ""prod-7"", ""prod-3""]",mobile_professional,mid-range
+synth_ord_0277,"[""prod-12"", ""prod-19""]",tech_enthusiast,mid-range
+synth_ord_0278,"[""prod-12"", ""prod-19""]",tech_enthusiast,mid-range
+synth_ord_0279,"[""prod-9"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0280,"[""prod-46"", ""prod-45""]",student_budget,budget
+synth_ord_0281,"[""prod-15"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0282,"[""prod-41""]",student_budget,budget
+synth_ord_0283,"[""prod-12"", ""prod-19""]",student_budget,budget
+synth_ord_0284,"[""prod-40""]",executive_premium,premium
+synth_ord_0285,"[""prod-15"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0286,"[""prod-35"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0287,"[""prod-46"", ""prod-5""]",executive_premium,premium
+synth_ord_0288,"[""prod-25"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0289,"[""prod-15"", ""prod-26""]",mobile_professional,mid-range
+synth_ord_0290,"[""prod-42"", ""prod-40"", ""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0291,"[""prod-40"", ""prod-43""]",executive_premium,premium
+synth_ord_0292,"[""prod-6"", ""prod-41""]",executive_premium,premium
+synth_ord_0293,"[""prod-42"", ""prod-41""]",executive_premium,premium
+synth_ord_0294,"[""prod-7""]",audiophile_creator,premium
+synth_ord_0295,"[""prod-20""]",executive_premium,premium
+synth_ord_0296,"[""prod-36"", ""prod-37""]",mobile_professional,mid-range
+synth_ord_0297,"[""prod-1"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0298,"[""prod-37""]",fitness_pro,mid-range
+synth_ord_0299,"[""prod-38"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0300,"[""prod-23""]",audiophile_creator,premium
+synth_ord_0301,"[""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0302,"[""prod-36""]",fitness_pro,mid-range
+synth_ord_0303,"[""prod-40"", ""prod-11""]",mobile_professional,mid-range
+synth_ord_0304,"[""prod-49"", ""prod-47""]",mobile_professional,mid-range
+synth_ord_0305,"[""prod-23"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0306,"[""prod-46"", ""prod-45""]",student_budget,budget
+synth_ord_0307,"[""prod-40"", ""prod-43""]",executive_premium,premium
+synth_ord_0308,"[""prod-42""]",executive_premium,premium
+synth_ord_0309,"[""prod-5""]",audiophile_creator,premium
+synth_ord_0310,"[""prod-42"", ""prod-43""]",executive_premium,premium
+synth_ord_0311,"[""prod-36"", ""prod-18"", ""prod-38"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0312,"[""prod-46"", ""prod-50"", ""prod-45"", ""prod-41""]",fitness_pro,mid-range
+synth_ord_0313,"[""prod-34"", ""prod-22""]",student_budget,budget
+synth_ord_0314,"[""prod-40"", ""prod-21""]",mobile_professional,mid-range
+synth_ord_0315,"[""prod-1"", ""prod-25""]",audiophile_creator,premium
+synth_ord_0316,"[""prod-12"", ""prod-7""]",executive_premium,premium
+synth_ord_0317,"[""prod-31"", ""prod-28""]",executive_premium,premium
+synth_ord_0318,"[""prod-47"", ""prod-48""]",audiophile_creator,premium
+synth_ord_0319,"[""prod-35"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0320,"[""prod-25"", ""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0321,"[""prod-14"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0322,"[""prod-50"", ""prod-41""]",audiophile_creator,premium
+synth_ord_0323,"[""prod-18""]",fitness_pro,mid-range
+synth_ord_0324,"[""prod-16"", ""prod-26"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0325,"[""prod-23"", ""prod-9"", ""prod-27"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0326,"[""prod-1"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0327,"[""prod-46"", ""prod-45"", ""prod-41""]",student_budget,budget
+synth_ord_0328,"[""prod-26"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0329,"[""prod-1"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0330,"[""prod-46"", ""prod-50""]",student_budget,budget
+synth_ord_0331,"[""prod-9"", ""prod-27"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0332,"[""prod-31"", ""prod-11""]",executive_premium,premium
+synth_ord_0333,"[""prod-7"", ""prod-10""]",fitness_pro,mid-range
+synth_ord_0334,"[""prod-25"", ""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0335,"[""prod-3""]",tech_enthusiast,mid-range
+synth_ord_0336,"[""prod-36"", ""prod-38"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0337,"[""prod-15"", ""prod-26"", ""prod-14"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0338,"[""prod-30"", ""prod-8""]",tech_enthusiast,mid-range
+synth_ord_0339,"[""prod-15"", ""prod-16""]",mobile_professional,mid-range
+synth_ord_0340,"[""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0341,"[""prod-26""]",executive_premium,premium
+synth_ord_0342,"[""prod-40""]",executive_premium,premium
+synth_ord_0343,"[""prod-35"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0344,"[""prod-20""]",mobile_professional,mid-range
+synth_ord_0345,"[""prod-42"", ""prod-41""]",executive_premium,premium
+synth_ord_0346,"[""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0347,"[""prod-12"", ""prod-7""]",student_budget,budget
+synth_ord_0348,"[""prod-11"", ""prod-47""]",fitness_pro,mid-range
+synth_ord_0349,"[""prod-40"", ""prod-42"", ""prod-41""]",audiophile_creator,premium
+synth_ord_0350,"[""prod-42"", ""prod-41""]",executive_premium,premium
+synth_ord_0351,"[""prod-43""]",executive_premium,premium
+synth_ord_0352,"[""prod-34""]",student_budget,budget
+synth_ord_0353,"[""prod-36"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0354,"[""prod-9""]",executive_premium,premium
+synth_ord_0355,"[""prod-50""]",student_budget,budget
+synth_ord_0356,"[""prod-15"", ""prod-16"", ""prod-26"", ""prod-14""]",audiophile_creator,premium
+synth_ord_0357,"[""prod-31"", ""prod-28""]",tech_enthusiast,mid-range
+synth_ord_0358,"[""prod-35"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0359,"[""prod-35"", ""prod-8""]",audiophile_creator,premium
+synth_ord_0360,"[""prod-1"", ""prod-6"", ""prod-5""]",fitness_pro,mid-range
+synth_ord_0361,"[""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0362,"[""prod-36"", ""prod-18"", ""prod-35"", ""prod-38""]",fitness_pro,mid-range
+synth_ord_0363,"[""prod-9"", ""prod-27""]",executive_premium,premium
+synth_ord_0364,"[""prod-42"", ""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0365,"[""prod-36"", ""prod-35"", ""prod-38""]",fitness_pro,mid-range
+synth_ord_0366,"[""prod-48"", ""prod-47""]",mobile_professional,mid-range
+synth_ord_0367,"[""prod-43""]",mobile_professional,mid-range
+synth_ord_0368,"[""prod-18"", ""prod-35"", ""prod-38"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0369,"[""prod-42""]",student_budget,budget
+synth_ord_0370,"[""prod-43""]",executive_premium,premium
+synth_ord_0371,"[""prod-23"", ""prod-24"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0372,"[""prod-45"", ""prod-41""]",student_budget,budget
+synth_ord_0373,"[""prod-16"", ""prod-26"", ""prod-14"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0374,"[""prod-45"", ""prod-41""]",student_budget,budget
+synth_ord_0375,"[""prod-40"", ""prod-42""]",executive_premium,premium
+synth_ord_0376,"[""prod-50"", ""prod-45"", ""prod-41""]",student_budget,budget
+synth_ord_0377,"[""prod-36"", ""prod-19""]",fitness_pro,mid-range
+synth_ord_0378,"[""prod-38"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0379,"[""prod-30"", ""prod-22"", ""prod-13""]",fitness_pro,mid-range
+synth_ord_0380,"[""prod-15"", ""prod-16""]",mobile_professional,mid-range
+synth_ord_0381,"[""prod-15"", ""prod-16"", ""prod-26""]",mobile_professional,mid-range
+synth_ord_0382,"[""prod-26"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0383,"[""prod-16"", ""prod-14"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0384,"[""prod-1"", ""prod-25"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0385,"[""prod-41""]",executive_premium,premium
+synth_ord_0386,"[""prod-35""]",fitness_pro,mid-range
+synth_ord_0387,"[""prod-41""]",student_budget,budget
+synth_ord_0388,"[""prod-25"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0389,"[""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0390,"[""prod-34"", ""prod-13""]",student_budget,budget
+synth_ord_0391,"[""prod-8"", ""prod-14"", ""prod-7""]",executive_premium,premium
+synth_ord_0392,"[""prod-1"", ""prod-5""]",fitness_pro,mid-range
+synth_ord_0393,"[""prod-25"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0394,"[""prod-1"", ""prod-25""]",audiophile_creator,premium
+synth_ord_0395,"[""prod-15"", ""prod-16"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0396,"[""prod-31"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0397,"[""prod-35""]",audiophile_creator,premium
+synth_ord_0398,"[""prod-23"", ""prod-27"", ""prod-24"", ""prod-47""]",student_budget,budget
+synth_ord_0399,"[""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0400,"[""prod-1"", ""prod-3"", ""prod-7""]",executive_premium,premium
+synth_ord_0401,"[""prod-41""]",student_budget,budget
+synth_ord_0402,"[""prod-15"", ""prod-26"", ""prod-14"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0403,"[""prod-18"", ""prod-38""]",fitness_pro,mid-range
+synth_ord_0404,"[""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0405,"[""prod-1""]",audiophile_creator,premium
+synth_ord_0406,"[""prod-35""]",fitness_pro,mid-range
+synth_ord_0407,"[""prod-36"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0408,"[""prod-15"", ""prod-16"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0409,"[""prod-35"", ""prod-38"", ""prod-18"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0410,"[""prod-9"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0411,"[""prod-36"", ""prod-38"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0412,"[""prod-5""]",audiophile_creator,premium
+synth_ord_0413,"[""prod-2"", ""prod-7"", ""prod-19""]",tech_enthusiast,mid-range
+synth_ord_0414,"[""prod-42"", ""prod-40"", ""prod-43"", ""prod-41""]",mobile_professional,mid-range
+synth_ord_0415,"[""prod-2"", ""prod-19""]",fitness_pro,mid-range
+synth_ord_0416,"[""prod-23"", ""prod-9"", ""prod-27""]",tech_enthusiast,mid-range
+synth_ord_0417,"[""prod-9"", ""prod-27""]",tech_enthusiast,mid-range
+synth_ord_0418,"[""prod-29"", ""prod-30"", ""prod-13""]",audiophile_creator,premium
+synth_ord_0419,"[""prod-35"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0420,"[""prod-34"", ""prod-13""]",fitness_pro,mid-range
+synth_ord_0421,"[""prod-31"", ""prod-9"", ""prod-44""]",executive_premium,premium
+synth_ord_0422,"[""prod-25"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0423,"[""prod-35"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0424,"[""prod-35"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0425,"[""prod-31"", ""prod-27""]",mobile_professional,mid-range
+synth_ord_0426,"[""prod-1"", ""prod-7""]",student_budget,budget
+synth_ord_0427,"[""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0428,"[""prod-16"", ""prod-26"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0429,"[""prod-46"", ""prod-45"", ""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0430,"[""prod-25"", ""prod-6"", ""prod-5""]",mobile_professional,mid-range
+synth_ord_0431,"[""prod-18""]",fitness_pro,mid-range
+synth_ord_0432,"[""prod-1"", ""prod-5""]",fitness_pro,mid-range
+synth_ord_0433,"[""prod-46"", ""prod-41""]",student_budget,budget
+synth_ord_0434,"[""prod-46"", ""prod-45"", ""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0435,"[""prod-40"", ""prod-42""]",executive_premium,premium
+synth_ord_0436,"[""prod-49""]",audiophile_creator,premium
+synth_ord_0437,"[""prod-15""]",mobile_professional,mid-range
+synth_ord_0438,"[""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0439,"[""prod-35"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0440,"[""prod-36"", ""prod-18"", ""prod-35""]",fitness_pro,mid-range
+synth_ord_0441,"[""prod-46"", ""prod-41""]",student_budget,budget
+synth_ord_0442,"[""prod-34"", ""prod-29""]",audiophile_creator,premium
+synth_ord_0443,"[""prod-24"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0444,"[""prod-46"", ""prod-45""]",executive_premium,premium
+synth_ord_0445,"[""prod-40"", ""prod-42"", ""prod-41""]",executive_premium,premium
+synth_ord_0446,"[""prod-40"", ""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0447,"[""prod-15"", ""prod-16""]",fitness_pro,mid-range
+synth_ord_0448,"[""prod-27"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0449,"[""prod-1"", ""prod-25"", ""prod-6""]",tech_enthusiast,mid-range
+synth_ord_0450,"[""prod-40"", ""prod-43"", ""prod-42""]",executive_premium,premium
+synth_ord_0451,"[""prod-44""]",executive_premium,premium
+synth_ord_0452,"[""prod-27""]",tech_enthusiast,mid-range
+synth_ord_0453,"[""prod-9""]",mobile_professional,mid-range
+synth_ord_0454,"[""prod-25"", ""prod-6"", ""prod-5""]",tech_enthusiast,mid-range
+synth_ord_0455,"[""prod-42"", ""prod-41""]",executive_premium,premium
+synth_ord_0456,"[""prod-31"", ""prod-9"", ""prod-28"", ""prod-44""]",student_budget,budget
+synth_ord_0457,"[""prod-31""]",executive_premium,premium
+synth_ord_0458,"[""prod-25""]",audiophile_creator,premium
+synth_ord_0459,"[""prod-21"", ""prod-14""]",tech_enthusiast,mid-range
+synth_ord_0460,"[""prod-26"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0461,"[""prod-25"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0462,"[""prod-1"", ""prod-11""]",student_budget,budget
+synth_ord_0463,"[""prod-38""]",fitness_pro,mid-range
+synth_ord_0464,"[""prod-18"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0465,"[""prod-16"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0466,"[""prod-1"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0467,"[""prod-46""]",student_budget,budget
+synth_ord_0468,"[""prod-40"", ""prod-41""]",executive_premium,premium
+synth_ord_0469,"[""prod-25"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0470,"[""prod-15"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0471,"[""prod-46"", ""prod-41""]",student_budget,budget
+synth_ord_0472,"[""prod-35"", ""prod-37""]",audiophile_creator,premium
+synth_ord_0473,"[""prod-9""]",student_budget,budget
+synth_ord_0474,"[""prod-40"", ""prod-41""]",executive_premium,premium
+synth_ord_0475,"[""prod-26"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0476,"[""prod-14"", ""prod-8""]",audiophile_creator,premium
+synth_ord_0477,"[""prod-35"", ""prod-18"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0478,"[""prod-45""]",student_budget,budget
+synth_ord_0479,"[""prod-9"", ""prod-37""]",mobile_professional,mid-range
+synth_ord_0480,"[""prod-36"", ""prod-18"", ""prod-38""]",fitness_pro,mid-range
+synth_ord_0481,"[""prod-46"", ""prod-45"", ""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0482,"[""prod-35"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0483,"[""prod-15"", ""prod-16"", ""prod-26"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0484,"[""prod-5""]",mobile_professional,mid-range
+synth_ord_0485,"[""prod-35""]",fitness_pro,mid-range
+synth_ord_0486,"[""prod-41""]",student_budget,budget
+synth_ord_0487,"[""prod-9"", ""prod-44""]",mobile_professional,mid-range
+synth_ord_0488,"[""prod-1"", ""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0489,"[""prod-15"", ""prod-16"", ""prod-26"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0490,"[""prod-45"", ""prod-50""]",student_budget,budget
+synth_ord_0491,"[""prod-42"", ""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0492,"[""prod-23"", ""prod-9"", ""prod-27"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0493,"[""prod-23"", ""prod-9"", ""prod-27""]",tech_enthusiast,mid-range
+synth_ord_0494,"[""prod-15""]",mobile_professional,mid-range
+synth_ord_0495,"[""prod-26"", ""prod-30""]",executive_premium,premium
+synth_ord_0496,"[""prod-14""]",mobile_professional,mid-range
+synth_ord_0497,"[""prod-46"", ""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0498,"[""prod-50""]",executive_premium,premium
+synth_ord_0499,"[""prod-49""]",audiophile_creator,premium
+synth_ord_0500,"[""prod-23"", ""prod-9""]",tech_enthusiast,mid-range
+synth_ord_0501,"[""prod-16"", ""prod-26"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0502,"[""prod-27"", ""prod-4""]",executive_premium,premium
+synth_ord_0503,"[""prod-23"", ""prod-27"", ""prod-24"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0504,"[""prod-6""]",fitness_pro,mid-range
+synth_ord_0505,"[""prod-16"", ""prod-14""]",executive_premium,premium
+synth_ord_0506,"[""prod-16"", ""prod-21""]",audiophile_creator,premium
+synth_ord_0507,"[""prod-12"", ""prod-7""]",fitness_pro,mid-range
+synth_ord_0508,"[""prod-15""]",tech_enthusiast,mid-range
+synth_ord_0509,"[""prod-35"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0510,"[""prod-26""]",mobile_professional,mid-range
+synth_ord_0511,"[""prod-1"", ""prod-25"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0512,"[""prod-1"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0513,"[""prod-27"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0514,"[""prod-3""]",student_budget,budget
+synth_ord_0515,"[""prod-12"", ""prod-19""]",tech_enthusiast,mid-range
+synth_ord_0516,"[""prod-23"", ""prod-9"", ""prod-24"", ""prod-47""]",executive_premium,premium
+synth_ord_0517,"[""prod-27""]",mobile_professional,mid-range
+synth_ord_0518,"[""prod-37""]",fitness_pro,mid-range
+synth_ord_0519,"[""prod-8"", ""prod-7""]",tech_enthusiast,mid-range
+synth_ord_0520,"[""prod-42"", ""prod-43""]",executive_premium,premium
+synth_ord_0521,"[""prod-35""]",fitness_pro,mid-range
+synth_ord_0522,"[""prod-34"", ""prod-35""]",audiophile_creator,premium
+synth_ord_0523,"[""prod-46"", ""prod-35""]",student_budget,budget
+synth_ord_0524,"[""prod-35"", ""prod-38""]",fitness_pro,mid-range
+synth_ord_0525,"[""prod-46"", ""prod-45"", ""prod-50""]",student_budget,budget
+synth_ord_0526,"[""prod-40"", ""prod-41""]",executive_premium,premium
+synth_ord_0527,"[""prod-23"", ""prod-9"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0528,"[""prod-7""]",fitness_pro,mid-range
+synth_ord_0529,"[""prod-23"", ""prod-27"", ""prod-24""]",audiophile_creator,premium
+synth_ord_0530,"[""prod-22"", ""prod-13""]",tech_enthusiast,mid-range
+synth_ord_0531,"[""prod-45"", ""prod-41""]",student_budget,budget
+synth_ord_0532,"[""prod-13""]",mobile_professional,mid-range
+synth_ord_0533,"[""prod-7""]",mobile_professional,mid-range
+synth_ord_0534,"[""prod-42""]",executive_premium,premium
+synth_ord_0535,"[""prod-38"", ""prod-18""]",student_budget,budget
+synth_ord_0536,"[""prod-15"", ""prod-16"", ""prod-26"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0537,"[""prod-35"", ""prod-38""]",tech_enthusiast,mid-range
+synth_ord_0538,"[""prod-11"", ""prod-48""]",tech_enthusiast,mid-range
+synth_ord_0539,"[""prod-49"", ""prod-48""]",executive_premium,premium
+synth_ord_0540,"[""prod-23"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0541,"[""prod-6""]",audiophile_creator,premium
+synth_ord_0542,"[""prod-22""]",audiophile_creator,premium
+synth_ord_0543,"[""prod-9"", ""prod-27"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0544,"[""prod-38"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0545,"[""prod-49"", ""prod-48""]",executive_premium,premium
+synth_ord_0546,"[""prod-14""]",fitness_pro,mid-range
+synth_ord_0547,"[""prod-50"", ""prod-45""]",student_budget,budget
+synth_ord_0548,"[""prod-30"", ""prod-22"", ""prod-13""]",student_budget,budget
+synth_ord_0549,"[""prod-35"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0550,"[""prod-46"", ""prod-50""]",audiophile_creator,premium
+synth_ord_0551,"[""prod-24"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0552,"[""prod-45"", ""prod-41""]",student_budget,budget
+synth_ord_0553,"[""prod-46"", ""prod-45""]",student_budget,budget
+synth_ord_0554,"[""prod-45"", ""prod-50""]",student_budget,budget
+synth_ord_0555,"[""prod-1"", ""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0556,"[""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0557,"[""prod-50""]",student_budget,budget
+synth_ord_0558,"[""prod-1"", ""prod-25""]",executive_premium,premium
+synth_ord_0559,"[""prod-44""]",fitness_pro,mid-range
+synth_ord_0560,"[""prod-36"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0561,"[""prod-40"", ""prod-41""]",executive_premium,premium
+synth_ord_0562,"[""prod-25"", ""prod-6"", ""prod-5""]",fitness_pro,mid-range
+synth_ord_0563,"[""prod-28"", ""prod-41""]",student_budget,budget
+synth_ord_0564,"[""prod-23"", ""prod-9"", ""prod-27"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0565,"[""prod-42"", ""prod-41""]",executive_premium,premium
+synth_ord_0566,"[""prod-15"", ""prod-16""]",executive_premium,premium
+synth_ord_0567,"[""prod-46"", ""prod-50""]",student_budget,budget
+synth_ord_0568,"[""prod-15"", ""prod-16""]",mobile_professional,mid-range
+synth_ord_0569,"[""prod-16"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0570,"[""prod-22""]",fitness_pro,mid-range
+synth_ord_0571,"[""prod-19""]",student_budget,budget
+synth_ord_0572,"[""prod-15"", ""prod-16""]",mobile_professional,mid-range
+synth_ord_0573,"[""prod-2"", ""prod-19""]",tech_enthusiast,mid-range
+synth_ord_0574,"[""prod-1"", ""prod-25"", ""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0575,"[""prod-45"", ""prod-41""]",student_budget,budget
+synth_ord_0576,"[""prod-2"", ""prod-13""]",executive_premium,premium
+synth_ord_0577,"[""prod-46"", ""prod-45"", ""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0578,"[""prod-42""]",executive_premium,premium
+synth_ord_0579,"[""prod-35"", ""prod-18"", ""prod-38""]",fitness_pro,mid-range
+synth_ord_0580,"[""prod-23"", ""prod-9"", ""prod-27""]",tech_enthusiast,mid-range
+synth_ord_0581,"[""prod-1"", ""prod-6"", ""prod-5""]",fitness_pro,mid-range
+synth_ord_0582,"[""prod-16"", ""prod-14"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0583,"[""prod-1"", ""prod-25""]",audiophile_creator,premium
+synth_ord_0584,"[""prod-1"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0585,"[""prod-14"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0586,"[""prod-43"", ""prod-42""]",executive_premium,premium
+synth_ord_0587,"[""prod-25"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0588,"[""prod-18"", ""prod-41""]",mobile_professional,mid-range
+synth_ord_0589,"[""prod-40"", ""prod-42""]",mobile_professional,mid-range
+synth_ord_0590,"[""prod-39"", ""prod-21""]",tech_enthusiast,mid-range
+synth_ord_0591,"[""prod-1"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0592,"[""prod-49"", ""prod-11"", ""prod-48""]",fitness_pro,mid-range
+synth_ord_0593,"[""prod-42"", ""prod-41""]",audiophile_creator,premium
+synth_ord_0594,"[""prod-31"", ""prod-12""]",audiophile_creator,premium
+synth_ord_0595,"[""prod-46"", ""prod-50"", ""prod-41""]",tech_enthusiast,mid-range
+synth_ord_0596,"[""prod-1"", ""prod-25"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0597,"[""prod-16"", ""prod-26"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0598,"[""prod-40"", ""prod-42""]",executive_premium,premium
+synth_ord_0599,"[""prod-25""]",student_budget,budget
+synth_ord_0600,"[""prod-1"", ""prod-8"", ""prod-7"", ""prod-3""]",fitness_pro,mid-range
+synth_ord_0601,"[""prod-12""]",mobile_professional,mid-range
+synth_ord_0602,"[""prod-12"", ""prod-7""]",fitness_pro,mid-range
+synth_ord_0603,"[""prod-47"", ""prod-11"", ""prod-48""]",mobile_professional,mid-range
+synth_ord_0604,"[""prod-40"", ""prod-43""]",executive_premium,premium
+synth_ord_0605,"[""prod-46"", ""prod-45""]",student_budget,budget
+synth_ord_0606,"[""prod-40"", ""prod-41""]",executive_premium,premium
+synth_ord_0607,"[""prod-25"", ""prod-20""]",audiophile_creator,premium
+synth_ord_0608,"[""prod-43"", ""prod-40"", ""prod-42""]",executive_premium,premium
+synth_ord_0609,"[""prod-25"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0610,"[""prod-36"", ""prod-18"", ""prod-38"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0611,"[""prod-14""]",audiophile_creator,premium
+synth_ord_0612,"[""prod-40"", ""prod-42"", ""prod-41""]",executive_premium,premium
+synth_ord_0613,"[""prod-41""]",executive_premium,premium
+synth_ord_0614,"[""prod-25""]",audiophile_creator,premium
+synth_ord_0615,"[""prod-36"", ""prod-35"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0616,"[""prod-35"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0617,"[""prod-36"", ""prod-38"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0618,"[""prod-46"", ""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0619,"[""prod-16"", ""prod-26"", ""prod-14"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0620,"[""prod-49"", ""prod-48""]",student_budget,budget
+synth_ord_0621,"[""prod-8"", ""prod-10""]",executive_premium,premium
+synth_ord_0622,"[""prod-16""]",mobile_professional,mid-range
+synth_ord_0623,"[""prod-16"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0624,"[""prod-46"", ""prod-50""]",student_budget,budget
+synth_ord_0625,"[""prod-18""]",fitness_pro,mid-range
+synth_ord_0626,"[""prod-41""]",student_budget,budget
+synth_ord_0627,"[""prod-36"", ""prod-35"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0628,"[""prod-23"", ""prod-9"", ""prod-27"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0629,"[""prod-43"", ""prod-42""]",executive_premium,premium
+synth_ord_0630,"[""prod-47""]",student_budget,budget
+synth_ord_0631,"[""prod-9"", ""prod-27"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0632,"[""prod-15"", ""prod-26"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0633,"[""prod-15"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0634,"[""prod-36"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0635,"[""prod-50"", ""prod-45"", ""prod-41""]",student_budget,budget
+synth_ord_0636,"[""prod-35"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0637,"[""prod-40"", ""prod-43""]",executive_premium,premium
+synth_ord_0638,"[""prod-29"", ""prod-13""]",executive_premium,premium
+synth_ord_0639,"[""prod-50"", ""prod-45""]",student_budget,budget
+synth_ord_0640,"[""prod-46"", ""prod-41""]",executive_premium,premium
+synth_ord_0641,"[""prod-34"", ""prod-13""]",mobile_professional,mid-range
+synth_ord_0642,"[""prod-15""]",audiophile_creator,premium
+synth_ord_0643,"[""prod-14"", ""prod-10""]",student_budget,budget
+synth_ord_0644,"[""prod-41""]",student_budget,budget
+synth_ord_0645,"[""prod-41""]",student_budget,budget
+synth_ord_0646,"[""prod-31"", ""prod-44""]",tech_enthusiast,mid-range
+synth_ord_0647,"[""prod-25"", ""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0648,"[""prod-46"", ""prod-45"", ""prod-50"", ""prod-41""]",fitness_pro,mid-range
+synth_ord_0649,"[""prod-1"", ""prod-25""]",audiophile_creator,premium
+synth_ord_0650,"[""prod-35"", ""prod-38""]",fitness_pro,mid-range
+synth_ord_0651,"[""prod-9"", ""prod-19""]",fitness_pro,mid-range
+synth_ord_0652,"[""prod-31"", ""prod-9""]",tech_enthusiast,mid-range
+synth_ord_0653,"[""prod-14"", ""prod-41""]",audiophile_creator,premium
+synth_ord_0654,"[""prod-43"", ""prod-40"", ""prod-42"", ""prod-41""]",executive_premium,premium
+synth_ord_0655,"[""prod-1"", ""prod-25""]",audiophile_creator,premium
+synth_ord_0656,"[""prod-35"", ""prod-28""]",audiophile_creator,premium
+synth_ord_0657,"[""prod-45""]",student_budget,budget
+synth_ord_0658,"[""prod-8"", ""prod-7""]",tech_enthusiast,mid-range
+synth_ord_0659,"[""prod-1"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0660,"[""prod-46"", ""prod-50""]",student_budget,budget
+synth_ord_0661,"[""prod-1"", ""prod-25"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0662,"[""prod-43"", ""prod-41""]",fitness_pro,mid-range
+synth_ord_0663,"[""prod-25"", ""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0664,"[""prod-42"", ""prod-40"", ""prod-43""]",executive_premium,premium
+synth_ord_0665,"[""prod-12"", ""prod-5""]",tech_enthusiast,mid-range
+synth_ord_0666,"[""prod-1"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0667,"[""prod-9"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0668,"[""prod-39"", ""prod-41""]",tech_enthusiast,mid-range
+synth_ord_0669,"[""prod-40"", ""prod-42"", ""prod-41""]",executive_premium,premium
+synth_ord_0670,"[""prod-40""]",executive_premium,premium
+synth_ord_0671,"[""prod-35"", ""prod-38""]",fitness_pro,mid-range
+synth_ord_0672,"[""prod-26"", ""prod-14"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0673,"[""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0674,"[""prod-25""]",audiophile_creator,premium
+synth_ord_0675,"[""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0676,"[""prod-40"", ""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0677,"[""prod-45"", ""prod-41""]",student_budget,budget
+synth_ord_0678,"[""prod-25"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0679,"[""prod-31"", ""prod-9"", ""prod-44""]",executive_premium,premium
+synth_ord_0680,"[""prod-45""]",student_budget,budget
+synth_ord_0681,"[""prod-23"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0682,"[""prod-36"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0683,"[""prod-1"", ""prod-25"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0684,"[""prod-1"", ""prod-25""]",audiophile_creator,premium
+synth_ord_0685,"[""prod-16"", ""prod-26"", ""prod-14"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0686,"[""prod-18"", ""prod-38"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0687,"[""prod-9"", ""prod-44""]",tech_enthusiast,mid-range
+synth_ord_0688,"[""prod-42"", ""prod-43""]",executive_premium,premium
+synth_ord_0689,"[""prod-48"", ""prod-20""]",executive_premium,premium
+synth_ord_0690,"[""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0691,"[""prod-5""]",tech_enthusiast,mid-range
+synth_ord_0692,"[""prod-40"", ""prod-41""]",executive_premium,premium
+synth_ord_0693,"[""prod-46"", ""prod-45"", ""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0694,"[""prod-2"", ""prod-19""]",mobile_professional,mid-range
+synth_ord_0695,"[""prod-1"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0696,"[""prod-35"", ""prod-38"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0697,"[""prod-23"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0698,"[""prod-16"", ""prod-26""]",mobile_professional,mid-range
+synth_ord_0699,"[""prod-13"", ""prod-41""]",tech_enthusiast,mid-range
+synth_ord_0700,"[""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0701,"[""prod-36"", ""prod-35""]",tech_enthusiast,mid-range
+synth_ord_0702,"[""prod-18"", ""prod-38""]",fitness_pro,mid-range
+synth_ord_0703,"[""prod-9"", ""prod-27""]",tech_enthusiast,mid-range
+synth_ord_0704,"[""prod-49"", ""prod-11""]",audiophile_creator,premium
+synth_ord_0705,"[""prod-43"", ""prod-40"", ""prod-42""]",tech_enthusiast,mid-range
+synth_ord_0706,"[""prod-1""]",mobile_professional,mid-range
+synth_ord_0707,"[""prod-23"", ""prod-27"", ""prod-24"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0708,"[""prod-50""]",student_budget,budget
+synth_ord_0709,"[""prod-25""]",audiophile_creator,premium
+synth_ord_0710,"[""prod-15"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0711,"[""prod-2"", ""prod-19""]",executive_premium,premium
+synth_ord_0712,"[""prod-45""]",student_budget,budget
+synth_ord_0713,"[""prod-42""]",executive_premium,premium
+synth_ord_0714,"[""prod-43"", ""prod-42""]",executive_premium,premium
+synth_ord_0715,"[""prod-46"", ""prod-50""]",student_budget,budget
+synth_ord_0716,"[""prod-35"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0717,"[""prod-7""]",audiophile_creator,premium
+synth_ord_0718,"[""prod-23"", ""prod-9"", ""prod-27"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0719,"[""prod-35"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0720,"[""prod-40"", ""prod-42"", ""prod-41""]",executive_premium,premium
+synth_ord_0721,"[""prod-36"", ""prod-35""]",fitness_pro,mid-range
+synth_ord_0722,"[""prod-46"", ""prod-50""]",student_budget,budget
+synth_ord_0723,"[""prod-48""]",student_budget,budget
+synth_ord_0724,"[""prod-50"", ""prod-45""]",student_budget,budget
+synth_ord_0725,"[""prod-25"", ""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0726,"[""prod-31"", ""prod-44""]",fitness_pro,mid-range
+synth_ord_0727,"[""prod-15"", ""prod-26"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0728,"[""prod-9"", ""prod-27""]",tech_enthusiast,mid-range
+synth_ord_0729,"[""prod-36"", ""prod-38""]",fitness_pro,mid-range
+synth_ord_0730,"[""prod-27"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0731,"[""prod-40"", ""prod-43""]",executive_premium,premium
+synth_ord_0732,"[""prod-40"", ""prod-43""]",executive_premium,premium
+synth_ord_0733,"[""prod-36"", ""prod-35"", ""prod-37""]",mobile_professional,mid-range
+synth_ord_0734,"[""prod-26"", ""prod-7""]",audiophile_creator,premium
+synth_ord_0735,"[""prod-15"", ""prod-16""]",mobile_professional,mid-range
+synth_ord_0736,"[""prod-1""]",fitness_pro,mid-range
+synth_ord_0737,"[""prod-23""]",tech_enthusiast,mid-range
+synth_ord_0738,"[""prod-23"", ""prod-27"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0739,"[""prod-3"", ""prod-8""]",executive_premium,premium
+synth_ord_0740,"[""prod-34"", ""prod-3""]",tech_enthusiast,mid-range
+synth_ord_0741,"[""prod-40"", ""prod-41""]",executive_premium,premium
+synth_ord_0742,"[""prod-15"", ""prod-26"", ""prod-14"", ""prod-20""]",tech_enthusiast,mid-range
+synth_ord_0743,"[""prod-36"", ""prod-18"", ""prod-38""]",fitness_pro,mid-range
+synth_ord_0744,"[""prod-26"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0745,"[""prod-9"", ""prod-27"", ""prod-24"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0746,"[""prod-36"", ""prod-38""]",fitness_pro,mid-range
+synth_ord_0747,"[""prod-35""]",executive_premium,premium
+synth_ord_0748,"[""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0749,"[""prod-30""]",mobile_professional,mid-range
+synth_ord_0750,"[""prod-31"", ""prod-5""]",executive_premium,premium
+synth_ord_0751,"[""prod-43"", ""prod-40"", ""prod-42""]",fitness_pro,mid-range
+synth_ord_0752,"[""prod-8"", ""prod-7""]",executive_premium,premium
+synth_ord_0753,"[""prod-25"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0754,"[""prod-8""]",mobile_professional,mid-range
+synth_ord_0755,"[""prod-35"", ""prod-38""]",fitness_pro,mid-range
+synth_ord_0756,"[""prod-9"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0757,"[""prod-44""]",student_budget,budget
+synth_ord_0758,"[""prod-46"", ""prod-45"", ""prod-50"", ""prod-41""]",fitness_pro,mid-range
+synth_ord_0759,"[""prod-32"", ""prod-49""]",executive_premium,premium
+synth_ord_0760,"[""prod-42"", ""prod-41""]",executive_premium,premium
+synth_ord_0761,"[""prod-35"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0762,"[""prod-45""]",fitness_pro,mid-range
+synth_ord_0763,"[""prod-16"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0764,"[""prod-1"", ""prod-8""]",mobile_professional,mid-range
+synth_ord_0765,"[""prod-32"", ""prod-22""]",fitness_pro,mid-range
+synth_ord_0766,"[""prod-2"", ""prod-7""]",fitness_pro,mid-range
+synth_ord_0767,"[""prod-36"", ""prod-35""]",fitness_pro,mid-range
+synth_ord_0768,"[""prod-25"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0769,"[""prod-34"", ""prod-22"", ""prod-13""]",tech_enthusiast,mid-range
+synth_ord_0770,"[""prod-41""]",tech_enthusiast,mid-range
+synth_ord_0771,"[""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0772,"[""prod-45"", ""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0773,"[""prod-18"", ""prod-38""]",fitness_pro,mid-range
+synth_ord_0774,"[""prod-15"", ""prod-26"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0775,"[""prod-43"", ""prod-40"", ""prod-42"", ""prod-41""]",executive_premium,premium
+synth_ord_0776,"[""prod-1"", ""prod-25""]",audiophile_creator,premium
+synth_ord_0777,"[""prod-41""]",tech_enthusiast,mid-range
+synth_ord_0778,"[""prod-16"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0779,"[""prod-23"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0780,"[""prod-50""]",mobile_professional,mid-range
+synth_ord_0781,"[""prod-15"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0782,"[""prod-45"", ""prod-41""]",student_budget,budget
+synth_ord_0783,"[""prod-9"", ""prod-27"", ""prod-24"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0784,"[""prod-40"", ""prod-41""]",executive_premium,premium
+synth_ord_0785,"[""prod-16"", ""prod-25""]",audiophile_creator,premium
+synth_ord_0786,"[""prod-6""]",audiophile_creator,premium
+synth_ord_0787,"[""prod-46"", ""prod-45"", ""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0788,"[""prod-45""]",tech_enthusiast,mid-range
+synth_ord_0789,"[""prod-42"", ""prod-43""]",executive_premium,premium
+synth_ord_0790,"[""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0791,"[""prod-36""]",fitness_pro,mid-range
+synth_ord_0792,"[""prod-8"", ""prod-7""]",student_budget,budget
+synth_ord_0793,"[""prod-46"", ""prod-45"", ""prod-50""]",student_budget,budget
+synth_ord_0794,"[""prod-50"", ""prod-41""]",mobile_professional,mid-range
+synth_ord_0795,"[""prod-36"", ""prod-18"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0796,"[""prod-26"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0797,"[""prod-15"", ""prod-16""]",mobile_professional,mid-range
+synth_ord_0798,"[""prod-23"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0799,"[""prod-5""]",audiophile_creator,premium
+synth_ord_0800,"[""prod-14"", ""prod-10""]",executive_premium,premium
+synth_ord_0801,"[""prod-46"", ""prod-50""]",student_budget,budget
+synth_ord_0802,"[""prod-16"", ""prod-26""]",mobile_professional,mid-range
+synth_ord_0803,"[""prod-9"", ""prod-47""]",student_budget,budget
+synth_ord_0804,"[""prod-42"", ""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0805,"[""prod-29"", ""prod-22""]",audiophile_creator,premium
+synth_ord_0806,"[""prod-35"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0807,"[""prod-36"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0808,"[""prod-15"", ""prod-16""]",mobile_professional,mid-range
+synth_ord_0809,"[""prod-50""]",student_budget,budget
+synth_ord_0810,"[""prod-23"", ""prod-9"", ""prod-27"", ""prod-47""]",executive_premium,premium
+synth_ord_0811,"[""prod-26"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0812,"[""prod-5""]",audiophile_creator,premium
+synth_ord_0813,"[""prod-23"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0814,"[""prod-25"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0815,"[""prod-45"", ""prod-41""]",student_budget,budget
+synth_ord_0816,"[""prod-43"", ""prod-42"", ""prod-41""]",executive_premium,premium
+synth_ord_0817,"[""prod-46"", ""prod-45"", ""prod-50""]",student_budget,budget
+synth_ord_0818,"[""prod-23"", ""prod-24""]",audiophile_creator,premium
+synth_ord_0819,"[""prod-15"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0820,"[""prod-1"", ""prod-7""]",executive_premium,premium
+synth_ord_0821,"[""prod-25"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0822,"[""prod-13""]",tech_enthusiast,mid-range
+synth_ord_0823,"[""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0824,"[""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0825,"[""prod-16"", ""prod-26""]",tech_enthusiast,mid-range
+synth_ord_0826,"[""prod-12"", ""prod-7"", ""prod-19""]",executive_premium,premium
+synth_ord_0827,"[""prod-40"", ""prod-42""]",executive_premium,premium
+synth_ord_0828,"[""prod-46"", ""prod-50""]",student_budget,budget
+synth_ord_0829,"[""prod-25""]",audiophile_creator,premium
+synth_ord_0830,"[""prod-1"", ""prod-25""]",audiophile_creator,premium
+synth_ord_0831,"[""prod-1"", ""prod-25"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0832,"[""prod-34"", ""prod-30"", ""prod-22"", ""prod-13""]",audiophile_creator,premium
+synth_ord_0833,"[""prod-49"", ""prod-11""]",audiophile_creator,premium
+synth_ord_0834,"[""prod-29"", ""prod-17""]",executive_premium,premium
+synth_ord_0835,"[""prod-1""]",fitness_pro,mid-range
+synth_ord_0836,"[""prod-15"", ""prod-16"", ""prod-26"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0837,"[""prod-2""]",tech_enthusiast,mid-range
+synth_ord_0838,"[""prod-46"", ""prod-45""]",audiophile_creator,premium
+synth_ord_0839,"[""prod-46"", ""prod-45""]",student_budget,budget
+synth_ord_0840,"[""prod-15"", ""prod-16""]",mobile_professional,mid-range
+synth_ord_0841,"[""prod-1"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0842,"[""prod-49"", ""prod-48""]",audiophile_creator,premium
+synth_ord_0843,"[""prod-28"", ""prod-8""]",mobile_professional,mid-range
+synth_ord_0844,"[""prod-9"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0845,"[""prod-15"", ""prod-26""]",mobile_professional,mid-range
+synth_ord_0846,"[""prod-36"", ""prod-18"", ""prod-35"", ""prod-37""]",tech_enthusiast,mid-range
+synth_ord_0847,"[""prod-16"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0848,"[""prod-40"", ""prod-41""]",executive_premium,premium
+synth_ord_0849,"[""prod-35"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0850,"[""prod-2"", ""prod-12""]",tech_enthusiast,mid-range
+synth_ord_0851,"[""prod-1""]",audiophile_creator,premium
+synth_ord_0852,"[""prod-3"", ""prod-1"", ""prod-8"", ""prod-7""]",executive_premium,premium
+synth_ord_0853,"[""prod-15"", ""prod-24""]",student_budget,budget
+synth_ord_0854,"[""prod-15"", ""prod-14"", ""prod-20""]",tech_enthusiast,mid-range
+synth_ord_0855,"[""prod-8"", ""prod-7""]",student_budget,budget
+synth_ord_0856,"[""prod-23"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0857,"[""prod-40"", ""prod-41""]",executive_premium,premium
+synth_ord_0858,"[""prod-34"", ""prod-11""]",executive_premium,premium
+synth_ord_0859,"[""prod-11"", ""prod-47""]",student_budget,budget
+synth_ord_0860,"[""prod-45"", ""prod-50""]",student_budget,budget
+synth_ord_0861,"[""prod-36"", ""prod-37""]",student_budget,budget
+synth_ord_0862,"[""prod-15""]",mobile_professional,mid-range
+synth_ord_0863,"[""prod-36""]",executive_premium,premium
+synth_ord_0864,"[""prod-14"", ""prod-10""]",student_budget,budget
+synth_ord_0865,"[""prod-23"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0866,"[""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0867,"[""prod-15"", ""prod-26""]",executive_premium,premium
+synth_ord_0868,"[""prod-46"", ""prod-50"", ""prod-45"", ""prod-41""]",audiophile_creator,premium
+synth_ord_0869,"[""prod-39"", ""prod-35""]",fitness_pro,mid-range
+synth_ord_0870,"[""prod-27"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0871,"[""prod-1"", ""prod-7""]",mobile_professional,mid-range
+synth_ord_0872,"[""prod-35"", ""prod-21""]",executive_premium,premium
+synth_ord_0873,"[""prod-1"", ""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0874,"[""prod-40"", ""prod-43"", ""prod-42"", ""prod-41""]",fitness_pro,mid-range
+synth_ord_0875,"[""prod-49"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0876,"[""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0877,"[""prod-23"", ""prod-24"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0878,"[""prod-36"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0879,"[""prod-15""]",mobile_professional,mid-range
+synth_ord_0880,"[""prod-23"", ""prod-27"", ""prod-24"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0881,"[""prod-28"", ""prod-3""]",fitness_pro,mid-range
+synth_ord_0882,"[""prod-42"", ""prod-41""]",executive_premium,premium
+synth_ord_0883,"[""prod-23"", ""prod-24"", ""prod-47""]",student_budget,budget
+synth_ord_0884,"[""prod-45"", ""prod-41""]",student_budget,budget
+synth_ord_0885,"[""prod-8"", ""prod-10""]",mobile_professional,mid-range
+synth_ord_0886,"[""prod-45""]",executive_premium,premium
+synth_ord_0887,"[""prod-27""]",tech_enthusiast,mid-range
+synth_ord_0888,"[""prod-46"", ""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0889,"[""prod-15"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0890,"[""prod-46"", ""prod-45"", ""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0891,"[""prod-41""]",student_budget,budget
+synth_ord_0892,"[""prod-1"", ""prod-25"", ""prod-6"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0893,"[""prod-37""]",tech_enthusiast,mid-range
+synth_ord_0894,"[""prod-9"", ""prod-24"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0895,"[""prod-7"", ""prod-10""]",mobile_professional,mid-range
+synth_ord_0896,"[""prod-9"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0897,"[""prod-16"", ""prod-43""]",executive_premium,premium
+synth_ord_0898,"[""prod-36"", ""prod-35""]",fitness_pro,mid-range
+synth_ord_0899,"[""prod-40"", ""prod-42"", ""prod-41""]",executive_premium,premium
+synth_ord_0900,"[""prod-9""]",tech_enthusiast,mid-range
+synth_ord_0901,"[""prod-25"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0902,"[""prod-46"", ""prod-41""]",student_budget,budget
+synth_ord_0903,"[""prod-15"", ""prod-26"", ""prod-20""]",audiophile_creator,premium
+synth_ord_0904,"[""prod-15"", ""prod-16""]",student_budget,budget
+synth_ord_0905,"[""prod-22""]",audiophile_creator,premium
+synth_ord_0906,"[""prod-41""]",executive_premium,premium
+synth_ord_0907,"[""prod-38"", ""prod-18"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0908,"[""prod-15"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0909,"[""prod-43"", ""prod-40"", ""prod-42""]",executive_premium,premium
+synth_ord_0910,"[""prod-9"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0911,"[""prod-23"", ""prod-27""]",executive_premium,premium
+synth_ord_0912,"[""prod-40"", ""prod-42""]",executive_premium,premium
+synth_ord_0913,"[""prod-45"", ""prod-41""]",student_budget,budget
+synth_ord_0914,"[""prod-25"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0915,"[""prod-9"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0916,"[""prod-1"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0917,"[""prod-4""]",fitness_pro,mid-range
+synth_ord_0918,"[""prod-15"", ""prod-16""]",mobile_professional,mid-range
+synth_ord_0919,"[""prod-7""]",executive_premium,premium
+synth_ord_0920,"[""prod-15"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0921,"[""prod-42""]",executive_premium,premium
+synth_ord_0922,"[""prod-46"", ""prod-27""]",audiophile_creator,premium
+synth_ord_0923,"[""prod-45"", ""prod-50""]",student_budget,budget
+synth_ord_0924,"[""prod-40"", ""prod-43"", ""prod-41""]",executive_premium,premium
+synth_ord_0925,"[""prod-40"", ""prod-43""]",executive_premium,premium
+synth_ord_0926,"[""prod-36"", ""prod-35"", ""prod-38""]",fitness_pro,mid-range
+synth_ord_0927,"[""prod-14""]",audiophile_creator,premium
+synth_ord_0928,"[""prod-16""]",fitness_pro,mid-range
+synth_ord_0929,"[""prod-2"", ""prod-12""]",audiophile_creator,premium
+synth_ord_0930,"[""prod-23"", ""prod-24""]",executive_premium,premium
+synth_ord_0931,"[""prod-16"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0932,"[""prod-20""]",mobile_professional,mid-range
+synth_ord_0933,"[""prod-40"", ""prod-42""]",executive_premium,premium
+synth_ord_0934,"[""prod-19""]",tech_enthusiast,mid-range
+synth_ord_0935,"[""prod-9"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0936,"[""prod-9""]",tech_enthusiast,mid-range
+synth_ord_0937,"[""prod-50"", ""prod-41""]",student_budget,budget
+synth_ord_0938,"[""prod-31"", ""prod-28"", ""prod-44""]",mobile_professional,mid-range
+synth_ord_0939,"[""prod-30""]",student_budget,budget
+synth_ord_0940,"[""prod-34"", ""prod-22""]",audiophile_creator,premium
+synth_ord_0941,"[""prod-42""]",executive_premium,premium
+synth_ord_0942,"[""prod-26"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0943,"[""prod-35"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0944,"[""prod-16"", ""prod-26""]",executive_premium,premium
+synth_ord_0945,"[""prod-40"", ""prod-42""]",executive_premium,premium
+synth_ord_0946,"[""prod-25"", ""prod-14""]",tech_enthusiast,mid-range
+synth_ord_0947,"[""prod-35"", ""prod-38""]",audiophile_creator,premium
+synth_ord_0948,"[""prod-9"", ""prod-27"", ""prod-24"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0949,"[""prod-3"", ""prod-8""]",mobile_professional,mid-range
+synth_ord_0950,"[""prod-36"", ""prod-18""]",executive_premium,premium
+synth_ord_0951,"[""prod-40"", ""prod-42"", ""prod-41""]",tech_enthusiast,mid-range
+synth_ord_0952,"[""prod-35"", ""prod-18""]",fitness_pro,mid-range
+synth_ord_0953,"[""prod-20""]",audiophile_creator,premium
+synth_ord_0954,"[""prod-36"", ""prod-38"", ""prod-18""]",audiophile_creator,premium
+synth_ord_0955,"[""prod-46"", ""prod-45"", ""prod-50""]",student_budget,budget
+synth_ord_0956,"[""prod-1""]",executive_premium,premium
+synth_ord_0957,"[""prod-14""]",mobile_professional,mid-range
+synth_ord_0958,"[""prod-1"", ""prod-25"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0959,"[""prod-43""]",executive_premium,premium
+synth_ord_0960,"[""prod-15"", ""prod-16"", ""prod-26"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0961,"[""prod-29"", ""prod-22""]",audiophile_creator,premium
+synth_ord_0962,"[""prod-27"", ""prod-47""]",tech_enthusiast,mid-range
+synth_ord_0963,"[""prod-40"", ""prod-43""]",executive_premium,premium
+synth_ord_0964,"[""prod-14""]",mobile_professional,mid-range
+synth_ord_0965,"[""prod-1"", ""prod-5""]",audiophile_creator,premium
+synth_ord_0966,"[""prod-15"", ""prod-16""]",student_budget,budget
+synth_ord_0967,"[""prod-14"", ""prod-7""]",audiophile_creator,premium
+synth_ord_0968,"[""prod-40"", ""prod-42"", ""prod-41""]",executive_premium,premium
+synth_ord_0969,"[""prod-42"", ""prod-40"", ""prod-43""]",executive_premium,premium
+synth_ord_0970,"[""prod-43"", ""prod-40"", ""prod-42"", ""prod-41""]",executive_premium,premium
+synth_ord_0971,"[""prod-37"", ""prod-48""]",audiophile_creator,premium
+synth_ord_0972,"[""prod-16""]",mobile_professional,mid-range
+synth_ord_0973,"[""prod-48""]",audiophile_creator,premium
+synth_ord_0974,"[""prod-26""]",mobile_professional,mid-range
+synth_ord_0975,"[""prod-16"", ""prod-26"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0976,"[""prod-29"", ""prod-48""]",tech_enthusiast,mid-range
+synth_ord_0977,"[""prod-15"", ""prod-26"", ""prod-14""]",mobile_professional,mid-range
+synth_ord_0978,"[""prod-46""]",student_budget,budget
+synth_ord_0979,"[""prod-35"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0980,"[""prod-9"", ""prod-27""]",tech_enthusiast,mid-range
+synth_ord_0981,"[""prod-27"", ""prod-24""]",tech_enthusiast,mid-range
+synth_ord_0982,"[""prod-18"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0983,"[""prod-36"", ""prod-18""]",student_budget,budget
+synth_ord_0984,"[""prod-28"", ""prod-41""]",student_budget,budget
+synth_ord_0985,"[""prod-18""]",executive_premium,premium
+synth_ord_0986,"[""prod-46"", ""prod-50""]",student_budget,budget
+synth_ord_0987,"[""prod-25"", ""prod-6""]",audiophile_creator,premium
+synth_ord_0988,"[""prod-43""]",executive_premium,premium
+synth_ord_0989,"[""prod-46"", ""prod-50""]",student_budget,budget
+synth_ord_0990,"[""prod-27""]",tech_enthusiast,mid-range
+synth_ord_0991,"[""prod-14""]",audiophile_creator,premium
+synth_ord_0992,"[""prod-15"", ""prod-26"", ""prod-14""]",audiophile_creator,premium
+synth_ord_0993,"[""prod-26"", ""prod-20""]",audiophile_creator,premium
+synth_ord_0994,"[""prod-38"", ""prod-37""]",fitness_pro,mid-range
+synth_ord_0995,"[""prod-50""]",audiophile_creator,premium
+synth_ord_0996,"[""prod-15"", ""prod-14"", ""prod-20""]",mobile_professional,mid-range
+synth_ord_0997,"[""prod-3"", ""prod-8""]",student_budget,budget
+synth_ord_0998,"[""prod-43""]",executive_premium,premium
+synth_ord_0999,"[""prod-23"", ""prod-9""]",tech_enthusiast,mid-range
+synth_ord_1000,"[""prod-45"", ""prod-41""]",student_budget,budget
