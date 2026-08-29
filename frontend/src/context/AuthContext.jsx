@@ -1,8 +1,8 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { getApiUrl } from '../config/api';
 
 const AuthContext = createContext(null);
-const API_URL = 'https://sellsense-backend.onrender.com';
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('sellsense_token') || null);
@@ -17,7 +17,8 @@ export function AuthProvider({ children }) {
     if (token) {
       headers['Authorization'] = `Bearer ${token}`;
     }
-    const response = await fetch(`${API_URL}${url}`, { ...options, headers });
+    const fullUrl = getApiUrl(url);
+    const response = await fetch(fullUrl, { ...options, headers });
     return response;
   };
 
@@ -29,7 +30,7 @@ export function AuthProvider({ children }) {
         return;
       }
       try {
-        const res = await fetch(`${API_URL}/api/auth/me`, {
+        const res = await fetch(getApiUrl('/api/auth/me'), {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         const data = await res.json();
@@ -52,7 +53,7 @@ export function AuthProvider({ children }) {
   }, [token]);
 
   const login = async (email, password) => {
-    const res = await fetch(`${API_URL}/api/auth/login`, {
+    const res = await fetch(getApiUrl('/api/auth/login'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
@@ -68,7 +69,7 @@ export function AuthProvider({ children }) {
   };
 
   const signup = async (name, email, password) => {
-    const res = await fetch(`${API_URL}/api/auth/signup`, {
+    const res = await fetch(getApiUrl('/api/auth/signup'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, password })

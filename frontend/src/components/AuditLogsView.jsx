@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldCheck, CheckCircle2, XCircle, AlertOctagon, RefreshCw, Search, Trash2, Eye, TrendingUp, DollarSign, Filter, Code } from 'lucide-react';
+import { getApiUrl } from '../config/api';
 
 export default function AuditLogsView() {
   const [logs, setLogs] = useState([]);
@@ -12,7 +13,7 @@ export default function AuditLogsView() {
   const fetchLogs = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/logs');
+      const res = await fetch(getApiUrl('/api/logs'));
       const data = await res.json();
       if (data.success) {
         setLogs(data.logs || []);
@@ -32,12 +33,13 @@ export default function AuditLogsView() {
   const handleClearLogs = async () => {
     if (!window.confirm("Are you sure you want to clear all audit logs?")) return;
     try {
-      await fetch('/api/logs/clear', { method: 'POST' });
+      await fetch(getApiUrl('/api/logs/clear'), { method: 'POST' });
       fetchLogs();
     } catch (err) {
       console.error("Clear logs error:", err);
     }
   };
+
 
   const filteredLogs = logs.filter(log => {
     const matchesSearch = 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Sparkles, ShieldCheck, Zap, AlertTriangle, CheckCircle2, TrendingUp, Tag, RefreshCw } from 'lucide-react';
+import { getApiUrl } from '../config/api';
 
 export default function CampaignDashboard() {
   const [clusterData, setClusterData] = useState(null);
@@ -10,7 +11,7 @@ export default function CampaignDashboard() {
   const fetchClusters = async () => {
     setLoadingClusters(true);
     try {
-      const res = await fetch('/api/campaign/clusters');
+      const res = await fetch(getApiUrl('/api/campaign/clusters'));
       const data = await res.json();
       if (data.success) {
         setClusterData(data);
@@ -20,6 +21,7 @@ export default function CampaignDashboard() {
     } finally {
       setLoadingClusters(false);
     }
+
   };
 
   useEffect(() => {
@@ -29,12 +31,13 @@ export default function CampaignDashboard() {
   const handleRunCampaignOrchestrator = async () => {
     setOrchestrating(true);
     try {
-      const res = await fetch('/api/campaign/suggest', {
+      const res = await fetch(getApiUrl('/api/campaign/suggest'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({})
       });
       const data = await res.json();
+
       if (data.success) {
         setCampaignData(data.validatedCampaign);
       }

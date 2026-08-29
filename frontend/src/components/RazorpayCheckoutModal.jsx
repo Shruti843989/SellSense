@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CreditCard, ShieldCheck, CheckCircle2, AlertOctagon, RefreshCw, X, ArrowLeft, Lock } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { getApiUrl } from '../config/api';
 
 export default function RazorpayCheckoutModal({ 
   isOpen, 
@@ -24,7 +25,7 @@ export default function RazorpayCheckoutModal({
     setPaymentStatus('idle');
 
     try {
-      const res = await fetch('/api/payment/create-order', {
+      const res = await fetch(getApiUrl('/api/payment/create-order'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -93,7 +94,7 @@ export default function RazorpayCheckoutModal({
   const handleVerifyPayment = async (responseObj, orderId) => {
     setIsProcessing(true);
     try {
-      const res = await fetch('/api/payment/verify', {
+      const res = await fetch(getApiUrl('/api/payment/verify'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -126,7 +127,7 @@ export default function RazorpayCheckoutModal({
     const reason = customReason || "BAD_REQUEST_ERROR: Payment failed due to card decline / test failure simulation";
 
     try {
-      const res = await fetch('/api/payment/simulate-failure', {
+      const res = await fetch(getApiUrl('/api/payment/simulate-failure'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -136,6 +137,7 @@ export default function RazorpayCheckoutModal({
           failureReason: reason
         })
       });
+
       const data = await res.json();
       setIsProcessing(false);
       setPaymentStatus('failed');

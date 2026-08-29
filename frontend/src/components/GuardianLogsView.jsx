@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldCheck, ShieldAlert, AlertTriangle, AlertOctagon, RefreshCw, Zap, Bot, CheckCircle, XCircle, Info, Sparkles, Activity } from 'lucide-react';
+import { getApiUrl } from '../config/api';
 
 // Signature Visual Component: Guardian Radial Risk Arc Gauge
 function GuardianRiskGauge({ score = 0, verdict = 'APPROVE' }) {
@@ -71,7 +72,7 @@ export default function GuardianLogsView() {
   const fetchGuardianLogs = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/guardian/logs');
+      const res = await fetch(getApiUrl('/api/guardian/logs'));
       const data = await res.json();
       if (data.success) {
         setLogs(data.logs || []);
@@ -102,7 +103,7 @@ export default function GuardianLogsView() {
     setSimulating(true);
     setDemoSuccessMsg(null);
     try {
-      const res = await fetch('/api/guardian/simulate-misbehavior', {
+      const res = await fetch(getApiUrl('/api/guardian/simulate-misbehavior'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ simulationType: simType })
@@ -121,10 +122,11 @@ export default function GuardianLogsView() {
 
   const clearLogs = async () => {
     if (window.confirm("Clear all Guardian supervision logs?")) {
-      await fetch('/api/guardian/clear', { method: 'POST' });
+      await fetch(getApiUrl('/api/guardian/clear'), { method: 'POST' });
       fetchGuardianLogs();
     }
   };
+
 
   const filteredLogs = logs.filter(log => {
     if (filter === 'APPROVED') return log.guardianVerdict === 'APPROVE';

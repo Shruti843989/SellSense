@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, Trash2, Plus, Minus, ShoppingCart, Sparkles, ArrowRight, ShieldCheck, Zap, AlertCircle } from 'lucide-react';
+import { getApiUrl } from '../config/api';
 
 export default function CartDrawer({ 
   isOpen, 
@@ -25,12 +26,13 @@ export default function CartDrawer({
     setAbandonedNudge(null);
 
     try {
-      const res = await fetch('/api/abandoned-cart/trigger', {
+      const res = await fetch(getApiUrl('/api/abandoned-cart/trigger'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ cartItems: cart })
       });
       const data = await res.json();
+
       setAbandonedNudge(data);
     } catch (err) {
       console.error("Abandoned cart trigger error:", err);

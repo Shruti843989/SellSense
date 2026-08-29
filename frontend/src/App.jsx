@@ -17,6 +17,7 @@ import AdminDashboard from './components/AdminDashboard';
 import AuthModal from './components/AuthModal';
 import { useAuth } from './context/AuthContext';
 import { useTheme } from './hooks/useTheme';
+import { getApiUrl } from './config/api';
 
 import { Sparkles, ShieldCheck, Tag, ShoppingBag, ArrowRight, Brain, MessageSquare, TrendingUp, Bot, Package, Heart, Plus } from 'lucide-react';
 
@@ -54,14 +55,14 @@ export default function App() {
   // Load Store Products & Smart AI Bundles
   const fetchProductsAndBundles = async () => {
     try {
-      const resP = await fetch('/api/products');
+      const resP = await fetch(getApiUrl('/api/products'));
       const dataP = await resP.json();
       if (dataP.success) {
         setProducts(dataP.products || []);
         setApiConnected(true);
       }
 
-      const resB = await fetch('/api/bundles');
+      const resB = await fetch(getApiUrl('/api/bundles'));
       const dataB = await resB.json();
       if (dataB.success) {
         setSmartBundles(dataB.bundles || []);
@@ -71,6 +72,7 @@ export default function App() {
       setApiConnected(false);
     }
   };
+
 
   // Sync user-scoped Cart & Wishlist from PostgreSQL database
   const syncUserCartAndWishlist = async () => {

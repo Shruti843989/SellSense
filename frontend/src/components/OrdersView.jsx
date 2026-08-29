@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Package, Truck, MessageSquare, Send, CheckCircle2, Clock, ArrowRight, ShieldCheck, Sparkles, RefreshCw } from 'lucide-react';
-
 import { useAuth } from '../context/AuthContext';
+import { getApiUrl } from '../config/api';
+
 
 export default function OrdersView() {
   const { authFetch } = useAuth();
@@ -62,12 +63,12 @@ export default function OrdersView() {
     setChatLoading(true);
 
     try {
-      const res = await fetch('/api/orders/post-purchase-chat', {
+      const res = await authFetch('/api/orders/post-purchase-chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ orderId: selectedOrderId, message: userMsg })
       });
       const data = await res.json();
+
 
       setChatMessages(prev => [
         ...prev,

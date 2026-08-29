@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Bot, Code, Play, CheckCircle2, RefreshCw, Sparkles, Terminal, Copy } from 'lucide-react';
+import { getApiUrl } from '../config/api';
 
 export default function AgentCatalogView() {
   const [catalogSchema, setCatalogSchema] = useState(null);
@@ -10,7 +11,7 @@ export default function AgentCatalogView() {
   const fetchAgentSchema = async () => {
     setLoadingSchema(true);
     try {
-      const res = await fetch('/api/catalog/agent');
+      const res = await fetch(getApiUrl('/api/catalog/agent'));
       const data = await res.json();
       setCatalogSchema(data);
     } catch (err) {
@@ -28,7 +29,7 @@ export default function AgentCatalogView() {
     setRunningSimulation(true);
     setSimulationResult(null);
     try {
-      const res = await fetch('/api/buyer-simulation/run', {
+      const res = await fetch(getApiUrl('/api/buyer-simulation/run'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -36,6 +37,7 @@ export default function AgentCatalogView() {
         })
       });
       const data = await res.json();
+
       setSimulationResult(data);
     } catch (err) {
       console.error("Buyer simulation error:", err);
